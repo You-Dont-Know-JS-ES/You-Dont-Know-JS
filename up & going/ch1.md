@@ -71,31 +71,31 @@ Una expresión más común es llamada declaraciones de *expresiones de llamada* 
 alert( a );
 ```
 
-### Ejecutando un programa
+### Executing a Program
 
-¿ Cómo una colleción de sentencias le ordenan a un computador que tareas debe realizar ? Un programa debe ser *ejectuado*, este proceso se conoce también como *Ejecutar el programa*.
+How do those collections of programming statements tell the computer what to do? The program needs to be *executed*, also referred to as *running the program*.
 
-Sentencias como `a = b * 2` son útiles para los desarrolladores en el momento de leer y escribir código, pero no es la forma en la que un computador entiende el código. Una utilidad especial de un computador (Ya sea un *Intérprete* o un *compilador*) se utiliza para interpretar el código que escribes en instrucciones que el computador puede entender.
+Statements like `a = b * 2` are helpful for developers when reading and writing, but are not actually in a form the computer can directly understand. So a special utility on the computer (either an *interpreter* or a *compiler*) is used to translate the code you write into commands a computer can understand.
 
-En algunos lenguajes de programación, la traducción de instrucciones se realiza de arriba a abajo, línea por línea, cada vez que el programa se ejecuta, lo cual se conoce como *Interpretar* el código.
+For some computer languages, this translation of commands is typically done from top to bottom, line by line, every time the program is run, which is usually called *interpreting* the code.
 
-En otros lenguajes, la traducción es hecha antes de la ejecución, esto se conoce como *compilar* el código. Cuando el programa se *ejecuta* después del compilado, lo que se ejecuta en realidad son instrucciones de computador compiladas.
+For other languages, the translation is done ahead of time, called *compiling* the code, so when the program *runs* later, what's running is actually the already compiled computer instructions ready to go.
 
-Se dice típicamente que JavaScript es un lenguaje *interpretado*, porque tu fuente de código JavaScript es procesada cada vez que se ejecuta. Pero esto no es del todo cierto. El motor de JavaScript realmente *compila* el programa sobre la marcha e inmediatamente ejecuta el código compilado.
+It's typically asserted that JavaScript is *interpreted*, because your JavaScript source code is processed each time it's run. But that's not entirely accurate. The JavaScript engine actually *compiles* the program on the fly and then immediately runs the compiled code.
 
-**Nota:** Para mayor información sobre el compilado en JavaScript, dirígete a los dos primeros capítulos de *Scope & Closures* libro de esta serie.
+**Note:** For more information on JavaScript compiling, see the first two chapters of the *Scope & Closures* title of this series.
 
-## Try It Yourself
+## Inténtelo usted mismo
 
-This chapter is going to introduce each programming concept with simple snippets of code, all written in JavaScript (obviously!).
+Este capítulo introducirá cada concepto de programación con fragmentos de código simples, todos escritos en lenguaje JavaScript (¡Por supuesto!).
 
-It cannot be emphasized enough: while you go through this chapter -- and you may need to spend the time to go over it several times -- you should practice each of these concepts by typing the code yourself. The easiest way to do that is to open up the developer tools console in your nearest browser (Firefox, Chrome, IE, etc.).
+No se puede enfatizar lo suficiente: Mientras avanza en el capítulo -- Y podría necesitar tiempo para leérlo múltiples veces -- debe practicar cada uno de los conceptos escribiendo el código usted mismo. La manera más fácil de hacerlo es abrir la consola de la herramienta del desarrollador en el navegador de su preferencia (Firefox, Chrome, IE, etc.).
 
-**Tip:** Typically, you can launch the developer console with a keyboard shortcut or from a menu item. For more detailed information about launching and using the console in your favorite browser, see "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console). To type multiple lines into the console at once, use `<shift> + <enter>` to move to the next new line. Once you hit `<enter>` by itself, the console will run everything you've just typed.
+**Consejo:** Típicamente, puede iniciar la consola del desarrollador con un atajo del teclado o de un ítem de menu. Para información más detallada acerca de iniciar y usar la consola de su navegador favorito, dirigirse a "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console). Para ingresar múltiples lineas en la consola sin ejecutar el código, se puede usar la combinación de teclas `<shift> + <enter>` e ingresar un salto de línea en el código. Una vez presionada la tecla `<enter>` por si sola, la consola ejecutara todo el código que se hubiese ingresado.
 
-Let's get familiar with the process of running code in the console. First, I suggest opening up an empty tab in your browser. I prefer to do this by typing `about:blank` into the address bar. Then, make sure your developer console is open, as we just mentioned.
+Vamos a familiarizarnos con el proceso de ejecutar código en la consola. Primero que todo, le sugiero abrir una pestaña nueva en su navegador. Yo prefiero hacer esto escribiendo `about:blank` en la barra de direcciones. Luego, asegúrese de que su consola de desarrollador esté abierta, como mencionamos previamente.
 
-Now, type this code and see how it runs:
+Ahora, ingrese este código y observe como se ejecuta:
 
 ```js
 a = 21;
@@ -104,12 +104,11 @@ b = a * 2;
 
 console.log( b );
 ```
-
-Typing the preceding code into the console in Chrome should produce something like the following:
+Escribir el anterior código en la consola de Chrome debería mostrar algo como esto:
 
 <img src="fig1.png" width="500">
 
-Go on, try it. The best way to learn programming is to start coding!
+Adelante, inténtelo. ¡La mejor forma de aprender programación es escribiendo código!
 
 ### Output
 
