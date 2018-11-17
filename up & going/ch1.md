@@ -71,19 +71,19 @@ Una expresión más común es llamada declaraciones de *expresiones de llamada* 
 alert( a );
 ```
 
-### Executing a Program
+### Ejecutando un programa
 
-How do those collections of programming statements tell the computer what to do? The program needs to be *executed*, also referred to as *running the program*.
+¿ Cómo una colleción de sentencias le ordenan a un computador que tareas debe realizar ? Un programa debe ser *ejectuado*, este proceso se conoce también como *Ejecutar el programa*.
 
-Statements like `a = b * 2` are helpful for developers when reading and writing, but are not actually in a form the computer can directly understand. So a special utility on the computer (either an *interpreter* or a *compiler*) is used to translate the code you write into commands a computer can understand.
+Sentencias como `a = b * 2` son útiles para los desarrolladores en el momento de leer y escribir código, pero no es la forma en la que un computador entiende el código. Una utilidad especial de un computador (Ya sea un *Intérprete* o un *compilador*) se utiliza para interpretar el código que escribes en instrucciones que el computador puede entender.
 
-For some computer languages, this translation of commands is typically done from top to bottom, line by line, every time the program is run, which is usually called *interpreting* the code.
+En algunos lenguajes de programación, la traducción de instrucciones se realiza de arriba a abajo, línea por línea, cada vez que el programa se ejecuta, lo cual se conoce como *Interpretar* el código.
 
-For other languages, the translation is done ahead of time, called *compiling* the code, so when the program *runs* later, what's running is actually the already compiled computer instructions ready to go.
+En otros lenguajes, la traducción es hecha antes de la ejecución, esto se conoce como *compilar* el código. Cuando el programa se *ejecuta* después del compilado, lo que se ejecuta en realidad son instrucciones de computador compiladas.
 
-It's typically asserted that JavaScript is *interpreted*, because your JavaScript source code is processed each time it's run. But that's not entirely accurate. The JavaScript engine actually *compiles* the program on the fly and then immediately runs the compiled code.
+Se dice típicamente que JavaScript es un lenguaje *interpretado*, porque tu fuente de código JavaScript es procesada cada vez que se ejecuta. Pero esto no es del todo cierto. El motor de JavaScript realmente *compila* el programa sobre la marcha e inmediatamente ejecuta el código compilado.
 
-**Note:** For more information on JavaScript compiling, see the first two chapters of the *Scope & Closures* title of this series.
+**Nota:** Para mayor información sobre el compilado en JavaScript, dirígete a los dos primeros capítulos de *Scope & Closures* libro de esta serie.
 
 ## Try It Yourself
 
