@@ -1,4 +1,4 @@
-# Nota a contribuyentes en Español:
+# Nota para los contribuyentes en Español:
 
 Aunque este es un repo personal, hace parte del repo de `Staging`, proceso previo para hacer merge a el repo original. Esta decisión se tomó conjuntamente con @getify para reducir el ruido en el repo master, [siga conversación acá](https://github.com/getify/You-Dont-Know-JS/pull/1378).
 
