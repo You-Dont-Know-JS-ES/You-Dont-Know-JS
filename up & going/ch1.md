@@ -210,25 +210,25 @@ Here are some of the most common operators in JavaScript:
 
 **Note:** For much more detail, and coverage of operators not mentioned here, see the Mozilla Developer Network (MDN)'s "Expressions and Operators" (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators).
 
-## Values & Types
+## Valores y tipos
 
-If you ask an employee at a phone store how much a certain phone costs, and they say "ninety-nine, ninety-nine" (i.e., $99.99), they're giving you an actual numeric dollar figure that represents what you'll need to pay (plus taxes) to buy it. If you want to buy two of those phones, you can easily do the mental math to double that value to get $199.98 for your base cost.
+Si le preguntara a un empleado de una tienda de teléfonos el costo de un teléfono, y el dijera "Noventa y nueve, noventa y nueve" (es decir, $99.99), el le estaría dando una cifra numérica real en dólares que representa lo que debería pagar (más impuestos) para comprarlo. Si usted quiere comprar dos de esos teléfonos, podría fácilmente hacer el cálculo mentalmente para duplicar el valor y obtener $199.98 como su costo base.
 
-If that same employee picks up another similar phone but says it's "free" (perhaps with air quotes), they're not giving you a number, but instead another kind of representation of your expected cost ($0.00) -- the word "free."
+Si ese mismo empleado selecciona un teléfono similar pero menciona que este es "gratis" (tal vez con comillas aereas), el no estaría dandole un número, envés le estaría dando otro tipo de representación del costo que usted espera ($0.00) -- la palabra "gratis".
 
-When you later ask if the phone includes a charger, that answer could only have been either "yes" or "no."
+Cuando usted pregunte si el teléfono incluye un cargador, la respuesta podría ser únicamente "si" o "no".
 
-In very similar ways, when you express values in a program, you choose different representations for those values based on what you plan to do with them.
+En una forma similar, cuando usted exprese un valor en un programa, usted elige diferentes representaciones para esos valores pensando en lo que hará con ellos.
 
-These different representations for values are called *types* in programming terminology. JavaScript has built-in types for each of these so called *primitive* values:
+Estas diferentes representaciones para los valores se llaman *tipos* en terminología de programación. JavaScript posee tipos construídos para cada una de estas representaciones también llamados tipos *primitivos*:
 
-* When you need to do math, you want a `number`.
-* When you need to print a value on the screen, you need a `string` (one or more characters, words, sentences).
-* When you need to make a decision in your program, you need a `boolean` (`true` or `false`).
+* Cuando necesite hacer matemáticas, usted requerirá un `number`
+* Cuando necesite imprimir un valor en pantalla, usted requerirá un `string` (uno o más caracteres, palabras, oraciones).
+* Cuando necesite tomar una decisión en su programa, usted requerirá un `boolean` (`true` or `false`).
 
-Values that are included directly in the source code are called *literals*. `string` literals are surrounded by double quotes `"..."` or single quotes (`'...'`) -- the only difference is stylistic preference. `number` and `boolean` literals are just presented as is (i.e., `42`, `true`, etc.).
+Los valores que son incluídos directamente en el código fuente son llamados *literales*. Los literales `string` están rodeados por comillas dobles `"..."` o comillas sencillas (`'...'`) -- la única diferencia es la preferencia estilística. Los literales `number` y `boolean` se presentan como son (es decir, `42`, `true`, etc.).
 
-Consider:
+Considere:
 
 ```js
 "I am a string";
@@ -240,13 +240,13 @@ true;
 false;
 ```
 
-Beyond `string`/`number`/`boolean` value types, it's common for programming languages to provide *arrays*, *objects*, *functions*, and more. We'll cover much more about values and types throughout this chapter and the next.
+Además de los tipos `string`/`number`/`boolean`, es común en los lenguajes de programación proveer *arreglos*, *objetos*, *funciones* y más. Hablaremos más de esos valores y tipos en este capítulo y el siguiente.
 
-### Converting Between Types
+### Conversión entre tipos
 
-If you have a `number` but need to print it on the screen, you need to convert the value to a `string`, and in JavaScript this conversion is called "coercion." Similarly, if someone enters a series of numeric characters into a form on an ecommerce page, that's a `string`, but if you need to then use that value to do math operations, you need to *coerce* it to a `number`.
+Si usted tiene un tipo de dato `number` pero necesita imprimirlo en pantalla, necesitará convertir el valor a tipo `string` y esta conversión en JavaScript es llamada "coercion". Similarmente, si alguien ingresa una serie de caractéres numéricos en un formulario de una página de ecommerce, es un `string`, pero si necesita usar ese valor para realizar operaciones matemáticas, necesitará *coercer* al dato a que sea un `number`. 
 
-JavaScript provides several different facilities for forcibly coercing between *types*. For example:
+JavaScript provee difrentes facilidades para forzar la coerción entre *tipos*. Por ejemplo:
 
 ```js
 var a = "42";
@@ -255,22 +255,21 @@ var b = Number( a );
 console.log( a );	// "42"
 console.log( b );	// 42
 ```
+Usar `Number(..)` (una función construída) como se muestra, es una coerción *explícita* de cualquier otro tipo al tipo `number`. Esto 
 
-Using `Number(..)` (a built-in function) as shown is an *explicit* coercion from any other type to the `number` type. That should be pretty straightforward.
+Pero algo controversial que sucede es cuando intenta comparar dos valores que no son del mismo tipo, lo cual requeriría de una coerción *implícita*.
 
-But a controversial topic is what happens when you try to compare two values that are not already of the same type, which would require *implicit* coercion.
+Cuando se compara la cadena `"99.99"` con el número `99.99`, la mayoría de personas estaría de acuerdo en que son equivalentes. Pero no son exactamente lo mismo, ¿Lo son? El mismo valor en dos representaciones distintas, dos *tipos* diferentes. Usted podría decir que son "vagamente iguales", ¿No lo haría?
 
-When comparing the string `"99.99"` to the number `99.99`, most people would agree they are equivalent. But they're not exactly the same, are they? It's the same value in two different representations, two different *types*. You could say they're "loosely equal," couldn't you?
+Para ayudarlo en situaciones como estas, JavaScript aveces hará una coerción *implícita* para los tipos coincidentes.
 
-To help you out in these common situations, JavaScript will sometimes kick in and *implicitly* coerce values to the matching types.
+Entonces si usa el `==` operador de igualdad débil para realizar la comparación `"99.99" == 99.99`, JavaScript convertirá el lado izquierdo `"99.99"` a su equivalente `99.99` tipo `number`. La comparación entonces se vuelve en `99.99 == 99.99`, lo cual por supuesto es `true`.
 
-So if you use the `==` loose equals operator to make the comparison `"99.99" == 99.99`, JavaScript will convert the left-hand side `"99.99"` to its `number` equivalent `99.99`. The comparison then becomes `99.99 == 99.99`, which is of course `true`.
+Mientras esté diseñado para ayudarlo, la coerción implícita puede crear confusión si usted no se ha tomado el tiempo para aprender las reglas que gobiernan este comportamiento. La mayoría de desarrolladores de JS nunca lo ha hecho, entonces el sentimiento común es que la coerción es confusa y afecta los programas con errores inesperados, por lo cual la coerción implícita debería ser evitada. Incluso se dice que es un fallo en el diseño del lenguaje.
 
-While designed to help you, implicit coercion can create confusion if you haven't taken the time to learn the rules that govern its behavior. Most JS developers never have, so the common feeling is that implicit coercion is confusing and harms programs with unexpected bugs, and should thus be avoided. It's even sometimes called a flaw in the design of the language.
+De cualquier forma, la coerción implícita es un mecanismo que *puede ser aprendido*, y más aún *debe ser aprendido* por cualquiera que desee tomarse la programación en JavaScript seriamente. No solo deja de ser confuso cuando se aprenden las reglas, ¡En realidad puede mejorar sus programas! El esfuerzo vale la pena.
 
-However, implicit coercion is a mechanism that *can be learned*, and moreover *should be learned* by anyone wishing to take JavaScript programming seriously. Not only is it not confusing once you learn the rules, it can actually make your programs better! The effort is well worth it.
-
-**Note:** For more information on coercion, see Chapter 2 of this title and Chapter 4 of the *Types & Grammar* title of this series.
+**Nota:** Para más información sobre coerción, vea el Capítulo 2 de este libro y el Capítulo 4 de *Types & Grammar* título de esta serie.
 
 ## Code Comments
 
