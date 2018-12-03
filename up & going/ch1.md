@@ -414,7 +414,7 @@ By the way, that kind of "protection" against mistakes is similar to the static-
 
 **Note:** For more information about how different values in variables can be used in your programs, see the *Types & Grammar* title of this series.
 
-## Blocks
+## Bloques
 
 The phone store employee must go through a series of steps to complete the checkout as you buy your new phone.
 
