@@ -779,23 +779,23 @@ if (amount > bank_balance) {
 
 How did you do? It wouldn't hurt to try it again now that you've seen my code. And play around with changing some of the constants to see how the program runs with different values.
 
-## Review
+## Revisión
 
-Learning programming doesn't have to be a complex and overwhelming process. There are just a few basic concepts you need to wrap your head around.
+Aprender a programar no debería ser un proceso complejo ni abrumador. Solo hay que aprender unos conceptos y facilitará el proceso.
 
-These act like building blocks. To build a tall tower, you start first by putting block on top of block on top of block. The same goes with programming. Here are some of the essential programming building blocks:
+Estos actúan como bloques fundacionales. Para construir una torre, uno comienza primero colocando un bloque sobre otro bloque, y así hasta construirla. Lo mismo aplica para la programación. Aquí en está capítulo está los bloques esenciales para:
 
-* You need *operators* to perform actions on values.
-* You need values and *types* to perform different kinds of actions like math on `number`s or output with `string`s.
-* You need *variables* to store data (aka *state*) during your program's execution.
-* You need *conditionals* like `if` statements to make decisions.
-* You need *loops* to repeat tasks until a condition stops being true.
-* You need *functions* to organize your code into logical and reusable chunks.
+* Usted necesita *operadores* para tener acciones sobre valores
+* Usted necesita valores y *tipos* para realizar hacer diferences tipos de acciones como Matemática a `numeros` o retornar de una función con `string`.
+* Usted necesita *variables* para guardar datos (aka *estado*) durante la ejecución de su programa.
+* Usted necesita *loops* para repetir las tareas hasta que una condición lógica la acabe. 
+* Usted necesita *functions* para organizar su código en partes lógicas y reusables.
 
-Code comments are one effective way to write more readable code, which makes your program easier to understand, maintain, and fix later if there are problems.
 
-Finally, don't neglect the power of practice. The best way to learn how to write code is to write code.
+Los comentarios en el código, están para escribir de una forma más eficiente el código, lo que hace su programa más fácil de entender y hacerle mantenimiento, ó arreglarlo si luego aparecen problemas.
 
-I'm excited you're well on your way to learning how to code, now! Keep it up. Don't forget to check out other beginner programming resources (books, blogs, online training, etc.). This chapter and this book are a great start, but they're just a brief introduction.
+Finalmente, no de por sentado el poder de la práctica. La mejor manera de aprender a escribir código, es efectivamente, escribiendo código.
 
-The next chapter will review many of the concepts from this chapter, but from a more JavaScript-specific perspective, which will highlight most of the major topics that are addressed in deeper detail throughout the rest of the series.
+Estoy emocionado por que está tomando el camindo de aprender a programar. No olvide revisar otros recursos de introducción a la programación cómo libros, blogs, entrenamientos en línea, etc. Este capítulo y este libro son un gran comienzo, sin embargo, es apenas una introducción. 
+
+En el siguiente capítulo, revisaremos muchos conceptos de este capítulo, sin embargo, desde el punto de vista de JavaScript, y con mucho más detalle. 
