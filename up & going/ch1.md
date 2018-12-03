@@ -414,37 +414,35 @@ By the way, that kind of "protection" against mistakes is similar to the static-
 
 **Note:** For more information about how different values in variables can be used in your programs, see the *Types & Grammar* title of this series.
 
-## Blocks
+## Bloques
 
-The phone store employee must go through a series of steps to complete the checkout as you buy your new phone.
+El empleado de la tienda de teléfonos puede atravesar una serie de pasos para completar una compra una vez pagado el teléfono.
 
-Similarly, in code we often need to group a series of statements together, which we often call a *block*. In JavaScript, a block is defined by wrapping one or more statements inside a curly-brace pair `{ .. }`. Consider:
+De manera similar, en código es frecuentemente necesario agrupar sentencias, llamadas frecuentemente bloques. En JavaScript, un bloque es definido rodeando una o más sentencias con una pareja de corchetes `{ .. }`. Considere:
 
 ```js
-var amount = 99.99;
+var cantidad = 99.99;
 
-// a general block
+// Un bloque general
 {
-	amount = amount * 2;
-	console.log( amount );	// 199.98
+	cantidad = cantidad * 2;
+	console.log( cantidad );	// 199.98
 }
 ```
-
-This kind of standalone `{ .. }` general block is valid, but isn't as commonly seen in JS programs. Typically, blocks are attached to some other control statement, such as an `if` statement (see "Conditionals") or a loop (see "Loops"). For example:
+Esta particularidad `{ .. }` es un bloque general válido, pero no es como se ve realmente en los programas JS. Típicamente, bloques son añadidos a otras sentencias de control, como  la sentencia `if` (ver "Condicionales") o un ciclo (ver "Ciclos"). Por ejemplo: 
 
 ```js
-var amount = 99.99;
+var cantidad = 99.99;
 
-// is amount big enough?
-if (amount > 10) {			// <-- block attached to `if`
-	amount = amount * 2;
-	console.log( amount );	// 199.98
+// Es cantidad lo suficientemente grande?
+if (cantidad > 10) {			// <-- Bloque que depende de un `if`
+	cantidad = cantidad * 2;
+	console.log( cantidad );	// 199.98
 }
 ```
+Explicaremos las sentencias `if` en la siguiente sección, pero como puede ver, el bloque `{ .. }` con las dos sentencias depende de `if (cantidad > 10)` ; las sentencias dentro del bloque serán ejecutadas si el condicional lo aprueba.
 
-We'll explain `if` statements in the next section, but as you can see, the `{ .. }` block with its two statements is attached to `if (amount > 10)`; the statements inside the block will only be processed if the conditional passes.
-
-**Note:** Unlike most other statements like `console.log(amount);`, a block statement does not need a semicolon (`;`) to conclude it.
+**Nota:** A diferencia de otras sentencias como `console.log(cantidad)`, una sentencia de bloque no necesita un punto y coma (`;`) para ser concluido.
 
 ## Conditionals
 
