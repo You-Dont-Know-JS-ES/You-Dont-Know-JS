@@ -640,21 +640,13 @@ console.log( amount.toFixed( 2 ) );		// "107.99"
 
 Although `calculateFinalPurchaseAmount(..)` is only called once, organizing its behavior into a separate named function makes the code that uses its logic (the `amount = calculateFinal...` statement) cleaner. If the function had more statements in it, the benefits would be even more pronounced.
 
-@TODO: maybe change Alcance by Ambito
 ### Alcance
 
-ES: Si le preguntas al vendedor de una tienda de teléfonos por un modelo de teléfono que su tienda no posee, no podrá entonces venderle el teléfono que usted quiere. El vendedor sólo tiene acceso a los teléfonos en su inventario de la tienda. Usted tendría que intentar en otra tienda para ver si encuentras el teléfono que está buscando.
+Si usted le pregunta al vendedor de una tienda de teléfonos por un modelo de teléfono que su tienda no posee, el vendedor no podrá entonces venderle el teléfono que usted desea. El vendedor sólo tiene acceso a los teléfonos en su inventario de la tienda. Usted tendría que intentar en otra tienda para ver si encuentra el teléfono que está buscando.
 
-If you ask the phone store employee for a phone model that her store doesn't carry, she will not be able to sell you the phone you want. She only has access to the phones in her store's inventory. You'll have to try another store to see if you can find the phone you're looking for.
+En la programación se tiene un término para este concepto: *alcance* (técnicamente llamado *alcance léxico*). En Javascript, cada función tiene su propio alcance. El alcance es básicamente una colección de variables como también las reglas de cómo esas variables serán accedidas por su nombre. Solamente el código dentro de una función puede acceder a las variables *alcanzables* de dicha función.
 
-@TODO: review grammar
-ES: En la programación se tiene un término para este concepto: *alcance* (técnicamente llamado *alcance léxico*). En Javascript, cada función tiene su propio alcance. El alcance es básicamente una colección de variables como también las reglas de cómo esas variables serán accedidas por su nombre. Solamente el código dentro de una función puede acceder a las variables *alcanzables* de dicha función.
-
-Programming has a term for this concept: *scope* (technically called *lexical scope*). In JavaScript, each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name. Only code inside that function can access that function's *scoped* variables.
-
-ES: Un nombre de variable tiene que ser único dentro del mismo alcance -- no pueden haber dos variables `a` diferentes viviendo una al lado de la otra. Pero la misma variable `a` puede aparecer en diferentes alcances.
-
-A variable name has to be unique within the same scope -- there can't be two different `a` variables sitting right next to each other. But the same variable name `a` could appear in different scopes.
+Un nombre de variable tiene que ser único dentro del mismo alcance -- no pueden haber dos variables `a` diferentes viviendo una al lado de la otra. Pero la misma variable `a` puede aparecer en diferentes alcances.
 
 ```js
 function one() {
@@ -673,9 +665,7 @@ one();		// 1
 two();		// 2
 ```
 
-ES: También, un alcance puede ser anidado dentro de otro alcance, así como si un payaso en una fiesta de cumpleaños infla un globo dentro de otro globo. Si un alcance está anidado dentro de otro, el código dentro del alcance más interno puede acceder a las variables de cualquier alcance.
-
-Also, a scope can be nested inside another scope, just like if a clown at a birthday party blows up one balloon inside another balloon. If one scope is nested inside another, code inside the innermost scope can access variables from either scope.
+También, un alcance puede ser anidado dentro de otro alcance, así como si un payaso en una fiesta de cumpleaños infla un globo dentro de otro globo. Si un alcance está anidado dentro de otro, el código dentro del alcance más interno puede acceder a las variables de cualquier alcance.
 
 Considere:
 
@@ -699,17 +689,11 @@ function outer() {
 outer();
 ```
 
-ES: Las reglas de alcance léxico dicen que el código en un alcance puede acceder a las variables de ese alcance o de cualquier alcance fuera de él.
+Las reglas de alcance léxico dicen que el código en un alcance puede acceder a las variables de ese alcance o de cualquier alcance fuera de él.
 
-Lexical scope rules say that code in one scope can access variables of either that scope or any scope outside of it.
+Así que el código dentro de la función `inner()` tiene acceso a ambas vaiables `a` y `b`, pero el código en `outer()` tiene acceso sólo a la variable `a` -- no puede acceder a `b` porque esa variable está definida dentro de `inner()`.
 
-ES: Así que el código dentro de la función `inner()` tiene acceso a ambas vaiables `a` y `b`, pero el código en `outer()` tiene acceso sólo a la variable `a` -- no puede acceder a `b` porque esa variable está definida dentro de `inner()`.
-
-So, code inside the `inner()` function has access to both variables `a` and `b`, but code in `outer()` has access only to `a` -- it cannot access `b` because that variable is only inside `inner()`.
-
-ES: Recordando este fragmento de código de antes:
-
-Recall this code snippet from earlier:
+Recordando este fragmento de código de antes:
 
 ```js
 const TAX_RATE = 0.08;
@@ -723,13 +707,9 @@ function calculateFinalPurchaseAmount(amt) {
 }
 ```
 
-ES: La constante (variable) `TAX_RATE` es accesible desde dentro de la función `calculateFinalPurchaseAmount(..)`, a pesar que no la pasamos debido al alcance léxico.
+La constante (variable) `TAX_RATE` es accesible desde dentro de la función `calculateFinalPurchaseAmount(..)`, a pesar que no la pasamos, esto es debido al alcance léxico.
 
-The `TAX_RATE` constant (variable) is accessible from inside the `calculateFinalPurchaseAmount(..)` function, even though we didn't pass it in, because of lexical scope.
-
-ES: **Nota:** Para mayor información acerca del alcance léxico, revise los primeros tres capítulos del título *Alcance y Clausuras* de esta serie.
-
-**Note:** For more information about lexical scope, see the first three chapters of the *Scope & Closures* title of this series.
+**Nota:** Para mayor información acerca del alcance léxico, revise los primeros tres capítulos del título *Alcance y Clausuras* de esta serie.
 
 ## Practice
 
