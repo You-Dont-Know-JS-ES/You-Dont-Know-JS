@@ -640,6 +640,7 @@ console.log( amount.toFixed( 2 ) );		// "107.99"
 
 Although `calculateFinalPurchaseAmount(..)` is only called once, organizing its behavior into a separate named function makes the code that uses its logic (the `amount = calculateFinal...` statement) cleaner. If the function had more statements in it, the benefits would be even more pronounced.
 
+@TODO: maybe change Alcance by Ambito
 ### Alcance
 
 @TODO: review grammar
@@ -651,6 +652,8 @@ If you ask the phone store employee for a phone model that her store doesn't car
 ES: En la programacion se tiene un termino para este concepto: *alcance* (tecnicamente llamado *alcance lexico*). En Javascript, cada function tiene su propio alcance. El alcance es basicamente una coleccion de variables como tambien las reglas de como esas variables seran accedidas por su nombre. Solamente el codigo dentro de una funcion puede acceder a las variables *alcanzables* de la funcion.
 
 Programming has a term for this concept: *scope* (technically called *lexical scope*). In JavaScript, each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name. Only code inside that function can access that function's *scoped* variables.
+
+ES: Un nombre de variable tiene que ser unico dentro del mismo alcance -- no pueden haber dos variables `a` diferentes viviendo uno al lado de la otra. Pero la misma variable `a` puede aparecer en diferentes alcances.
 
 A variable name has to be unique within the same scope -- there can't be two different `a` variables sitting right next to each other. But the same variable name `a` could appear in different scopes.
 
