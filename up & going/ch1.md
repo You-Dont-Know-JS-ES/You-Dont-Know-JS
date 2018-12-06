@@ -642,7 +642,13 @@ Although `calculateFinalPurchaseAmount(..)` is only called once, organizing its 
 
 ### Alcance
 
+@TODO: review grammar
+ES: Si preguntas al vendedor de una tienda de telefonos por un modelo de telefono que su tienda no posee, no podra entonces venderte el telefono que quieres, El vendedor solo tiene acceso a los telefonos en su inventario de la tienda. Tendrias que intentar en otra tienda para ver si encuentras el telefono que estas buscando.
+
 If you ask the phone store employee for a phone model that her store doesn't carry, she will not be able to sell you the phone you want. She only has access to the phones in her store's inventory. You'll have to try another store to see if you can find the phone you're looking for.
+
+@TODO: review grammar
+ES: En la programacion se tiene un termino para este concepto: *alcance* (tecnicamente llamado *alcance lexico*). En Javascript, cada function tiene su propio alcance. El alcance es basicamente una coleccion de variables como tambien las reglas de como esas variables seran accedidas por su nombre. Solamente el codigo dentro de una funcion puede acceder a las variables *alcanzables* de la funcion.
 
 Programming has a term for this concept: *scope* (technically called *lexical scope*). In JavaScript, each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name. Only code inside that function can access that function's *scoped* variables.
 
