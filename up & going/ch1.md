@@ -703,9 +703,11 @@ ES: Las reglas de alcance léxico dicen que el código en un alcance puede acced
 
 Lexical scope rules say that code in one scope can access variables of either that scope or any scope outside of it.
 
-ES: Asi que el codigo dentro de la funcion `inner()` tiene acceso a ambas vaiables `a` y `b`, pero el codigo en `outer()` tiene acceso solo a la variable `a` -- no puede acceder a `b` porque esa variable esta definida dentro de `inner()`.
+ES: Así que el código dentro de la función `inner()` tiene acceso a ambas vaiables `a` y `b`, pero el código en `outer()` tiene acceso sólo a la variable `a` -- no puede acceder a `b` porque esa variable está definida dentro de `inner()`.
 
 So, code inside the `inner()` function has access to both variables `a` and `b`, but code in `outer()` has access only to `a` -- it cannot access `b` because that variable is only inside `inner()`.
+
+ES: Recordando este fragmento de código de antes:
 
 Recall this code snippet from earlier:
 
@@ -721,7 +723,11 @@ function calculateFinalPurchaseAmount(amt) {
 }
 ```
 
+ES: La constante (variable) `TAX_RATE` es accesible desde dentro de la función `calculateFinalPurchaseAmount(..)`, a pesar que no la pasamos debido al alcance léxico.
+
 The `TAX_RATE` constant (variable) is accessible from inside the `calculateFinalPurchaseAmount(..)` function, even though we didn't pass it in, because of lexical scope.
+
+ES: **Nota:** Para mayor información acerca del alcance léxico, revise los primeros tres capítulos del título *Alcance y Clausuras* de esta serie.
 
 **Note:** For more information about lexical scope, see the first three chapters of the *Scope & Closures* title of this series.
 
