@@ -673,7 +673,7 @@ one();		// 1
 two();		// 2
 ```
 
-ES: También, un alcance puede ser anidado dentro de otro alcance, asi como si un payaso en una fiesta de cumpleaños infla un globo dentro de otro globo. Si un alcance esta anidado dentro de otro, el codigo dentro del alcance mas interno puede acceder las variables de cualquier alcance.
+ES: También, un alcance puede ser anidado dentro de otro alcance, así como si un payaso en una fiesta de cumpleaños infla un globo dentro de otro globo. Si un alcance está anidado dentro de otro, el código dentro del alcance más interno puede acceder a las variables de cualquier alcance.
 
 Also, a scope can be nested inside another scope, just like if a clown at a birthday party blows up one balloon inside another balloon. If one scope is nested inside another, code inside the innermost scope can access variables from either scope.
 
@@ -699,11 +699,11 @@ function outer() {
 outer();
 ```
 
-ES: Las reglas de alcance lexico dicen que el codigo en un alcance puede acceder a las variables de ese alcance o de cualquier alcance fuera de él.
+ES: Las reglas de alcance léxico dicen que el código en un alcance puede acceder a las variables de ese alcance o de cualquier alcance fuera de él.
 
 Lexical scope rules say that code in one scope can access variables of either that scope or any scope outside of it.
 
-ES: 
+ES: Asi que el codigo dentro de la funcion `inner()` tiene acceso a ambas vaiables `a` y `b`, pero el codigo en `outer()` tiene acceso solo a la variable `a` -- no puede acceder a `b` porque esa variable esta definida dentro de `inner()`.
 
 So, code inside the `inner()` function has access to both variables `a` and `b`, but code in `outer()` has access only to `a` -- it cannot access `b` because that variable is only inside `inner()`.
 
