@@ -643,7 +643,7 @@ Although `calculateFinalPurchaseAmount(..)` is only called once, organizing its 
 @TODO: maybe change Alcance by Ambito
 ### Alcance
 
-ES: Si preguntas al vendedor de una tienda de teléfonos por un modelo de teléfono que su tienda no posee, no podrá entonces venderte el teléfono que quieres. El vendedor sólo tiene acceso a los teléfonos en su inventario de la tienda. Tendrías que intentar en otra tienda para ver si encuentras el teléfono que estás buscando.
+ES: Si le preguntas al vendedor de una tienda de teléfonos por un modelo de teléfono que su tienda no posee, no podrá entonces venderle el teléfono que usted quiere. El vendedor sólo tiene acceso a los teléfonos en su inventario de la tienda. Usted tendría que intentar en otra tienda para ver si encuentras el teléfono que está buscando.
 
 If you ask the phone store employee for a phone model that her store doesn't carry, she will not be able to sell you the phone you want. She only has access to the phones in her store's inventory. You'll have to try another store to see if you can find the phone you're looking for.
 
@@ -658,14 +658,12 @@ A variable name has to be unique within the same scope -- there can't be two dif
 
 ```js
 function one() {
-	// ES: Esta variable `a` sólo pertenece a la función `one()`
 	// this `a` only belongs to the `one()` function
 	var a = 1;
 	console.log( a );
 }
 
 function two() {
-	// ES: Esta variable `a` sólo pertenece a la función `two()`
 	// this `a` only belongs to the `two()` function
 	var a = 2;
 	console.log( a );
@@ -675,9 +673,11 @@ one();		// 1
 two();		// 2
 ```
 
+ES: También, un alcance puede ser anidado dentro de otro alcance, asi como si un payaso en una fiesta de cumpleaños infla un globo dentro de otro globo. Si un alcance esta anidado dentro de otro, el codigo dentro del alcance mas interno puede acceder las variables de cualquier alcance.
+
 Also, a scope can be nested inside another scope, just like if a clown at a birthday party blows up one balloon inside another balloon. If one scope is nested inside another, code inside the innermost scope can access variables from either scope.
 
-Consider:
+Considere:
 
 ```js
 function outer() {
@@ -699,7 +699,11 @@ function outer() {
 outer();
 ```
 
+ES: Las reglas de alcance lexico dicen que el codigo en un alcance puede acceder a las variables de ese alcance o de cualquier alcance fuera de él.
+
 Lexical scope rules say that code in one scope can access variables of either that scope or any scope outside of it.
+
+ES: 
 
 So, code inside the `inner()` function has access to both variables `a` and `b`, but code in `outer()` has access only to `a` -- it cannot access `b` because that variable is only inside `inner()`.
 
