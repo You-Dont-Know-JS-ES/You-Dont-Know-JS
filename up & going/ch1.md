@@ -643,28 +643,29 @@ Although `calculateFinalPurchaseAmount(..)` is only called once, organizing its 
 @TODO: maybe change Alcance by Ambito
 ### Alcance
 
-@TODO: review grammar
-ES: Si preguntas al vendedor de una tienda de telefonos por un modelo de telefono que su tienda no posee, no podra entonces venderte el telefono que quieres, El vendedor solo tiene acceso a los telefonos en su inventario de la tienda. Tendrias que intentar en otra tienda para ver si encuentras el telefono que estas buscando.
+ES: Si preguntas al vendedor de una tienda de teléfonos por un modelo de teléfono que su tienda no posee, no podrá entonces venderte el teléfono que quieres. El vendedor sólo tiene acceso a los teléfonos en su inventario de la tienda. Tendrías que intentar en otra tienda para ver si encuentras el teléfono que estás buscando.
 
 If you ask the phone store employee for a phone model that her store doesn't carry, she will not be able to sell you the phone you want. She only has access to the phones in her store's inventory. You'll have to try another store to see if you can find the phone you're looking for.
 
 @TODO: review grammar
-ES: En la programacion se tiene un termino para este concepto: *alcance* (tecnicamente llamado *alcance lexico*). En Javascript, cada function tiene su propio alcance. El alcance es basicamente una coleccion de variables como tambien las reglas de como esas variables seran accedidas por su nombre. Solamente el codigo dentro de una funcion puede acceder a las variables *alcanzables* de la funcion.
+ES: En la programación se tiene un término para este concepto: *alcance* (técnicamente llamado *alcance léxico*). En Javascript, cada función tiene su propio alcance. El alcance es básicamente una colección de variables como también las reglas de cómo esas variables serán accedidas por su nombre. Solamente el código dentro de una función puede acceder a las variables *alcanzables* de dicha función.
 
 Programming has a term for this concept: *scope* (technically called *lexical scope*). In JavaScript, each function gets its own scope. Scope is basically a collection of variables as well as the rules for how those variables are accessed by name. Only code inside that function can access that function's *scoped* variables.
 
-ES: Un nombre de variable tiene que ser unico dentro del mismo alcance -- no pueden haber dos variables `a` diferentes viviendo uno al lado de la otra. Pero la misma variable `a` puede aparecer en diferentes alcances.
+ES: Un nombre de variable tiene que ser único dentro del mismo alcance -- no pueden haber dos variables `a` diferentes viviendo una al lado de la otra. Pero la misma variable `a` puede aparecer en diferentes alcances.
 
 A variable name has to be unique within the same scope -- there can't be two different `a` variables sitting right next to each other. But the same variable name `a` could appear in different scopes.
 
 ```js
 function one() {
+	// ES: Esta variable `a` sólo pertenece a la función `one()`
 	// this `a` only belongs to the `one()` function
 	var a = 1;
 	console.log( a );
 }
 
 function two() {
+	// ES: Esta variable `a` sólo pertenece a la función `two()`
 	// this `a` only belongs to the `two()` function
 	var a = 2;
 	console.log( a );
