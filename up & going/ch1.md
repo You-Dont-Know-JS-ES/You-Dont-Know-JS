@@ -3,23 +3,23 @@
 
 Bienvenidos a la serie *You Don't Know JS* (*YDKJS*)
 
-*Up & Going* is introductorio a varios conceptos básicos de programación -- por supuesto apuntando a JavaScript (normalmente abreviado a JS) específicamente -- a como acercarse y entender el resto de los títulos de esta serie. Especialmente si hasta ahora se está comenzando a programar y/o JavaScript, este libro explicará brevemente lo que se necesita para comenzar
+*Up & Going* es introductorio a varios conceptos básicos de programación -- por supuesto apuntando a JavaScript (normalmente abreviado a JS) específicamente -- a cómo acercarse y entender el resto de los títulos de esta serie. Especialmente si hasta ahora se está comenzando a programar y/o en JavaScript, este libro explicará brevemente lo que se necesita para comenzar.
 
-Este libro comienza explicando los conceptos básicos de programación a un alto nivel. Es más apuntado a lectores que están comenzando a leer *YDKJS* con poca o nada experiencia de programación, y viendo este conjunto de libros para comenzar el camino introductorio de la programación, a través de los lentes de JavaScript.
+Este libro comienza explicando los conceptos básicos de programación a un alto nivel. Es más apuntado a lectores que están comenzando a leer *YDKJS* con poca o ninguna experiencia de programación, y viendo este conjunto de libros para comenzar el camino introductorio de la programación, a través de los lentes de JavaScript.
 
-El capítulo 1 está enfocado a una visión general de todas las cosas que se deberían aprender y practicar al querer entrar a *programar*. Hay también otros recursos introductorios fantásticos que le ayudarán a entender más estos temas a mayor profundidad, y recomiendo que los lea aparte de este capítulo.
+El Capítulo 1 está enfocado a una visión general de todas las cosas que se deberían aprender y practicar al querer entrar a *programar*. Hay también otros recursos introductorios fantásticos que le ayudarán a entender más estos temas a mayor profundidad, y recomiendo que los lea aparte de este capítulo.
 
-Una vez se sienta cómo con los temas basicos de programación, capítulo que lo guiará a familiarizarse con la forma de escribir código en JavaScript. Capitulo dos introduce JavaScript, sin embargo, no de una manera profunda y no es una guia completa -- para eso están los restos de libros de *YDKJS*!
+Una vez se sienta cómodo con los temas básicos de programación, el Capítulo 2 lo guiará a familiarizarse con la forma de escribir código en JavaScript. El Capítulo 2 introduce de que trata JavaScript, sin embargo, no de una manera profunda y no es una guía completa -- para eso están el resto de los libros de *YDKJS*!
 
-Si ya se siente cómodo con JavaScript, revise de primero el capítulo 3 como un repaso y una pequeña introducción a lo que debe esperar de *YDKJS*. Comenzemos.
+Si ya se siente cómodo con JavaScript, revise de primero el Capítulo 3 como un repaso y una pequeña introducción a lo que debe esperar de *YDKJS*. Comenzemos.
 
 ## Código
 
-Iniciemos desde los origenes.
+Iniciemos desde los orígenes.
 
-Un programa, en ocasiones denominado *código fuente* o *código*, es un conjunto especial de instrucciones que indican a un computador que tareas debe realizar. Usalmente el código se almacena en un archivo de texto, sin embargo con JavaScript puedes escribir  y ejecutar código en la consola del navegador, de lo cual hablaremos más adelante.
+Un programa, en ocasiones denominado *código fuente* o *código*, es un conjunto especial de instrucciones que indican a un computador qué tareas debe realizar. Usualmente el código se almacena en un archivo de texto, sin embargo con JavaScript puedes escribir y ejecutar código en la consola del navegador, de lo cual hablaremos más adelante.
 
-Las reglas que validan el formato y el conjunto de instrucciones de un programa se denomina *Lenguaje de programación*, aveces referido también como la *sintaxis de un lenguaje*, de manera similar en que hay reglas en el Inglés que indican como pronunciar palabras y como crear oraciones válidas usando estas palabras y signos de puntuación.
+Las reglas que validan el formato y el conjunto de instrucciones de un programa se denomina *Lenguaje de programación*, a veces referido también como la *sintaxis de un lenguaje*, de manera similar en que hay reglas en el Inglés que indican cómo pronunciar palabras y cómo crear oraciones válidas usando estas palabras y signos de puntuación.
 
 ### Sentencias 
 
@@ -28,21 +28,21 @@ En un lenguaje de programación, un conjunto de palabras, números, y operadores
 ```js
 a = b * 2;
 ```
-Los caracteres `a` y `b` se denominan *variables* (ver "Variables"), que pueden ser vistas como cajas para guardar cualquier elemento. En programación, las variables guardan valores (Como por ejemplo el número `42`) que pueden ser usados por un programa. Puedes pensar en las variables como marcadores simbólicos para los valores por si mismos.
+Los caracteres `a` y `b` se denominan *variables* (ver "Variables"), que pueden ser vistas como cajas para guardar cualquier elemento. En programación, las variables guardan valores (como por ejemplo el número `42`) que pueden ser usados por un programa. Puedes pensar en las variables como marcadores simbólicos para los valores por sí mismos.
 
-En contraste, el `2` es sencillamente un valor, lo que se conoce como *Literal value*, porque no se encuentra almacenando en ninguna variable.
+En contraste, el `2` es sencillamente un valor, lo que se conoce como *valor literal*, porque no se encuentra almacenando en ninguna variable.
 
 Los caracteres `=` y `*` son *operadores* (ver "Operadores") -- que llevan a cabo acciones con los valores y variables de asignación y multiplicación matemática.
 
-La mayoría de sentencias en JavaScript terminan con un punto y coma (`;`) al final de la misma.
+La mayoría de las sentencias en JavaScript terminan con un punto y coma (`;`) al final de la misma.
 
-La sentencia `a = b * 2;` le ordena al computador, leer el valor actual almacenado en la  variable `b`, multiplicar este valor por `2`, y guardar el resultado en una variable que llamamos `a`.
+La sentencia `a = b * 2;` le ordena al computador, aproximadamente, leer el valor actual almacenado en la  variable `b`, multiplicar este valor por `2`, y guardar el resultado en una variable que llamamos `a`.
 
 Los programas son una colección de varias sentencias, que en conjunto describen los pasos que requiere ejecutar un programa con determinado propósito.
 
 ### Expresiones 
 
-Las declaraciones están hechas de una o más *expresiones*. Una expresión es cualquier referencia a una variable o valor, o un conjunto de variables o valores combinado con operadores.
+Las sentencias están hechas de una o más *expresiones*. Una expresión es cualquier referencia a una variable o valor, o un conjunto de variables o valores combinado con operadores.
 
 Por ejemplo:
 
@@ -50,52 +50,52 @@ Por ejemplo:
 a = b * 2;
 ```
 
-Esta declaración tiene varias expresiones en ella:
+Esta sentencia tiene varias expresiones en ella:
 
 * `2` es una *expresión literal de valor* 
 * `b` es una *expresión de variable*, que significa buscar su valor actual
-* `b * 2` es una *expresión aritmetica*, que significa hacer la multiplicación
+* `b * 2` es una *expresión aritmética*, que significa hacer la multiplicación
 * `a = b * 2` es una *expresión de asignación*, que significa asignar el resultado de la expresión `b * 2` a la variable `a` (más en el tema de asignación más adelante en el capítulo)
 
-Una expresión general que tiene su propio lugar es también la llamada *expresión de declaración*, como la siguiente
+Una expresión general que tiene su propio lugar es también llamado *sentencia de expresión*, como la siguiente:
 
 ```js
 b * 2;
 ```
 
-Esta forma de declaración es muy útil o común, ya que no tendría nungún efecto en el correr del programa. Ya que buscaría  el valor de `b` lo multiplicaría por `2`, y luego no haría nada con el resultado.
+Esta forma de sentencia no es muy útil o común, ya que no tendría nungún efecto en la ejecución del programa, ya que buscaría el valor de `b`, lo multiplicaría por `2`, y luego no haría nada con el resultado.
 
-Una expresión más común es llamada declaraciones de *expresiones de llamada* (mirar "Funciones"), ya que la declaración de la función se llama a ella misma:
+Una sentencia de expresión más común es la *expresión de llamada* (mirar "Funciones"), dado que la sentencia completa es la expresión de llamada de la función misma:
 
 ```js
 alert( a );
 ```
 
-### Ejecutando un programa
+### Ejecutando un Programa
 
-¿ Cómo una colleción de sentencias le ordenan a un computador que tareas debe realizar ? Un programa debe ser *ejectuado*, este proceso se conoce también como *Ejecutar el programa*.
+¿Cómo una colleción de sentencias le ordenan a un computador cuáles tareas debe realizar? Un programa debe ser *ejectuado*, este proceso se conoce también como *ejecutar el programa*.
 
-Sentencias como `a = b * 2` son útiles para los desarrolladores en el momento de leer y escribir código, pero no es la forma en la que un computador entiende el código. Una utilidad especial de un computador (Ya sea un *Intérprete* o un *compilador*) se utiliza para interpretar el código que escribes en instrucciones que el computador puede entender.
+Sentencias como `a = b * 2` son útiles para los desarrolladores al momento de leer y escribir código, pero no es la forma en la que un computador entiende el código. Una utilidad especial de un computador (ya sea un *intérprete* o un *compilador*) se utiliza para interpretar el código que usted escribe en instrucciones que el computador puede entender.
 
-En algunos lenguajes de programación, la traducción de instrucciones se realiza de arriba a abajo, línea por línea, cada vez que el programa se ejecuta, lo cual se conoce como *Interpretar* el código.
+En algunos lenguajes de programación, la traducción de instrucciones se realiza de arriba hacia abajo, línea por línea, cada vez que el programa se ejecuta, lo cual se conoce como *interpretar* el código.
 
 En otros lenguajes, la traducción es hecha antes de la ejecución, esto se conoce como *compilar* el código. Cuando el programa se *ejecuta* después del compilado, lo que se ejecuta en realidad son instrucciones de computador compiladas.
 
-Se dice típicamente que JavaScript es un lenguaje *interpretado*, porque tu fuente de código JavaScript es procesada cada vez que se ejecuta. Pero esto no es del todo cierto. El motor de JavaScript realmente *compila* el programa sobre la marcha e inmediatamente ejecuta el código compilado.
+Se dice típicamente que JavaScript es un lenguaje *interpretado*, porque el código fuente JavaScript que usted escriba es procesado cada vez que se ejecuta. Pero esto no es del todo cierto. El motor de JavaScript realmente *compila* el programa sobre la marcha e inmediatamente ejecuta el código compilado.
 
-**Nota:** Para mayor información sobre el compilado en JavaScript, dirigirse a los dos primeros capítulos de *Scope & Closures* libro de esta serie.
+**Nota:** Para mayor información sobre el compilado en JavaScript, dirigirse a los dos primeros capítulos del título *Alcance & Clausuras* de esta serie.
 
-## Inténtelo usted mismo
+## Inténtelo Usted Mismo
 
 Este capítulo introducirá cada concepto de programación con fragmentos de código simples, todos escritos en lenguaje JavaScript (¡Por supuesto!).
 
-No se puede enfatizar lo suficiente: Mientras avanza en el capítulo -- Y podría necesitar tiempo para leérlo múltiples veces -- debe practicar cada uno de los conceptos escribiendo el código usted mismo. La manera más fácil de hacerlo es abrir la consola de la herramienta del desarrollador en el navegador de su preferencia (Firefox, Chrome, IE, etc.).
+No se puede enfatizar lo suficiente: mientras avanza en el capítulo -- y podría necesitar tiempo para leérlo múltiples veces -- debe practicar cada uno de los conceptos escribiendo el código usted mismo. La manera más fácil de hacerlo es abrir la consola de la herramienta del desarrollador en el navegador de su preferencia (Firefox, Chrome, IE, etc.).
 
-**Consejo:** Típicamente, puede iniciar la consola del desarrollador con un atajo del teclado o de un ítem de menu. Para información más detallada acerca de iniciar y usar la consola de su navegador favorito, dirigirse a "Mastering The Developer Tools Console" (http://blog.teamtreehouse.com/mastering-developer-tools-console). Para ingresar múltiples lineas en la consola sin ejecutar el código, se puede usar la combinación de teclas `<shift> + <enter>` e ingresar un salto de línea en el código. Una vez presionada la tecla `<enter>` por si sola, la consola ejecutara todo el código que se hubiese ingresado.
+**Consejo:** Típicamente, puede iniciar la consola del desarrollador con un atajo del teclado o desde un ítem del menu. Para información más detallada acerca de cómo iniciar y usar la consola de su navegador favorito, dirigirse a "Mastering The Developer Tools Console" (en Inglés) (http://blog.teamtreehouse.com/mastering-developer-tools-console). Para ingresar múltiples lineas en la consola sin ejecutar el código, se puede usar la combinación de teclas `<shift> + <enter>` e ingresar un salto de línea en el código. Una vez presionada la tecla `<enter>` por sí sola, la consola ejecutará todo el código que se hubiese ingresado.
 
 Vamos a familiarizarnos con el proceso de ejecutar código en la consola. Primero que todo, le sugiero abrir una pestaña nueva en su navegador. Yo prefiero hacer esto escribiendo `about:blank` en la barra de direcciones. Luego, asegúrese de que su consola de desarrollador esté abierta, como mencionamos previamente.
 
-Ahora, ingrese este código y observe como se ejecuta:
+Ahora, ingrese este código y observe cómo se ejecuta:
 
 ```js
 a = 21;
@@ -104,7 +104,7 @@ b = a * 2;
 
 console.log( b );
 ```
-Escribir el anterior código en la consola de Chrome debería mostrar algo como esto:
+Escribir el código anterior en la consola de Chrome debería mostrar algo como esto:
 
 <img src="fig1.png" width="500">
 
@@ -112,20 +112,20 @@ Adelante, inténtelo. ¡La mejor forma de aprender programación es escribiendo 
 
 ### Salida
 
-En el código anterior, usamos `console.log(..)`. Brevemente, miremos de que se trata esa línea de código.
+En el código anterior, usamos `console.log(..)`. Brevemente, miremos de qué se trata esa línea de código.
 
 Usted pudo haberlo adivinado, pero es exactamente la forma en la que imprimimos texto (también conocido como *Salida* para el usuario) en la consola del desarrollador. Hay dos características de esto que debemos explicar. 
 
 Primero, la parte `log( b )` se refiere a un llamado funcional (ver "Funciones"). Lo que sucede es que estamos ingresando la variable `b` a la función, lo cual implica tomar el valor de `b` e imprimirlo en la consola.
 
-Segundo, la parte `console` es una referencia al objeto dónde la función `log(..)` se encuentra. Se habla de objetos y sus propiedades con más detalle en el capítulo 2.
+Segundo, la parte `console` es una referencia al objeto dónde la función `log(..)` se encuentra. Se habla de objetos y sus propiedades con más detalle en el Capítulo 2.
 
 Otra forma de producir salida es ejecutar la sentencia `alert(..)`. Por ejemplo:
 
 ```js
 alert( b );
 ```
-Si ejecuta esta sentencia, se dará cuenta que envés de imprimir salida en la consola, se mostrará una ventana con el contenido de la variable `b`. De cualquier manera, usar `console.log(..)` hace que el proceso de aprender a programar y ejecutar programas sea más sencillo que con el uso de `alert(..)`, porque se pueden imprimir muchos valores sin interrumpir la interfaz del navegador.
+Si ejecuta esta sentencia, se dará cuenta que en vez de imprimir salida en la consola, se mostrará una ventana con el contenido de la variable `b`. De cualquier manera, usar `console.log(..)` hace que el proceso de aprender a programar y ejecutar programas sea más sencillo que con el uso de `alert(..)`, porque se pueden imprimir muchos valores sin interrumpir la interfaz del navegador.
 
 En este libro, usaremos `conosole.log(..)` para la salida.
 
@@ -142,6 +142,7 @@ age = prompt( "Please tell me your age:" );
 
 console.log( age );
 ```
+
 Como pudo haber adivinado, el mensaje que se entrega a la función `prompt(..)` -- en este caso, `"Please tell me your age:"` -- es impreso en una ventana.
 
 Debería verse algo como lo siguiente:
@@ -152,17 +153,17 @@ Una vez se ingresa el texto al dar click en "OK", se observa que el valor que in
 
 <img src="fig3.png" width="500">
 
-Para mantener las cosas simples mientras aprendemos conceptos básicos de programación, los ejemplos en este libro no requerirán entrada. Pero ahora que usted conoce el uso de `prompt(..)`, puede querer retarse a si mismo intentando usar esta función en futuros ejemplos.
+Para mantener las cosas simples mientras aprendemos conceptos básicos de programación, los ejemplos en este libro no requerirán entrada. Pero ahora que usted conoce el uso de `prompt(..)`, puede querer retarse a sí mismo intentando usar esta función en futuros ejemplos.
 
 ## Operadores
 
 Los operadores son la forma en la que ejecutamos acciones en variables y valores. Hemos visto dos operadores de JavaScript, el `=` y el `*`.
 
-El operador `*` lleva a cabo la multiplicación matemática. Sencillo, ¿ Verdad ?
+El operador `*` lleva a cabo la multiplicación matemática. Sencillo, ¿Verdad?
 
-El operador `=`es usado para la *asignación* -- Primero se calcula el valor en el *lado derecho* (Valor fuente) del `=` y luego se asigna a la variable especificada en el *lado izquierdo* (variable objetivo).
+El operador `=` es usado para la *asignación* -- primero se calcula el valor en el *lado derecho* (valor fuente) del `=` y luego se asigna a la variable especificada en el *lado izquierdo* (variable objetivo).
 
-**Advertencia:** Esto puede parecer una forma extraña de especificar una asignación. Envés de `a = 42`, alguien puede preferir invertir el orden de tal modo que el valor fuente esté en el lado izquierdo y la variable objetivo esté en lado derecho, algo como `42 -> a` (¡Esto no es válido para JavaScript!). Desafortunadamente, `a = 42` en su orden, y las variaciones similares, siguen estando vigentes en los lenguajes de programación. Si se siente poco natural, solo dedique cierto tiempo practicando el orden en su mente para acostumbrarse a ello.  
+**Advertencia:** Esto puede parecer una forma extraña de especificar una asignación. en vez de `a = 42`, alguien puede preferir invertir el orden de tal modo que el valor fuente esté en el lado izquierdo y la variable objetivo esté en lado derecho, algo como `42 -> a` (¡Esto no es válido para JavaScript!). Desafortunadamente, `a = 42` en su orden, y las variaciones similares, siguen estando vigentes en los lenguajes de programación. Si se siente poco natural, solo dedique cierto tiempo practicando el orden en su mente para acostumbrarse a ello.  
 
 Considere:
 
@@ -171,11 +172,11 @@ a = 2;
 b = a + 1;
 ```
 
-Acá, se asigna el valor `2` a la variable `a`. Entonces, obtenemos el valor de la variable `a` (Siendo `2`), añadiendo `1` para obtener `3` como resultado, luego se guarda este valor en la variable `b`.
+Acá, se asigna el valor `2` a la variable `a`. Entonces, obtenemos el valor de la variable `a` (siendo `2`), añadiendo `1` para obtener `3` como resultado, luego se guarda este valor en la variable `b`.
 
-Mientras que no sea un operador técnico, necesitará la palabra clave `var` en cada programa, pues es la forma primaria de *declarar* (O crear) *var*iables (Ver "Variables").
+Mientras que no sea un operador técnico, necesitará la palabra clave `var` en cada programa, pues es la forma primaria de *declarar* (o crear) *var*iables (ver "Variables").
 
-Usted debe siempre declarar el nombre de una variable antes de usarla. Pero usted solo necesita declarar una variable una vez por cada *scope* (ver "Scope"); para que pueda ser usada tantas veces como se requiera. Por ejemplo:
+Usted debe siempre declarar el nombre de una variable antes de usarla. Pero usted sólo necesita declarar una variable una vez por cada *alcance* (ver "Alcance"); para que pueda ser usada tantas veces como se requiera. Por ejemplo:
 
 ```js
 var a = 20;
@@ -185,6 +186,7 @@ a = a * 2;
 
 console.log( a );	// 42
 ```
+
 Acá hay algunos de los operadores más comunes en JavaScript:
 
 * Asignación: `=` como en `a = 2`.
@@ -197,23 +199,25 @@ Acá hay algunos de los operadores más comunes en JavaScript:
 
 * Igualdad: `==` (igual), `===` (estrictamente-igual), `!=` (distinto), `!==` (estrictamente distinto, como en `a == b`.
 
-  Ver "Valores & tipos" en el capítulo 2.
+  	Ver "Valores & tipos" en el Capítulo 2.
+
 * Comparación: `<` (menor que), `>` (mayor que), `<=` (menor o igual), `>=` (mayor o igual), como en `a <= b`.
 
-   Ver "Valores & tipos" en el capítulo 2.
+   	Ver "Valores & tipos" en el Capítulo 2.
+
 * Lógicos: `&&` (y), `||` (o), como en `a || b` que selecciona `a` *o* `b`.
 
-	Estos operadores son usados para expresar condicionales compuestos (ver "Condicionales"), como si `a` *o* `b`sean verdaderos.
+	Estos operadores son usados para expresar condicionales compuestos (ver "Condicionales"), como si `a` *o* `b` sean verdaderos.
 
-**Nota:** Para mayor detalle, y estudio de operadores no mencionados acá, vaya al sitio web de Mozilla Developer Network (MDN)'s "Expressions and Operators" (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators).
+**Nota:** Para mayor detalle, y estudio de operadores no mencionados acá, diríjase al sitio web de Mozilla Developer Network (MDN)'s "Expressions and Operators" (en Inglés) (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators).
 
-## Valores y tipos
+## Valores y Tipos
 
-Si le preguntara a un empleado de una tienda de teléfonos el costo de un teléfono, y el dijera "Noventa y nueve, noventa y nueve" (es decir, $99.99), el le estaría dando una cifra numérica real en dólares que representa lo que debería pagar (más impuestos) para comprarlo. Si usted quiere comprar dos de esos teléfonos, podría fácilmente hacer el cálculo mentalmente para duplicar el valor y obtener $199.98 como su costo base.
+Si le preguntara a un empleado de una tienda de teléfonos el costo de un teléfono, y él dijera "noventa y nueve, noventa y nueve" (es decir, $99.99), él le estaría dando una cifra numérica real en dólares que representa lo que debería pagar (más impuestos) para comprarlo. Si usted quiere comprar dos de esos teléfonos, podría fácilmente hacer el cálculo mentalmente para duplicar el valor y obtener $199.98 como su costo base.
 
-Si ese mismo empleado selecciona un teléfono similar pero menciona que este es "gratis" (tal vez con comillas aereas), el no estaría dandole un número, envés le estaría dando otro tipo de representación del costo que usted espera ($0.00) -- la palabra "gratis".
+Si ese mismo empleado selecciona un teléfono similar pero menciona que este es "gratis" (tal vez con ciras aéreas), el no estaría dandole un número, en vez le estaría dando otro tipo de representación del costo que usted espera ($0.00) -- la palabra "gratis".
 
-Cuando usted pregunte si el teléfono incluye un cargador, la respuesta podría ser únicamente "si" o "no".
+Cuando usted pregunte si el teléfono incluye un cargador, la respuesta podría ser únicamente "sí" o "no".
 
 En una forma similar, cuando usted exprese un valor en un programa, usted elige diferentes representaciones para esos valores pensando en lo que hará con ellos.
 
@@ -239,11 +243,11 @@ false;
 
 Además de los tipos `string`/`number`/`boolean`, es común en los lenguajes de programación proveer *arreglos*, *objetos*, *funciones* y más. Hablaremos más de esos valores y tipos en este capítulo y el siguiente.
 
-### Conversión entre tipos
+### Conversión Entre Tipos
 
-Si usted tiene un tipo de dato `number` pero necesita imprimirlo en pantalla, necesitará convertir el valor a tipo `string` y esta conversión en JavaScript es llamada "coercion". Similarmente, si alguien ingresa una serie de caractéres numéricos en un formulario de una página de ecommerce, es un `string`, pero si necesita usar ese valor para realizar operaciones matemáticas, necesitará *coercer* al dato a que sea un `number`. 
+Si usted tiene un tipo de dato `number` pero necesita imprimirlo en pantalla, necesitará convertir el valor a tipo `string` y esta conversión en JavaScript es llamada "coerción". Similarmente, si alguien ingresa una serie de caractéres numéricos en un formulario de una página de ecommerce, es un `string`, pero si necesita usar ese valor para realizar operaciones matemáticas, necesitará *coercer* al dato a que sea un `number`. 
 
-JavaScript provee difrentes facilidades para forzar la coerción entre *tipos*. Por ejemplo:
+JavaScript provee diferentes facilidades para forzar la coerción entre *tipos*. Por ejemplo:
 
 ```js
 var a = "42";
@@ -252,41 +256,41 @@ var b = Number( a );
 console.log( a );	// "42"
 console.log( b );	// 42
 ```
-Usar `Number(..)` (una función construída) como se muestra, es una coerción *explícita* de cualquier otro tipo al tipo `number`. Esto 
+Usar `Number(..)` (una función construída) como se muestra, es una coerción *explícita* de cualquier otro tipo al tipo `number`. Esto debería ser bastante sencillo.
 
 Pero algo controversial que sucede es cuando intenta comparar dos valores que no son del mismo tipo, lo cual requeriría de una coerción *implícita*.
 
 Cuando se compara la cadena `"99.99"` con el número `99.99`, la mayoría de personas estaría de acuerdo en que son equivalentes. Pero no son exactamente lo mismo, ¿Lo son? El mismo valor en dos representaciones distintas, dos *tipos* diferentes. Usted podría decir que son "vagamente iguales", ¿No lo haría?
 
-Para ayudarlo en situaciones como estas, JavaScript aveces hará una coerción *implícita* para los tipos coincidentes.
+Para ayudarlo en situaciones como estas, JavaScript a veces hará una coerción *implícita* para los tipos coincidentes.
 
 Entonces si usa el `==` operador de igualdad débil para realizar la comparación `"99.99" == 99.99`, JavaScript convertirá el lado izquierdo `"99.99"` a su equivalente `99.99` tipo `number`. La comparación entonces se vuelve en `99.99 == 99.99`, lo cual por supuesto es `true`.
 
 Mientras esté diseñado para ayudarlo, la coerción implícita puede crear confusión si usted no se ha tomado el tiempo para aprender las reglas que gobiernan este comportamiento. La mayoría de desarrolladores de JS nunca lo ha hecho, entonces el sentimiento común es que la coerción es confusa y afecta los programas con errores inesperados, por lo cual la coerción implícita debería ser evitada. Incluso se dice que es un fallo en el diseño del lenguaje.
 
-De cualquier forma, la coerción implícita es un mecanismo que *puede ser aprendido*, y más aún *debe ser aprendido* por cualquiera que desee tomarse la programación en JavaScript seriamente. No solo deja de ser confuso cuando se aprenden las reglas, ¡En realidad puede mejorar sus programas! El esfuerzo vale la pena.
+De cualquier forma, la coerción implícita es un mecanismo que *puede ser aprendido*, y más aún *debe ser aprendido* por cualquiera que desee tomarse la programación en JavaScript seriamente. No sólo deja de ser confuso cuando se aprenden las reglas, ¡En realidad puede mejorar sus programas! El esfuerzo vale la pena.
 
-**Nota:** Para más información sobre coerción, vea el Capítulo 2 de este libro y el Capítulo 4 de *Types & Grammar* título de esta serie.
+**Nota:** Para más información sobre coerción, vea el Capítulo 2 de este libro y el Capítulo 4 de *Tipos y Gramática* título de esta serie.
 
-## Comentarios en el código
+## Comentarios en el Código
 
-El empleado de la tienda de teléfonos podría anotar algunas de las características del telefono más recientemente lanzado o alguno de los planes que la compañía ofrece. Estas notas serían únicamente para el empleado -- No lo son para los clientes. Sin embargo, estas notas ayudan al empleado a hacer su trabajo de mejor forma al documentar los cómos y los porqués de lo que debería hablarle a sus clientes.
+El empleado de la tienda de teléfonos podría anotar algunas de las características del teléfono más recientemente lanzado o alguno de los planes que la compañía ofrece. Estas notas serían únicamente para el empleado -- no lo son para los clientes. Sin embargo, estas notas ayudan al empleado a hacer su trabajo de mejor forma al documentar los cómos y los porqués de lo que debería hablarle a sus clientes.
 
 Una de las lecciones más importantes que puedes aprender sobre escribir código es que este no es únicamente para el computador. El código es tanto, sino más, para el desarrollador como lo es para el compilador.
 
-Su computador solo tiene en cuenta el código de máquina, una serie de 0s y 1s, que resultan de la *compilación*. Hay un número casi que infinito de programas que podría escribir que producen la misma serie de 0s y de 1s. Las decisiones que usted toma sobre como escribir su programa importan -- no solo para usted, sino para los demás miembros de su equipo e incluso para usted mismo en el futuro.
+Su computador sólo tiene en cuenta el código de máquina, una serie de 0's y 1's, que resultan de la *compilación*. Hay un número casi que infinito de programas que podría escribir que producen la misma serie de 0's y de 1's. Las decisiones que usted toma sobre cómo escribir su programa importan -- no sólo para usted, sino para los demás miembros de su equipo e incluso para usted mismo en el futuro.
 
-Usted debería esforzarse no únicamente por escribir programas que funcionen correctamente, sino programas que tengan sentido al ser examinados. Usted puede atravesar un largo camino en el esfuerzo de elegir buenos nombres para sus variables (ver "Variables") y funciones (ver "Functions").
+Usted debería esforzarse no únicamente por escribir programas que funcionen correctamente, sino programas que tengan sentido al ser examinados. Usted puede atravesar un largo camino en el esfuerzo de elegir buenos nombres para sus variables (ver "Variables") y funciones (ver "Funciones").
 
-Pero otro aspecto importante son los comentarios en el código. Estos son bits de texto en su programa que son insertados puramente para explicarselo a un humano. El interprete/compilador siempre ignora estos comentarios.
+Pero otro aspecto importante son los comentarios en el código. Estos son partes de texto en su programa que son insertados puramente para explicárselo a un humano. El intérprete/compilador siempre ignora estos comentarios.
 
-Existen muchas opiniones sobre que hace a un código ser bien comentado; no podemos definir una regla universal sobre esto. Pero algunas observaciones y guías son útiles para este propósito:
+Existen muchas opiniones sobre qué hace a un código ser bien comentado; no podemos definir una regla universal sobre esto. Pero algunas observaciones y guías son útiles para este propósito:
 
 * Código sin comentarios es subóptimo.
 * Muchos comentarios (un comentario por línea, por ejemplo) es probablemente un signo de código pobremente escrito.
 * Los comentarios deben explicar el *porqué*, no el *qué*. Estos pueden explicar el *cómo* si el código es particularmente confuso.
 
-En JavaScript, existen dos tipos de comentarios en el código: Comentarios de una única línea y comentarios de múltiples líneas.
+En JavaScript, existen dos tipos de comentarios en el código: comentarios de una única línea y comentarios de múltiples líneas.
 
 Considere:
 
@@ -299,7 +303,7 @@ Considere:
                       */
 ```
 
-El comentario de una línea `//`, es apropiado si usted agregará un comentario por encima de una sentencia sencilla, o al final de una línea. Todo dentro de esta línea después del `//` es tratado como un comentario (por lo cual es ignorado por el compilador) hasta el final de esta línea. No hay restricción sobre lo que puede aparecer dentro de un comentario de una línea única.
+El comentario de una línea `//` es apropiado si usted agregará un comentario por encima de una sentencia sencilla, o al final de una línea. Todo dentro de esta línea después del `//` es tratado como un comentario (por lo cual es ignorado por el compilador) hasta el final de esta línea. No hay restricción sobre lo que puede aparecer dentro de un comentario de una línea única.
 
 Considere:
 
@@ -307,9 +311,9 @@ Considere:
 var a = 42;		// 42 is the meaning of life
 ```
 
-The `/* .. */` multiline comment is appropriate if you have several lines worth of explanation to make in your comment.
+El comentatio de múltiples líneas `/* .. */` es apropiado si usted tiene muchas líneas de explicación importante que hacer en su comentario.
 
-Here's a common usage of multiline comments:
+Aquí está un uso común de comentarios de múltiples líneas:
 
 ```js
 /* The following value is used because
@@ -318,7 +322,7 @@ Here's a common usage of multiline comments:
 var a = 42;
 ```
 
-Este puede aparece en cualquier lugar de una líne, incluso en medio de una sentencia, porque `*/` lo termina. Por ejemplo: 
+Este puede aparece en cualquier lugar de una línea, incluso en medio de una sentencia, porque `*/` lo termina. Por ejemplo: 
 
 ```js
 var a = /* arbitrary value */ 42;
@@ -327,23 +331,23 @@ console.log( a );	// 42
 ```
 Lo único que no puede aparecer en medio de un comentario multilínea es un `*/`, porque es interpretado como el final del comentario.
 
-Usted definitivamente querrá empezar su aprendizaje en programación comenzando con el hábito de comentar código. Através de lo que resta del capítulo, usted verá que uso comentarios para explicar, así que haga lo mismo en su propia práctica. ¡Créame, todo aquel que lea su código se lo agradecerá! 
+Usted definitivamente querrá empezar su aprendizaje en programación comenzando con el hábito de comentar código. A través de lo que resta del capítulo, usted verá que uso comentarios para explicar, así que haga lo mismo en su propia práctica. ¡Créame, todo aquel que lea su código se lo agradecerá! 
 
 ## Variables
 
 Los programas más útiles requieren un seguimiento de un valor cada vez que este cambie en el transcurso del programa, pasando por diferentes operaciones mientras es llamado por las tareas que su programa está destinado a realizar.
 
-La manera más sencilla de realizar esto en su programa, es asignar un valor a un contenedor simbólico, llamado *variable* -- llamado de este modo porque el valor en este contenedor puede *variar* en el tiempo tanto como se necesite.
+La manera más sencilla de realizar esto en su programa es asignar un valor a un contenedor simbólico, llamado *variable* -- llamado de este modo porque el valor en este contenedor puede *variar* en el tiempo tanto como se necesite.
 
-En algunos lenguajes de programación, usted declara una variable (contenedor) para guardar un valor de un tipo específico, como un `number` o un `string`. El *tipado estático*, también conocido como *Tipado fuerte*, es típicamente citado como un beneficio para la correctitud de un programa porque previene conversiones de valor no intencionadas.
+En algunos lenguajes de programación, usted declara una variable (contenedor) para guardar un valor de un tipo específico, como un `number` o un `string`. El *tipado estático*, también conocido como *tipado fuerte*, es típicamente citado como un beneficio para la correctitud de un programa porque previene conversiones de valor no intencionadas.
 
-Otros lenguajes enfatizan en los tipos para valores envés de tipos para variables. el *Tipado débil*, también conocido *tipado dinámico*, permite a una variable almacenar cualquier tipo de valor en el tiempo.
+Otros lenguajes enfatizan en los tipos para valores en vez de tipos para variables. el *tipado débil*, también conocido *tipado dinámico*, permite a una variable almacenar cualquier tipo de valor en el tiempo.
 
 Se dice comunmente que es un beneficio para la flexibilidad de un programa al permitir a una variable representar un valor sin importar el tipo que el valor tenga en el tiempo durante la lógica del programa.
 
 JavaScript usa el último enfoque, *tipado dinámico*, lo que significa que las variables pueden guardar valores de cualquier *tipo* sin ningún *tipado* fuerte. 
 
-Como se mencionó antes, declararemos una variable usando la sentencia ``var` -- note que no hay información sobre el *tipo* en la declaración. Considere este ejemplo:
+Como se mencionó antes, declararemos una variable usando la sentencia `var` -- note que no hay información sobre el *tipo* en la declaración. Considere este ejemplo:
 
 ```js
 var amount = 99.99;
@@ -363,9 +367,9 @@ La variable `amount` inicia guardando el número `99.99`, luego almacena el resu
 
 La primera instrucción `consle.log(..)` tiene que hacer coerción *implícita* desde `number` a `string` para imprimirlo.
 
-Luego la sentencia `amount = "$" + String(amount)` realiza coerción *explícita* del valor `199.98` a `string` y añade el caracter `"$"` al inicio. Hasta este punto, `amount` alamacena el `string` con valor `"$199.98"`, entonces el segundo `console.log(..)` no necesita realizar ninguna coerción para imprimirlo.
+Luego la sentencia `amount = "$" + String(amount)` realiza coerción *explícita* del valor `199.98` a `string` y añade el caracter `"$"` al inicio. Hasta este punto, `amount` almacena el `string` con valor `"$199.98"`, entonces el segundo `console.log(..)` no necesita realizar ninguna coerción para imprimirlo.
 
-Los desarrolladores JavaScript notarán la flexibilidad de usar la variable `amount` para cada uno de los valores `99.99`, `199.98`, y `"$199.98"`. Los entusiastas del tipado estático podrían preferir una variable separado como `amountStr` para guardar el resultado final `"$199.98"`, puesto que es de un tipo diferente.
+Los desarrolladores JavaScript notarán la flexibilidad de usar la variable `amount` para cada uno de los valores `99.99`, `199.98`, y `"$199.98"`. Los entusiastas del tipado estático podrían preferir una variable separada como `amountStr` para guardar el resultado final `"$199.98"`, puesto que es de un tipo diferente.
 
 De cualquier modo, se dará cuenta que `amount` almacena un valor que cambia con el curso del programa, mostrando el propósito primario de las variables: gestionar el *estado* del programa. 
 
@@ -390,11 +394,11 @@ console.log( amount );				// 215.9784
 console.log( amount.toFixed( 2 ) );	// "215.98"
 ```
 
-**Nota:** De forma similar en que `console.log(..)` es una función dónde `log(..)` es accedido como una propiedad del valor `console`, `toFixed(..)` acá hay una función que puede ser accedida en valores de tipo `number`. Los `number` en JavaScript no son formateados de forma automática para indicar dólares -- El motor no sabe cuál es su intención y no existe un tipo para monedas. `toFixed(..)` nos permite especificar a cuántos decimales nos gustaría redondear un número, y producir el `string` cuando es necesario.
+**Nota:** De forma similar en que `console.log(..)` es una función dónde `log(..)` es accedido como una propiedad de object del valor `console`, `toFixed(..)` es una función que puede ser accedida en valores de tipo `number`. Los `number` en JavaScript no son formateados de forma automática para indicar dólares -- El motor no sabe cuál es su intención y no existe un tipo para monedas. `toFixed(..)` nos permite especificar a cuántos decimales nos gustaría redondear un número, y producir el `string` cuando es necesario.
 
-La variable `TAX_RATE` es únicamente *constante* por convención -- No hay nada especial en este programa que prevenga a esta variable de ser cambiada. Pero si la ciudad aumenta el impuesto de ventas a 9%, podemos fácilmente actualizar el programa asignando a `TAX_RATE` el valor de `0.09` en un solo lugar, envés de encontrar todas las ocurrencias del valor `0.08`esparcido a lo largo del programa y actualizar todas ellas.
+La variable `TAX_RATE` es únicamente *constante* por convención -- No hay nada especial en este programa que prevenga a esta variable de ser cambiada. Pero si la ciudad aumenta el impuesto de ventas a 9%, podemos fácilmente actualizar el programa asignando a `TAX_RATE` el valor de `0.09` en un solo lugar, en vez de encontrar todas las ocurrencias del valor `0.08` esparcido a lo largo del programa y actualizar todas ellas.
 
-La versión más reciente de JavaScript en el momento en que se escribio este libro (comúnmente llamada "ES6") incluye una nueva forma de declarar *constantes*, mediante el uso de `const` envés de `var`:
+La versión más reciente de JavaScript en el momento en que se escribio este libro (comúnmente llamada "ES6") incluye una nueva forma de declarar *constantes*, mediante el uso de `const` en vez de `var`:
 
 ```js
 // as of ES6:
@@ -404,11 +408,12 @@ var amount = 99.99;
 
 // ..
 ```
-Las constantes son útiles como variables con valores sin cambiar, excepto que las constantes previenen el cambio accidental de algún valor dónde sea que se haga después de la asignación inicial. Si usted intentó asignar algún valor distinto a `TAX_RATE` luego de su primera declaración, su programa podría rechazar el cambio (Y en modo estricto, fallar con un error --ver "Modo Estricto" en el capítulo 2).
+
+Las constantes son útiles como las variables con valores sin cambiar, excepto que las constantes previenen el cambio accidental de algún valor dónde sea que se haga después de la asignación inicial. Si usted intentó asignar algún valor distinto a `TAX_RATE` luego de su primera declaración, su programa podría rechazar el cambio (y en modo estricto, fallar con un error --ver "Modo Estricto" en el Capítulo 2).
 
 ¡Por cierto, ese tipo de "protección" contra errores es similar al enforzamiento del tipado estático, así que puede ver porqué los tipos estáticos pueden ser tan atractivos!
 
-**Note:** Para más información sobre como variables con valores diferentes pueden ser usados en sus programas, vea *Types & Grammar* título de esta serie.
+**Nota:** Para más información sobre como variables con valores diferentes pueden ser usados en sus programas, vea el título *Tipos y Gramática* de esta serie.
 
 ## Bloques
 
@@ -425,7 +430,8 @@ var amount = 99.99;
 	console.log( amount );	// 199.98
 }
 ```
-Esta particularidad `{ .. }` es un bloque general válido, pero no es como se ve realmente en los programas JS. Típicamente, bloques son añadidos a otras sentencias de control, como  la sentencia `if` (ver "Condicionales") o un ciclo (ver "Ciclos"). Por ejemplo: 
+
+Esta particularidad `{ .. }` es un bloque general válido, pero no es como se ve realmente en los programas JS. Típicamente, los bloques son añadidos a otras sentencias de control, como  la sentencia `if` (ver "Condicionales") o un ciclo (ver "Ciclos"). Por ejemplo: 
 
 ```js
 var amount = 99.99;
@@ -436,17 +442,18 @@ if (amount > 10) {			// <-- block attached to `if`
 	console.log( amount );	// 199.98
 }
 ```
-Explicaremos las sentencias `if` en la siguiente sección, pero como puede ver, el bloque `{ .. }` con las dos sentencias depende de `if (amount > 10)` ; las sentencias dentro del bloque serán ejecutadas si el condicional lo aprueba.
+
+Explicaremos las sentencias `if` en la siguiente sección, pero como puede ver, el bloque `{ .. }` con las dos sentencias depende de `if (amount > 10)`; las sentencias dentro del bloque serán ejecutadas si el condicional es verdadero.
 
 **Nota:** A diferencia de otras sentencias como `console.log(amount)`, una sentencia de bloque no necesita un punto y coma (`;`) para ser concluido.
 
 ## Condicionales
 
-"¿Desea agregar un protector de pantalla a su compra por $9.99?" El solidario empleado de la tienda de teléfonos le ha pedido que tome una decisión. Usted podría necesitar consultar el *estado* de su billetera o cuenta bancaria para responder a esa pregunta. Pero obviamente, es una pregunta sencilla de "si o no".
+"¿Desea agregar un protector de pantalla a su compra por $9.99?" El solidario empleado de la tienda de teléfonos le ha pedido que tome una decisión. Usted podría necesitar consultar el *estado* de su billetera o cuenta bancaria para responder a esa pregunta. Pero obviamente, es una pregunta sencilla de "sí o no".
 
 Hay pocos modos con los que podemos expresar *condicionales* (también conocidos como decisiones) en nuestros programas.
 
-El más común es la sentencia `if`. Escencialmente, está diciendo, "*Si* esta condición es verdadera, haga lo siguiente...". Por ejemplo:
+El más común es la sentencia `if`. Esencialmente, está diciendo, "*Si* esta condición es verdadera, haga lo siguiente...". Por ejemplo:
 
 ```js
 var bank_balance = 302.13;
@@ -456,6 +463,7 @@ if (amount < bank_balance) {
 	console.log( "I want to buy this phone!" );
 }
 ```
+
 La sentencia `if` requiere una expresión dentro del paréntesis `( )` que puede ser tratada como `true` o `false`. En este programa, tenemos la expresión `amount < bank_balance`, lo cual ciertamente evaluará a `true` o a `false` dependiendo de la cantidad en la variable `bank_balance`.
 
 Usted puede declarar una alternativa si la condición no es verdadera, con la sentencia `else`. Considere:
@@ -481,24 +489,23 @@ else {
 
 Acá, si `amount < bank_balance` es `true`, imprimirá `"I'll take the accessory!"` y añadirá `9.99` a la variable `amount`. De otra manera, la sentencia `else` dice que responderemos educadamente con un `"No, thanks."` y dejar `amount` sin cambiar.
 
-Tal y como se discutió en "Valores & Tipos" más temprano, los valores que no están listos de determinado tipo son coercidos a ese tipo. La sentencia `if` espera un `boolean`, pero si usted pasa algo que no lo sea, la coerción ocurrirá.
+Tal y como se discutió en "Valores & Tipos" más temprano, los valores que no son de determinado tipo esperado son coercidos a ese tipo. La sentencia `if` espera un `boolean`, pero si usted pasa algo que no lo sea, la coerción ocurrirá.
 
-JavaScript define una lista específica de valores que son considerados "falsy" porque al ser coercidos a `boolean`, se vuelven `false` -- esto incluye valores como `0` y `""`.
-Cualquier otro valor que no esté en la lista, es automáticamente "truthy" -- cuando son coercidos a `boolean` se convierten en `true`. Los valores Truthy incluyen cosas como `99.99` y `"free"`. Vea "Truthy y Falsy" en el capítulo 2 para más información.
+JavaScript define una lista específica de valores que son considerados "falsy" porque al ser coercidos a `boolean`, se vuelven `false` -- esto incluye valores como `0` y `""`. Cualquier otro valor que no esté en la lista "falsy", es automáticamente considerado como "truthy" -- cuando son coercidos a `boolean` se convierten en `true`. Los valores truthy incluyen cosas como `99.99` y `"free"`. Vea "Truthy y Falsy" en el Capítulo 2 para más información.
 
-Los *condicionales* existen en formas más allá del `if`. Por ejemplo, la sentencia `switch` puede ser usada como un atajo para una serie de sentencias `if..else` (ver el capítulo 2).
+Los *condicionales* existen en formas más allá del `if`. Por ejemplo, la sentencia `switch` puede ser usada como un atajo para una serie de sentencias `if..else` (ver el Capítulo 2).
 
-**Nota:** Para mayor información sobre las coerciones que pueden ocurrir implícitamente en la evaluación de condicionales, vea el capítulo 4 de *Types & Grammar* libro de esta serie.
+**Nota:** Para mayor información sobre las coerciones que pueden ocurrir implícitamente en la evaluación de condicionales, vea el Capítulo 4 del título *Types & Grammar* de esta serie.
 
 ## Ciclos
 
-Durante tiempos ocupados, hay una lista de espera para clientes que quieren hablar con el empleado de la tienda de teléfonos. Mientras hay personas en la lista de espera, el necesita atender al siguiente cliente.
+Durante casos de gran afluencia, hay una lista de espera para clientes que quieren hablar con el empleado de la tienda de teléfonos. Mientras hay personas en la lista de espera, él necesita atender al siguiente cliente.
 
-Repetir un conjunto de acciones hasta que cierta condición falle -- en otras palabras, repetir solo mientras la condición se cumpla -- es el trabajo de los ciclos en programación; los ciclos pueden tener formas distintas, pero todos satisfacen este comportamiento básico.
+Repetir un conjunto de acciones hasta que cierta condición falle -- en otras palabras, repetir sólo mientras la condición se cumpla -- es el trabajo de los ciclos en programación; los ciclos pueden tener formas distintas, pero todos satisfacen este comportamiento básico.
 
 Un ciclo incluye evaluar la condición así como el bloque (típicamente presentado como `{ .. }`) cada vez que el ciclo se ejecuta, lo cual es llamado *iteración*.
 
-Por ejemplo, el ciclo `while` y el ciclo `do..while` ilustran el concepto de repetir un bloque de sentencias hasta que una condición deje de ser ``true`:
+Por ejemplo, el ciclo `while` y el ciclo `do..while` ilustran el concepto de repetir un bloque de sentencias hasta que una condición deje de ser `true`:
 
 ```js
 while (numOfCustomers > 0) {
@@ -521,15 +528,15 @@ do {
 ```
 La única diferencia práctica entre estos ciclos es la evaluación del condicional en la primera iteración (`while`) o después de la primera iteración(`do..while`).
 
-De cualquier forma, si el condicional resulta evaluado como `falso`, la siguiente iteración no se ejecutará. Esto significa que si la condición es inicialmente `false`, un ciclo `while` no se ejecutará nunca, pero en el ciclo `do..while` será ejecutado solo la primera vez.
+De cualquier forma, si el condicional resulta evaluado como `false`, la siguiente iteración no se ejecutará. Esto significa que si la condición es inicialmente `false`, un ciclo `while` no se ejecutará nunca, pero en el ciclo `do..while` será ejecutado sólo la primera vez.
 
-Aveces usted itera con el propósito de contar un cierto conjunto de números, como desde `0` hasta `9` (diez números). Usted puede hacerlo definiendo una variable de iteración como `i` en el valor `0` e incrementarla en `1` por cada iteración.
+A veces usted itera con el propósito de contar un cierto conjunto de números, como desde `0` hasta `9` (diez números). Usted puede hacerlo definiendo una variable de iteración como `i` en el valor `0` e incrementarla en `1` por cada iteración.
 
 **Advertencia:** Debido a una variedad de razones históricas, los lenguajes de programación casi siempre cuentan elementos empezando en cero, lo que significa que se inicia en `0` y no en `1`. Si no está familiarizado con este modo de pensar, puede ser confuso en un inicio. ¡Tome cierto tiempo para practicar el contar desde `0` para que se sienta más cómodo con eso!
 
 El condicional es evaluado en cada iteración, tanto como si hubiese una sentencia `if` dentro del ciclo.
 
-Podemos usar la sentencia `break` en JavaScript para detener un ciclo. También, podemos observar que es horriblemente fácil crear un ciclo que podría ejcutarse por siempre sin un mecanismo de `break`.
+Podemos usar la sentencia `break` en JavaScript para detener un ciclo. También, podemos observar que es muy fácil crear un ciclo que podría ejecutarse para siempre sin un mecanismo de `break`.
 
 Vamos a verlo:
 
@@ -548,6 +555,7 @@ while (true) {
 }
 // 0 1 2 3 4 5 6 7 8 9
 ```
+
 **Advertencia:** Esto no es necesariamente una forma práctica en la que usted querría usar los ciclos. Se presenta acá únicamente con fines ilustrativos.
 
 Mientras un ciclo `while` (o `do..while`) puede completar la tarea manualmente, hay otra forma sintáctica llamada `for` para este propósito:
@@ -558,7 +566,8 @@ for (var i = 0; i <= 9; i = i + 1) {
 }
 // 0 1 2 3 4 5 6 7 8 9
 ```
-Como puede ver, en ambos casos en condicional `i <= 9` es `true` para las diez primeras iteraciones (`i` desde el valor `0` hasta el `9`) ya sea la forma del ciclo, pero se convierte en `false` una vez `i` tiene el valor de `10`.
+
+Como puede observar, en ambos casos el condicional `i <= 9` es `true` para las diez primeras iteraciones (`i` desde el valor `0` hasta el `9`) cualquiera que sea la forma del ciclo, pero se convierte en `false` una vez `i` tiene el valor de `10`.
 
 El ciclo `for` tiene tres cláusulas: La cláusula de inicialización (`var i=0`), la cláusula de evaluación (`i <= 9`), y la cláusula de actualización (`i = i + 1`). Así si usted va a contar sus iteraciones de ciclo, `for` es una forma más compacta y simple de entenderlo y escribirlo.
 
@@ -568,7 +577,7 @@ Hay otras formas especializadas de ciclos cuya intención es iterar sobre valore
 
 El empleado de la tienda probablemente no cargue consigo una calculadora para encontrar el total de impuestos y el total de la compra. Es una tarea que necesita definir una vez y repetirla durante muchas veces. Hay chances de que la compañía cuente con una máquina registradora (computador, tablet, etc.) con estas "funciones" integradas.
 
-De manera similar, su programa seguramente dividirá las tareas del código en piezas reutilizables, envés de repetidamente repetirse a si mismo repetitivamente (¡juego de palabras!). La manera de hacer esto es definiendo una función.
+De manera similar, su programa seguramente dividirá las tareas del código en piezas reutilizables, en vez de repetidamente repetirse a sí mismo repetitivamente (¡juego de palabras!). La manera de hacer esto es definiendo una función.
 
 Una función por lo general es una sección de código con un nombre con el cual puede ser "llamada", y el código en su interior será ejecutado cada vez que se llame. Considere:
 
@@ -586,7 +595,7 @@ amount = amount * 2;
 printAmount(); // "199.98"
 ```
 
-Las funciones pueden tener argumentos de forma opcional (también conocidos como parámetros) --valores que se le pasan. Y también pueden opcionalmente devolver un valor.
+Las funciones pueden tener argumentos de forma opcional (también conocidos como parámetros) -- valores que se le pasan. Y también pueden opcionalmente devolver un valor.
 
 ```js
 function printAmount(amt) {
@@ -607,7 +616,7 @@ console.log( amount );			// "$99.99"
 
 La función `printAmount(..)` toma un parámetro que llamamos `amt`. La función `formatAmount()` devuelve un valor. Por supuesto, usted puede combinar estas dos técnicas dentro de la misma función.
 
-Las funciones son usadas a menudo para código que se quiera llamar multiples veces, pero ellas pueden ser útiles simplemente para organizar bits de código dentro de colecciones con nombre, incluso si usted solo planea llamarlas una única vez.
+Las funciones son usadas a menudo para código que se quiera llamar multiples veces, pero ellas pueden ser útiles simplemente para organizar partes de código dentro de colecciones con nombre, incluso si usted solo planea llamarlas una única vez.
 
 Considere:
 
@@ -708,12 +717,12 @@ No existe un substituto para la práctica cuando de aprender a programar se trat
 
 Con esto en mente, vamos a intentar practicar algunos de los conceptos que aprendimos en este capítulo. Le daré los "requisitos" y usted lo intentará inicialmente. Luego consultará el código listado acá para que observe como lo abordé.
 
-* Escriba un programa que calcule el precio total de su compra de teléfono. Usted se mantendrá comprando teléfonos (Pista: ¡Ciclo!) hasta que usted se quede sin dinero en su cuenta bancaria. Usted también comprará accesorios para cada teléfono siempre y cuando el monto de su compra esté por debajo de su umbral de gasto.
+* Escriba un programa que calcule el precio total de su compra de teléfono. Usted se mantendrá comprando teléfonos (pista: ¡Ciclo!) hasta que usted se quede sin dinero en su cuenta bancaria. Usted también comprará accesorios para cada teléfono siempre y cuando el monto de su compra esté por debajo de su umbral de gasto.
 * Luego de que usted haya calculado la cantidad de compra, agregue el impuesto, e imprima la cantidad de compra calculada, debidamente formateada.
 * Finalmente, compare la cantidad versus el balance de su cuenta bancaria para ver si puede comprarlo o no.
 * Usted deberá declarar algunas constantes para las variables "tax rate," "phone price," "accessory price," y "spending threshold," así como una variable para su "bank account balance".
 * Usted deberá definir funciones que calculen el impuesto y formateen el precio con un "$" y redondee el  valor con dos cifras decimales.
-* **Desafío extra:** Intente utilizar entradas dentro de su programa, tal vez con  `prompt(..)` visto en "Entradas" antes. Usted podría avisar al usuario sobre el balance de su cuenta bancaria, por ejemplo. ¡Diviértase y sea creativo!
+* **Desafío extra:** Intente utilizar entradas dentro de su programa, tal vez con  `prompt(..)` visto en "Entradas" anteriormente. Usted podría avisar al usuario sobre el balance de su cuenta bancaria, por ejemplo. ¡Diviértase y sea creativo!
 
 Esta bien, adelante. Inténtelo. ¡No mire mi lista de código hasta que usted haya hecho el intento usted mismo!
 
@@ -765,24 +774,25 @@ if (amount > bank_balance) {
 }
 // You can't afford this purchase. :(
 ```
+
 **Nota:** La forma más sencilla de ejecutar este programa de JavaScript es escribirlo en la consola del desarrollador del navegador de su preferencia.
 
 ¿Cómo lo hizo? No sería dañino el intentarlo de nuevo ahora que ha visto mi código, Y puede jugar cambiando algunas de las constantes para ver como el programa se ejecuta con valores diferentes.
 
-## Revisión
+## Conclusión
 
 Aprender a programar no debería ser un proceso complejo ni abrumador. Solo hay que aprender unos conceptos y facilitará el proceso.
 
-Estos actúan como bloques fundacionales. Para construir una torre, uno comienza primero colocando un bloque sobre otro bloque, y así hasta construirla. Lo mismo aplica para la programación. Aquí en está capítulo está los bloques esenciales para:
+Estos actúan como bloques fundacionales. Para construir una torre, uno comienza primero colocando un bloque sobre otro bloque, y así hasta construirla. Lo mismo aplica para la programación. Aquí están algunos bloques fundacionales esenciales para la programación:
 
-* Usted necesita *operadores* para tener acciones sobre valores
-* Usted necesita valores y *tipos* para realizar hacer diferences tipos de acciones como Matemática a `numeros` o retornar de una función con `string`.
-* Usted necesita *variables* para guardar datos (aka *estado*) durante la ejecución de su programa.
-* Usted necesita *loops* para repetir las tareas hasta que una condición lógica la acabe. 
-* Usted necesita *functions* para organizar su código en partes lógicas y reusables.
+* Usted necesita *operadores* para realizar acciones sobre valores.
+* Usted necesita valores y *tipos* para realizar diferences tipos de acciones como matemática a `numeros` o retornar de una función con `string`.
+* Usted necesita *variables* para guardar datos (conocido como *estado*) durante la ejecución de su programa.
+* Usted necesita *condicionales* como las sentencias `if` para realizar decisiones.
+* Usted necesita *ciclos* para repetir las tareas hasta que una condición lógica la acabe. 
+* Usted necesita *funciones* para organizar su código en partes lógicas y reutilizables.
 
-
-Los comentarios en el código, están para escribir de una forma más eficiente el código, lo que hace su programa más fácil de entender y hacerle mantenimiento, ó arreglarlo si luego aparecen problemas.
+Los comentarios en el código están para escribir de una forma más eficiente el código, lo que hace su programa más fácil de entender y hacerle mantenimiento, ó arreglarlo si luego aparecen problemas.
 
 Finalmente, no de por sentado el poder de la práctica. La mejor manera de aprender a escribir código, es efectivamente, escribiendo código.
 
