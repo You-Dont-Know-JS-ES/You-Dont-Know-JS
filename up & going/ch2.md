@@ -13,6 +13,7 @@ Your journey to deeply learn JavaScript starts here.
 
 ## Values & Types
 
+
 As we asserted in Chapter 1, JavaScript has typed values, not typed variables. The following built-in types are available:
 
 * `string`
