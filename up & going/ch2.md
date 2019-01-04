@@ -59,6 +59,7 @@ Also, note `a = undefined`. We're explicitly setting `a` to the `undefined` valu
 
 ### Objects
 
+
 The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type. This is perhaps one of the most useful value types in all of JavaScript.
 
 ```js
