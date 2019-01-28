@@ -1,0 +1,21 @@
+{
+  "projectName": "Traduccion",
+  "projectOwner": "You-Dont-Know-JS-ES",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "EstebanMarin",
+      "name": "EstebanMarin",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13613037?v=4",
+      "profile": "https://github.com/EstebanMarin",
+      "contributions": []
+    }
+  ],
+  "contributorsPerLine": 7
+}
