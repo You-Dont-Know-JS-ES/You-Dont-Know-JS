@@ -83,7 +83,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/13613037?v=4" width="100px;" alt="EstebanMarin"/><br /><sub><b>EstebanMarin</b></sub>](https://github.com/EstebanMarin)<br /> |
+| [<img src="https://avatars3.githubusercontent.com/u/13613037?v=4" width="100px;" alt="EstebanMarin"/><br /><sub><b>EstebanMarin</b></sub>](https://github.com/EstebanMarin)<br />[💻](https://github.com/You-Dont-Know-JS-ES/Traduccion/commits?author=EstebanMarin "Code") [📖](https://github.com/You-Dont-Know-JS-ES/Traduccion/commits?author=EstebanMarin "Documentation") [🚇](#infra-EstebanMarin "Infrastructure (Hosting, Build-Tools, etc)") |
 | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
