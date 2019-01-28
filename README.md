@@ -1,4 +1,5 @@
 
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 # ¿Qué es You-Dont-Know-JS-ES/Traduccion ?
 
 Es un repositorio que almacena la éxitosa serie de libros de JavaScript "You Don't Know JS" de Kyle Simpson un fork del repositorio original, con la intención de que estos sean traducidos al idioma español.
@@ -75,3 +76,15 @@ En este momento vamos a comenzar el primer libro. Detalles de donde se va en el 
 - Read online (free!): ["Types & Grammar"](types%20&%20grammar/README.md#you-dont-know-js-types--grammar), Published: [Buy Now](http://www.ebooks.com/1935541/you-don-t-know-js-types-grammar/simpson-kyle/)
 - Read online (free!): ["Async & Performance"](async%20&%20performance/README.md#you-dont-know-js-async--performance), Published: [Buy Now](http://www.ebooks.com/1977375/you-don-t-know-js-async-performance/simpson-kyle/)
 - Read online (free!): ["ES6 & Beyond"](es6%20&%20beyond/README.md#you-dont-know-js-es6--beyond), Published: [Buy Now](http://www.ebooks.com/2481820/you-don-t-know-js-es6-beyond/simpson-kyle/)
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars3.githubusercontent.com/u/13613037?v=4" width="100px;" alt="EstebanMarin"/><br /><sub><b>EstebanMarin</b></sub>](https://github.com/EstebanMarin)<br /> |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
