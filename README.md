@@ -1,5 +1,5 @@
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 # ¿Qué es You-Dont-Know-JS-ES/Traduccion ?
 
 Es un repositorio que almacena la éxitosa serie de libros de JavaScript "You Don't Know JS" de Kyle Simpson un fork del repositorio original, con la intención de que estos sean traducidos al idioma español.
@@ -84,8 +84,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/13613037?v=4" width="100px;" alt="EstebanMarin"/><br /><sub><b>EstebanMarin</b></sub>](https://github.com/EstebanMarin)<br />[💻](https://github.com/You-Dont-Know-JS-ES/Traduccion/commits?author=EstebanMarin "Code") [📖](https://github.com/You-Dont-Know-JS-ES/Traduccion/commits?author=EstebanMarin "Documentation") [🚇](#infra-EstebanMarin "Infrastructure (Hosting, Build-Tools, etc)") |
-| :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/13613037?v=4" width="100px;" alt="EstebanMarin"/><br /><sub><b>EstebanMarin</b></sub>](https://github.com/EstebanMarin)<br />[💻](https://github.com/You-Dont-Know-JS-ES/Traduccion/commits?author=EstebanMarin "Code") [📖](https://github.com/You-Dont-Know-JS-ES/Traduccion/commits?author=EstebanMarin "Documentation") [🚇](#infra-EstebanMarin "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/You-Dont-Know-JS-ES/Traduccion/commits?author=EstebanMarin "Tests") | [<img src="https://avatars2.githubusercontent.com/u/7406472?v=4" width="100px;" alt="Miguel Ballén"/><br /><sub><b>Miguel Ballén</b></sub>](https://github.com/mballeng91)<br />[📖](https://github.com/You-Dont-Know-JS-ES/Traduccion/commits?author=mballeng91 "Documentation") |
+| :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
