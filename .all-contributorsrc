@@ -20,6 +20,15 @@
         "infra",
         "test"
       ]
+    },
+    {
+      "login": "mballeng91",
+      "name": "Miguel Ballén",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/7406472?v=4",
+      "profile": "https://github.com/mballeng91",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
