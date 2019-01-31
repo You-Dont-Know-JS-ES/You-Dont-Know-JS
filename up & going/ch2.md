@@ -9,6 +9,8 @@ Introduciremos una serie de conceptos en este capítulo que no seran totalmente 
 
 We will introduce quite a few concepts in this chapter that will not be fully explored until subsequent *YDKJS* books. You can think of this chapter as an overview of the topics covered in detail throughout the rest of this series.
 
+Especialmente si usted es nuevo en Javascript, debería esperar gastar un poco más de tiempo repasando los conceptos y ejemplos de código en este libro varias veces. Como toda buena base, ésta se va construyendo poco a poco, no espere a que todo lo aprenda inmediatamente al primer intento.
+
 Especially if you're new to JavaScript, you should expect to spend quite a bit of time reviewing the concepts and code examples here multiple times. Any good foundation is laid brick by brick, so don't expect that you'll immediately understand it all the first pass through.
 
 Your journey to deeply learn JavaScript starts here.
