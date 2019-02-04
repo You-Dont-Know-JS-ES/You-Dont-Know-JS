@@ -1,11 +1,13 @@
-# You Don't Know JS: Up & Going
+# Usted no sabe JS: En marcha
 # Chapter 3: Dentro de YDKJS
 
-¿De que se tratan todas estás series? Coloquemoslo simple, es sobre tomar seriamente la tarea de aprender *todas las partes de Javascript*, no solo las partes del subconjunto del lenguaje que algunos llaman "las partes buenas," y no solo la mínima cantidad que usted necesita para realizar bien sus tareas en el trabajo.
+¿De que se tratan todo este libro? Coloquemoslo simple, es sobre tomar seriamente la tarea de aprender *todas las partes de Javascript*, no sólo las partes del subconjunto del lenguaje que algunos llaman "las partes buenas," y no sólo la mínima cantidad que usted necesita para realizar bien sus tareas en el trabajo.
 
+Serios desarrolladores en otros lenguajes esperan colocar todo el esfuerzo para aprender la mayor (o todo) sobre los lenguajes (o el lenguaje) con los que ellos escriben principalmente, pero los desarrolladores de JS parece que estan fuera de la multitud en el sentido de que ellos ni suelen aprender muchas cosas sobre el lenguaje. Esto no es una buena cosa, y no es algo que debamos continuar permitiendo que sea la norma.
 
-What is this series all about? Put simply, it's about taking seriously the task of learning *all parts of JavaScript*, not just some subset of the language that someone called "the good parts," and not just whatever minimal amount you need to get your job done at work.
+La serie de libros "Usted no sabe JS" (*UNSJS*) o en inglés *You Don't Know JS* (*YDKJS*) se encuentra en el marcado contraste de los típicos enfoques de aprender JS, y es diferente a casí cualquier otro libro sobre JS que usted va a leer. Aquí lo desafía a ir más allá de su zona de confort y realizarse a sí mismo preguntas como "¿porque?" para cada simple comportamiento que usted encuentre. ¿Está listo para ese desafío?.
 
+Voy a usar este capítulo final para resumir brevemente que es lo que espero del resto de la serie de libros, y cómo ir de la manera más efectiva para construir una base de aprendizaje en JS sobre *YDKJS*.
 
 Serios desarrolladores en otros lenguajes esperan colocar todo el esfuerzo para aprender la mayor o todo sobre los lenguajes (o el lenguaje) con los que ellos escriben principalmente, pero los desarrolladores de JS parece que estan fuera de la multitud en el sentido de que ellos típicamente no aprenden muchas cosas sobre el lenguaje. Esto no es una buena cosa, y no es algo que debamos continuar permitiendo para ser la norma.
 
