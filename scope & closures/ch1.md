@@ -1,11 +1,13 @@
 # You Don't Know JS: Scope & Closures
 # Capítulo 1: ¿Qué es el Ámbito(Scope)?
 
-Uno de los grandes paradigmas de la mayoría de los lenguajes de programación es el de almacenar valores en las variables para posteriormente recuperarlos o cambiarlos. De hecho, la capacidad de almacenar y extraer estos valores de las variables es lo que le da el *estado* del programa.
+Uno de los grandes paradigmas de la mayoría de los lenguajes de programación es el de almacenar valores en variables para posteriormente recuperarlos o modificarlos. De hecho, la capacidad de almacenar y extraer estos valores de las variables es lo que le da el *estado* del programa.
 
 ((One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values. In fact, the ability to store values and pull values out of variables is what gives a program *state*.))
 
-Without such a concept, a program could perform some tasks, but they would be extremely limited and not terribly interesting.
+Sin dicha capacidad un programa podría todavía podría realizar algunas tareas, sin embargo el mismo sería extremadamente limitado y muy poco interesante.
+
+((Without such a concept, a program could perform some tasks, but they would be extremely limited and not terribly interesting.))
 
 But the inclusion of variables into our program begets the most interesting questions we will now address: where do those variables *live*? In other words, where are they stored? And, most importantly, how does our program find them when it needs them?
 
