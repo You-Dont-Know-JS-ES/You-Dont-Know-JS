@@ -5,7 +5,7 @@ Uno de los grandes paradigmas de la mayoría de los lenguajes de programación e
 
 ((One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values. In fact, the ability to store values and pull values out of variables is what gives a program *state*.))
 
-Sin dicha capacidad un programa podría todavía podría realizar algunas tareas, sin embargo el mismo sería extremadamente limitado y muy poco interesante.
+Sin dicha capacidad un programa todavía puede realizar algunas tareas, sin embargo el mismo sería extremadamente limitado y muy poco interesante.
 
 ((Without such a concept, a program could perform some tasks, but they would be extremely limited and not terribly interesting.))
 
