@@ -5,23 +5,35 @@ Uno de los grandes paradigmas de la mayoría de los lenguajes de programación e
 
 ((One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values. In fact, the ability to store values and pull values out of variables is what gives a program *state*.))
 
-Sin dicha capacidad un programa todavía puede realizar algunas tareas, sin embargo el mismo sería extremadamente limitado y muy poco interesante.
+Sin dicha capacidad un programa aún podría realizar algunas tareas, pero el mismo sería extremadamente limitado y muy poco interesante.
 
 ((Without such a concept, a program could perform some tasks, but they would be extremely limited and not terribly interesting.))
 
-But the inclusion of variables into our program begets the most interesting questions we will now address: where do those variables *live*? In other words, where are they stored? And, most importantly, how does our program find them when it needs them?
+Sin embargo el incluir variables en nuestro programa deriva en las siguientes interesantes preguntas, las cuales vamos a responder: ¿Dónde *viven* estas variables? Es decir, ¿Dónde están almacenadas? Y sobre todo, ¿Cómo nuestro programa las busca cuando las necesita? 
 
-These questions speak to the need for a well-defined set of rules for storing variables in some location, and for finding those variables at a later time. We'll call that set of rules: *Scope*.
+((But the inclusion of variables into our program begets the most interesting questions we will now address: where do those variables *live*? In other words, where are they stored? And, most importantly, how does our program find them when it needs them?))
 
-But, where and how do these *Scope* rules get set?
+De estas preguntas se llega a la necesidad de tener un conjunto de reglas bien definido para el almacenamiento de variable en algún lugar, y la forma de buscarlas en algún momento posterior. A este set de reglas lo llamaremos el *Ámbito(Scope)*.
 
-## Compiler Theory
+((These questions speak to the need for a well-defined set of rules for storing variables in some location, and for finding those variables at a later time. We'll call that set of rules: *Scope*.))
 
-It may be self-evident, or it may be surprising, depending on your level of interaction with various languages, but despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages, it is in fact a compiled language. It is *not* compiled well in advance, as are many traditionally-compiled languages, nor are the results of compilation portable among various distributed systems.
+Pero, ¿Dónde y cómo se establecen estas reglas del *Scope*?
 
-But, nevertheless, the JavaScript engine performs many of the same steps, albeit in more sophisticated ways than we may commonly be aware, of any traditional language-compiler.
+((But, where and how do these *Scope* rules get set?))
 
-In a traditional compiled-language process, a chunk of source code, your program, will undergo typically three steps *before* it is executed, roughly called "compilation":
+## Teoría de Compiladores
+
+Puede que sea evidente, o tal vez sorprendente, dependendiendo de su nivel de interacción con distintos lenguajes de programación, pero a pesar de que JavaScript es colocado en la categoría general de lenguajes "dinámicos" o "interpretados", es en realidad un lenguaje compilado. Bueno, *no* compilado por adelantado, como la mayoría de los lenguajes tradicionalmente compilados, ni con los resultados de la compilación portátil de los sistemas distribuidos.
+
+((It may be self-evident, or it may be surprising, depending on your level of interaction with various languages, but despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages, it is in fact a compiled language. It is *not* compiled well in advance, as are many traditionally-compiled languages, nor are the results of compilation portable among various distributed systems.))
+
+Pero, sin embargo, el motor de JavaScript realiza muchos de los mismos pasos, aunque de una manera más sofisticada de la que comúnmente estamos conscientes, que cualquier compilador de un lenguaje tradicional.
+
+((But, nevertheless, the JavaScript engine performs many of the same steps, albeit in more sophisticated ways than we may commonly be aware, of any traditional language-compiler.))
+
+En un proceso de compilación tradicional, un trozo de código fuente, su programa, será sometido a 3 típicos pasos *antes* de su ejecución, aquellos que más o menos llamamos "compilación":
+
+((In a traditional compiled-language process, a chunk of source code, your program, will undergo typically three steps *before* it is executed, roughly called "compilation":))
 
 1. **Tokenizing/Lexing:** breaking up a string of characters into meaningful (to the language) chunks, called tokens. For instance, consider the program: `var a = 2;`. This program would likely be broken up into the following tokens: `var`, `a`, `=`, `2`, and `;`. Whitespace may or may not be persisted as a token, depending on whether it's meaningful or not.
 
