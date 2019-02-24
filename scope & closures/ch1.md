@@ -1,7 +1,7 @@
 # You Don't Know JS: Scope & Closures
 # Capítulo 1: ¿Qué es el Ámbito(Scope)?
 
-Uno de los grandes paradigmas de la mayoría de los lenguajes de programación es el de almacenar valores en variables para posteriormente recuperarlos o modificarlos. De hecho, la capacidad de almacenar y extraer estos valores de las variables es lo que le da el *estado* del programa.
+Uno de los paradigmas fundamentales de la mayoría de los lenguajes de programación es el de almacenar valores en variables para posteriormente recuperarlos o modificarlos. De hecho, la capacidad de almacenar y extraer estos valores de las variables es lo que le da el *estado* del programa.
 
 ((One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values. In fact, the ability to store values and pull values out of variables is what gives a program *state*.))
 
@@ -9,7 +9,7 @@ Sin dicha capacidad un programa aún podría realizar algunas tareas, pero el mi
 
 ((Without such a concept, a program could perform some tasks, but they would be extremely limited and not terribly interesting.))
 
-Sin embargo el incluir variables en nuestro programa deriva en las siguientes interesantes preguntas, las cuales vamos a responder: ¿Dónde *viven* estas variables? Es decir, ¿Dónde están almacenadas? Y sobre todo, ¿Cómo nuestro programa las busca cuando las necesita? 
+Sin embargo el incluir variables en nuestro programa deriva en las siguientes preguntas interesantes, las cuales vamos a responder: ¿Dónde *viven* estas variables? Es decir, ¿Dónde están almacenadas? Y sobre todo, ¿Cómo nuestro programa las busca cuando las necesita? 
 
 ((But the inclusion of variables into our program begets the most interesting questions we will now address: where do those variables *live*? In other words, where are they stored? And, most importantly, how does our program find them when it needs them?))
 
@@ -23,11 +23,11 @@ Pero, ¿Dónde y cómo se establecen estas reglas del *Scope*?
 
 ## Teoría de Compiladores
 
-Puede que sea evidente, o tal vez sorprendente, dependendiendo de su nivel de interacción con distintos lenguajes de programación, pero a pesar de que JavaScript es colocado en la categoría general de lenguajes "dinámicos" o "interpretados", es en realidad un lenguaje compilado. Bueno, *no* compilado por adelantado, como la mayoría de los lenguajes tradicionalmente compilados, ni con los resultados de la compilación portátil de los sistemas distribuidos.
+Puede que sea evidente, o tal vez sorprendente, dependendiendo de su nivel de interacción con distintos lenguajes de programación, pero a pesar de que JavaScript es colocado en la categoría general de lenguajes "dinámicos" o "interpretados", es en realidad un lenguaje compilado. Bueno, *no* compilado por adelantado, como la mayoría de los lenguajes tradicionalmente compilados, ni produce los resultados de la compilación portátil de los sistemas distribuidos.
 
 ((It may be self-evident, or it may be surprising, depending on your level of interaction with various languages, but despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages, it is in fact a compiled language. It is *not* compiled well in advance, as are many traditionally-compiled languages, nor are the results of compilation portable among various distributed systems.))
 
-Pero, sin embargo, el motor de JavaScript realiza muchos de los mismos pasos, aunque de una manera más sofisticada de la que comúnmente estamos conscientes, que cualquier compilador de un lenguaje tradicional.
+Pero, y sin embargo, el motor de JavaScript realiza muchos de los mismos pasos, aunque de una manera más sofisticada de la que comúnmente estamos conscientes, que cualquier compilador de un lenguaje tradicional.
 
 ((But, nevertheless, the JavaScript engine performs many of the same steps, albeit in more sophisticated ways than we may commonly be aware, of any traditional language-compiler.))
 
@@ -35,9 +35,13 @@ En un proceso de compilación tradicional, un trozo de código fuente, su progra
 
 ((In a traditional compiled-language process, a chunk of source code, your program, will undergo typically three steps *before* it is executed, roughly called "compilation":))
 
-1. **Tokenizing/Lexing:** breaking up a string of characters into meaningful (to the language) chunks, called tokens. For instance, consider the program: `var a = 2;`. This program would likely be broken up into the following tokens: `var`, `a`, `=`, `2`, and `;`. Whitespace may or may not be persisted as a token, depending on whether it's meaningful or not.
+1. **Tokenización/Análisis Léxico:** Dividir una cadena de caracteres en trozos significativos (para el lenguaje), llamados *tokens* o símbolos. Por ejemplo, considera el programa `var a = 2`. Este programa puede ser dividio en los siguientes *tokens*: `var`, `a`, `=`, `2` y `;`. Los espacios en blanco puede o no ser considerados como *tokens* dependiendo de si son significativos o no.
 
-    **Note:** The difference between tokenizing and lexing is subtle and academic, but it centers on whether or not these tokens are identified in a *stateless* or *stateful* way. Put simply, if the tokenizer were to invoke stateful parsing rules to figure out whether `a` should be considered a distinct token or just part of another token, *that* would be **lexing**.
+((breaking up a string of characters into meaningful (to the language) chunks, called tokens. For instance, consider the program: `var a = 2;`. This program would likely be broken up into the following tokens: `var`, `a`, `=`, `2`, and `;`. Whitespace may or may not be persisted as a token, depending on whether it's meaningful or not.))
+
+	**Nota:** La diferencia entre tokenización y análisis léxico es sutil y académica, pero se centra en si estos tokens son identificados de una manera *sin estado* o *con estado*. En pocas palabras, si el tokenizador fuese a invocar reglas de análisis con estado para determinar si `a` debe ser considerado como un token o parte de un token, *eso* sería **análisis léxico**.
+
+    ((**Note:** The difference between tokenizing and lexing is subtle and academic, but it centers on whether or not these tokens are identified in a *stateless* or *stateful* way. Put simply, if the tokenizer were to invoke stateful parsing rules to figure out whether `a` should be considered a distinct token or just part of another token, *that* would be **lexing**.))
 
 2. **Parsing:** taking a stream (array) of tokens and turning it into a tree of nested elements, which collectively represent the grammatical structure of the program. This tree is called an "AST" (<b>A</b>bstract <b>S</b>yntax <b>T</b>ree).
 
