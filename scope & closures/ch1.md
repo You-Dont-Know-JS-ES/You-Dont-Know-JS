@@ -29,7 +29,7 @@ En un proceso de compilación tradicional, un trozo de código fuente, su progra
 
 ((breaking up a string of characters into meaningful (to the language) chunks, called tokens. For instance, consider the program: `var a = 2;`. This program would likely be broken up into the following tokens: `var`, `a`, `=`, `2`, and `;`. Whitespace may or may not be persisted as a token, depending on whether it's meaningful or not.))
 
-	**Nota:** La diferencia entre tokenización y análisis léxico es sutil y académica, pero se centra en si estos tokens son identificados de una manera *sin estado* o *con estado*. En pocas palabras, si el tokenizador fuese a invocar reglas de análisis con estado para determinar si `a` debe ser considerado como un token o parte de un token, *eso* sería **análisis léxico**.
+	**Note:** La diferencia entre tokenización y análisis léxico es sutil y académica, pero se centra en si estos tokens son identificados de una manera *sin estado* o *con estado*. En pocas palabras, si el tokenizador fuese a invocar reglas de análisis con estado para determinar si `a` debe ser considerado como un token o parte de un token, *eso* sería **análisis léxico**.
 
     ((**Note:** The difference between tokenizing and lexing is subtle and academic, but it centers on whether or not these tokens are identified in a *stateless* or *stateful* way. Put simply, if the tokenizer were to invoke stateful parsing rules to figure out whether `a` should be considered a distinct token or just part of another token, *that* would be **lexing**.))
 
@@ -49,7 +49,7 @@ En un proceso de compilación tradicional, un trozo de código fuente, su progra
 
     ((So, rather than get mired in details, we'll just handwave and say that there's a way to take our above described AST for `var a = 2;` and turn it into a set of machine instructions to actually *create* a variable called `a` (including reserving memory, etc.), and then store a value into `a`.))
 
-	**Nota:** Los detalles de como el motor maneja los recursos del sistema es mucho más profundo de lo que indagaremos, asi que daremos por sentado que el motor es capaz de crear y almacenar las variables como necesitemos.
+	**Note:** Los detalles de como el motor maneja los recursos del sistema es mucho más profundo de lo que indagaremos, asi que daremos por sentado que el motor es capaz de crear y almacenar las variables como necesitemos.
 
     ((**Note:** The details of how the engine manages system resources are deeper than we will dig, so we'll just take it for granted that the engine is able to create and store variables as needed.))
 
