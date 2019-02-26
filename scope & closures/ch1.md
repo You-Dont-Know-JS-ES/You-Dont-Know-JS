@@ -1,25 +1,15 @@
 # You Don't Know JS: Scope & Closures
 # Capítulo 1: ¿Qué es el Ámbito(Scope)?
 
-Uno de los paradigmas fundamentales de la mayoría de los lenguajes de programación es el de almacenar valores en variables para posteriormente recuperarlos o modificarlos. De hecho, la capacidad de almacenar y extraer estos valores de las variables es lo que le da el *estado* del programa.
-
-((One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values. In fact, the ability to store values and pull values out of variables is what gives a program *state*.))
+Uno de los paradigmas fundamentales de la mayoría de los lenguajes de programación es el de almacenar valores en variables para posteriormente recuperarlos o modificarlos. De hecho, la capacidad de almacenar y extraer estos valores de las variables es lo que da el *estado* del programa.
 
 Sin dicha capacidad un programa aún podría realizar algunas tareas, pero el mismo sería extremadamente limitado y muy poco interesante.
 
-((Without such a concept, a program could perform some tasks, but they would be extremely limited and not terribly interesting.))
+Sin embargo la inclusión de las variables en nuestro programa deriva en las siguientes preguntas interesantes, las cuales vamos a responder: ¿Dónde *viven* estas variables? Es decir, ¿Dónde están almacenadas? Y sobre todo, ¿Cómo nuestro programa las busca cuando las necesita?
 
-Sin embargo el incluir variables en nuestro programa deriva en las siguientes preguntas interesantes, las cuales vamos a responder: ¿Dónde *viven* estas variables? Es decir, ¿Dónde están almacenadas? Y sobre todo, ¿Cómo nuestro programa las busca cuando las necesita? 
-
-((But the inclusion of variables into our program begets the most interesting questions we will now address: where do those variables *live*? In other words, where are they stored? And, most importantly, how does our program find them when it needs them?))
-
-De estas preguntas se llega a la necesidad de tener un conjunto de reglas bien definido para el almacenamiento de variable en algún lugar, y la forma de buscarlas en algún momento posterior. A este set de reglas lo llamaremos el *Ámbito(Scope)*.
-
-((These questions speak to the need for a well-defined set of rules for storing variables in some location, and for finding those variables at a later time. We'll call that set of rules: *Scope*.))
+De estas preguntas se llega a la necesidad de tener un conjunto de reglas bien definido para almacenar las variables en algún lugar, y la forma de buscarlas en algún momento posterior. A este set de reglas lo llamaremos el *Ámbito(Scope)*.
 
 Pero, ¿Dónde y cómo se establecen estas reglas del *Scope*?
-
-((But, where and how do these *Scope* rules get set?))
 
 ## Teoría de Compiladores
 
@@ -31,11 +21,11 @@ Pero, y sin embargo, el motor de JavaScript realiza muchos de los mismos pasos, 
 
 ((But, nevertheless, the JavaScript engine performs many of the same steps, albeit in more sophisticated ways than we may commonly be aware, of any traditional language-compiler.))
 
-En un proceso de compilación tradicional, un trozo de código fuente, su programa, será sometido a 3 típicos pasos *antes* de su ejecución, aquellos que más o menos llamamos "compilación":
+En un proceso de compilación tradicional, un trozo de código fuente, su programa, será sometido a 3 pasos típicos *antes* de su ejecución, aquellos que más o menos llamamos "compilación":
 
 ((In a traditional compiled-language process, a chunk of source code, your program, will undergo typically three steps *before* it is executed, roughly called "compilation":))
 
-1. **Tokenización/Análisis Léxico:** Dividir una cadena de caracteres en trozos significativos (para el lenguaje), llamados *tokens* o símbolos. Por ejemplo, considera el programa `var a = 2`. Este programa puede ser dividio en los siguientes *tokens*: `var`, `a`, `=`, `2` y `;`. Los espacios en blanco puede o no ser considerados como *tokens* dependiendo de si son significativos o no.
+1. **Tokenización/Análisis Léxico:** Dividir una cadena de caracteres en trozos significativos (para el lenguaje), llamados *tokens* o símbolos. Por ejemplo, considera el programa `var a = 2`. Este programa puede ser dividido en los siguientes *tokens*: `var`, `a`, `=`, `2` y `;`. Los espacios en blanco puede o no ser considerados como *tokens* dependiendo de si son significativos o no.
 
 ((breaking up a string of characters into meaningful (to the language) chunks, called tokens. For instance, consider the program: `var a = 2;`. This program would likely be broken up into the following tokens: `var`, `a`, `=`, `2`, and `;`. Whitespace may or may not be persisted as a token, depending on whether it's meaningful or not.))
 
@@ -47,7 +37,7 @@ En un proceso de compilación tradicional, un trozo de código fuente, su progra
 
 ((taking a stream (array) of tokens and turning it into a tree of nested elements, which collectively represent the grammatical structure of the program. This tree is called an "AST" (<b>A</b>bstract <b>S</b>yntax <b>T</b>ree).))
 
-	El árbol para `var a = 2;` puede que inicie con un nodo de alto nivel llamado `VariableDeclaration`, con un nodo hijo llamado `Identifier` (cuyo valor es `a`), y otro nodo hijo llamado `AssignmentExpression` que a su vez tiene un nodo hijo llamado `NumericLiteral` (cuyo valor es `2`).
+	El árbol para `var a = 2;` puede que inicie con un nodo de alto nivel llamado `VariableDeclaration`, el cual tiene un nodo hijo llamado `Identifier` (cuyo valor es `a`), y otro nodo hijo llamado `AssignmentExpression` que a su vez tiene un nodo hijo llamado `NumericLiteral` (cuyo valor es `2`).
 
     ((The tree for `var a = 2;` might start with a top-level node called `VariableDeclaration`, with a child node called `Identifier` (whose value is `a`), and another child called `AssignmentExpression` which itself has a child called `NumericLiteral` (whose value is `2`).))
 
@@ -55,11 +45,11 @@ En un proceso de compilación tradicional, un trozo de código fuente, su progra
 
 ((the process of taking an AST and turning it into executable code. This part varies greatly depending on the language, the platform it's targeting, etc.))
  
-	Entonces, en vez de perdernos en los detalles asumiremons que existe una manera en la que nuestro árbol AST descrito para `var a = 2;` se transforma en un conjunto de instrucciones máquina que realmente *crean* una variable llamada `a` (Incluyendo reservar la memoria, etc.), y luego almacena un valor dentro de `a`.
+	Entonces, en vez de perdernos en los detalles asumiremons que existe una manera en la que nuestro árbol AST descrito para `var a = 2;` se transforma en un conjunto de instrucciones máquina que realmente *crean* una variable llamada `a` (Incluyendo reservar la memoria, etc.) y luego almacena un valor dentro de `a`.
 
     ((So, rather than get mired in details, we'll just handwave and say that there's a way to take our above described AST for `var a = 2;` and turn it into a set of machine instructions to actually *create* a variable called `a` (including reserving memory, etc.), and then store a value into `a`.))
 
-	**Note:** Los detalles de como el motor maneja los recursos del sistema es mucho más profundo de lo que indagaremos, asi que daremos por sentado que el motor es capaz de crear y almacenar las variables como necesitemos.
+	**Nota:** Los detalles de como el motor maneja los recursos del sistema es mucho más profundo de lo que indagaremos, asi que daremos por sentado que el motor es capaz de crear y almacenar las variables como necesitemos.
 
     ((**Note:** The details of how the engine manages system resources are deeper than we will dig, so we'll just take it for granted that the engine is able to create and store variables as needed.))
 
