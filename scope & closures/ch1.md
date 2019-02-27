@@ -13,55 +13,45 @@ Pero, ¿Dónde y cómo se establecen estas reglas del *Scope*?
 
 ## Teoría de Compiladores
 
-Puede que sea evidente, o tal vez sorprendente, dependendiendo de su nivel de interacción con distintos lenguajes de programación, pero a pesar de que JavaScript es colocado en la categoría general de lenguajes "dinámicos" o "interpretados", es en realidad un lenguaje compilado. Bueno, *no* compilado por adelantado, como la mayoría de los lenguajes tradicionalmente compilados, ni produce los resultados de la compilación portátil de los sistemas distribuidos.
-
-((It may be self-evident, or it may be surprising, depending on your level of interaction with various languages, but despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages, it is in fact a compiled language. It is *not* compiled well in advance, as are many traditionally-compiled languages, nor are the results of compilation portable among various distributed systems.))
+Puede que sea evidente, o tal vez sorprendente, dependendiendo de su nivel de interacción con distintos lenguajes de programación, pero a pesar de que JavaScript es colocado en la categoría general de lenguajes "dinámicos" o "interpretados", es en realidad un lenguaje compilado. Bueno, *no* es compilado por adelantado, como la mayoría de los lenguajes tradicionalmente compilados, ni produce los resultados de la compilación portátil de los sistemas distribuidos.
 
 Pero, y sin embargo, el motor de JavaScript realiza muchos de los mismos pasos, aunque de una manera más sofisticada de la que comúnmente estamos conscientes, que cualquier compilador de un lenguaje tradicional.
 
-((But, nevertheless, the JavaScript engine performs many of the same steps, albeit in more sophisticated ways than we may commonly be aware, of any traditional language-compiler.))
-
 En un proceso de compilación tradicional, un trozo de código fuente, su programa, será sometido a 3 pasos típicos *antes* de su ejecución, aquellos que más o menos llamamos "compilación":
-
-((In a traditional compiled-language process, a chunk of source code, your program, will undergo typically three steps *before* it is executed, roughly called "compilation":))
 
 1. **Tokenización/Análisis Léxico:** Dividir una cadena de caracteres en trozos significativos (para el lenguaje), llamados *tokens* o símbolos. Por ejemplo, considera el programa `var a = 2`. Este programa puede ser dividido en los siguientes *tokens*: `var`, `a`, `=`, `2` y `;`. Los espacios en blanco puede o no ser considerados como *tokens* dependiendo de si son significativos o no.
 
-	**Note:** La diferencia entre tokenización y análisis léxico es sutil y académica, pero se centra en si estos tokens son identificados de una manera *sin estado* o *con estado*. En pocas palabras, si el tokenizador fuese a invocar reglas de análisis con estado para determinar si `a` debe ser considerado como un token o parte de un token, *eso* sería **análisis léxico**.
-
-((breaking up a string of characters into meaningful (to the language) chunks, called tokens. For instance, consider the program: `var a = 2;`. This program would likely be broken up into the following tokens: `var`, `a`, `=`, `2`, and `;`. Whitespace may or may not be persisted as a token, depending on whether it's meaningful or not.))
-
-    ((**Note:** The difference between tokenizing and lexing is subtle and academic, but it centers on whether or not these tokens are identified in a *stateless* or *stateful* way. Put simply, if the tokenizer were to invoke stateful parsing rules to figure out whether `a` should be considered a distinct token or just part of another token, *that* would be **lexing**.))
+	**Nota:** La diferencia entre tokenización y análisis léxico es sutil y académica, pero se centra en si estos tokens son identificados de una manera *sin estado* o *con estado*. En pocas palabras, si el tokenizador fuese a invocar reglas de análisis con estado para determinar si `a` debe ser considerado como un token o parte de un token, *eso* sería **análisis léxico**.
 
 2. **Análisis Sintáctico(Parsing):** Tomando un flujo (arreglo) de *tokens* y convertiéndolos en un árbol de elementos anidados, que colectivamente representa la estructura gramatical del programa. Este árbol de llama "AST" (<b>A</b>bstract <b>S</b>yntax <b>T</b>ree).
 
-((taking a stream (array) of tokens and turning it into a tree of nested elements, which collectively represent the grammatical structure of the program. This tree is called an "AST" (<b>A</b>bstract <b>S</b>yntax <b>T</b>ree).))
-
 	El árbol para `var a = 2;` puede que inicie con un nodo de alto nivel llamado `VariableDeclaration`, el cual tiene un nodo hijo llamado `Identifier` (cuyo valor es `a`), y otro nodo hijo llamado `AssignmentExpression` que a su vez tiene un nodo hijo llamado `NumericLiteral` (cuyo valor es `2`).
 
-    ((The tree for `var a = 2;` might start with a top-level node called `VariableDeclaration`, with a child node called `Identifier` (whose value is `a`), and another child called `AssignmentExpression` which itself has a child called `NumericLiteral` (whose value is `2`).))
-
 3. **Generación del código:** El proceso de tomar el árbol AST y transformarlo en código ejecutable. Esta parte varia dependiendo del lenguaje, la plataforma, etc.
-
-((the process of taking an AST and turning it into executable code. This part varies greatly depending on the language, the platform it's targeting, etc.))
  
 	Entonces, en vez de perdernos en los detalles asumiremons que existe una manera en la que nuestro árbol AST descrito para `var a = 2;` se transforma en un conjunto de instrucciones máquina que realmente *crean* una variable llamada `a` (Incluyendo reservar la memoria, etc.) y luego almacena un valor dentro de `a`.
 
-	**Note:** Los detalles de como el motor maneja los recursos del sistema es mucho más profundo de lo que indagaremos, asi que daremos por sentado que el motor es capaz de crear y almacenar las variables como necesitemos.
+	**Nota:** Los detalles de como el motor maneja los recursos del sistema es mucho más profundo de lo que indagaremos, asi que daremos por sentado que el motor es capaz de crear y almacenar las variables como necesitemos.
 
-    ((So, rather than get mired in details, we'll just handwave and say that there's a way to take our above described AST for `var a = 2;` and turn it into a set of machine instructions to actually *create* a variable called `a` (including reserving memory, etc.), and then store a value into `a`.))
+El motor de JavaScript es mucho más complejo que *solo* estos tres pasos, al contrario de la mayoría de los compiladores de lenguajes. En cambio, entre el proceso de análisis sintáctico y generación del código hay ciertos pasos que se emplean para optimizar el rendimiento de la ejecución, incluyendo el colapsar los elementos redundantes, etc.
 
-    ((**Note:** The details of how the engine manages system resources are deeper than we will dig, so we'll just take it for granted that the engine is able to create and store variables as needed.))
+((The JavaScript engine is vastly more complex than *just* those three steps, as are most other language compilers. For instance, in the process of parsing and code-generation, there are certainly steps to optimize the performance of the execution, including collapsing redundant elements, etc.))
 
-The JavaScript engine is vastly more complex than *just* those three steps, as are most other language compilers. For instance, in the process of parsing and code-generation, there are certainly steps to optimize the performance of the execution, including collapsing redundant elements, etc.
+Entonces, estoy pintando solo los grandes rasgos aquí. Pero creo que usted verá pronto porque *estos* detalles que *cubrimos*, incluso en un alto nivel, son relevantes.
 
-So, I'm painting only with broad strokes here. But I think you'll see shortly why *these* details we *do* cover, even at a high level, are relevant.
+((So, I'm painting only with broad strokes here. But I think you'll see shortly why *these* details we *do* cover, even at a high level, are relevant.))
 
-For one thing, JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages.
+Por un momento, los motores de JavaScript no cuentan con el lujo (como otros compiladores de lenguajes) de tener mucho tiempo para optimizar, porque la compilación de JavaScript no sucede en un paso de construcción, como en otros lenguajes.
 
-For JavaScript, the compilation that occurs happens, in many cases, mere microseconds (or less!) before the code is executed. To ensure the fastest performance, JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.) which are well beyond the "scope" of our discussion here.
+((For one thing, JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages.))
 
-Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually *right* before!) it's executed. So, the JS compiler will take the program `var a = 2;` and compile it *first*, and then be ready to execute it, usually right away.
+En JavaScript la compilación ocurre, en muchos casos, pocos microsegundos(o menos!) antes de que el código se ejecute. Para asegurarse de un rendimiento más veloz, los motores de JS usan todo tipo de trucos (como JITs, con compilación perezosa e incluso recompilación en caliente, etc.) que están bastante fuera del "alcance" de nuestra discusión.
+
+((For JavaScript, the compilation that occurs happens, in many cases, mere microseconds (or less!) before the code is executed. To ensure the fastest performance, JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.) which are well beyond the "scope" of our discussion here.))
+
+Digamos, por el bien de la simplicidad, que cualquier trozo de JavaScript que es compilado (usualmente *justo* antes!) es ejecutado. Entonces, el compilador JS va a tomar el programa `var a = 2;` lo compila *primero*, y luego está preparado para ejecutarlo, usualmente justo al instante.
+
+((Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually *right* before!) it's executed. So, the JS compiler will take the program `var a = 2;` and compile it *first*, and then be ready to execute it, usually right away.))
 
 ## Understanding Scope
 
