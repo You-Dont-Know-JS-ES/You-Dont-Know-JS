@@ -140,6 +140,7 @@ El mejor enfoque y el más natural es usar arreglos para valores posicionados nu
 
 #### Functions
 
+El otro subtipo de `object` que usted usará en sus programas javascript es una función:
 The other `object` subtype you'll use all over your JS programs is a function:
 
 ```js
