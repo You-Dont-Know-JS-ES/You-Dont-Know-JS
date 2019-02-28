@@ -1,38 +1,34 @@
 # You Don't Know JS: Up & Going
 # Chapter 2: Into JavaScript
 
-En el capítulo anterior, introduje los bloques básicos de la programación, como las variables, los ciclos, los condicionales y las funciones. Por supuesto, todo el código mostrado fue en Javascript. Pero en este capítulo, nos enfocaremos específicamente en cosas que usted necesita saber acerca de Javascript para iniciarte como desarrollador JS.
+En el capítulo anterior, introduje los bloques básicos de la programación, como las variables, los ciclos, los condicionales y las funciones. Por supuesto, todo el código mostrado fue en Javascript. Pero en este capítulo, nos enfocaremos específicamente en cosas que usted necesita saber acerca de JavaScript para iniciarse como desarrollador JS.
 
-In the previous chapter, I introduced the basic building blocks of programming, such as variables, loops, conditionals, and functions. Of course, all the code shown has been in JavaScript. But in this chapter, we want to focus specifically on things you need to know about JavaScript to get up and going as a JS developer.
+Introduciremos una serie de conceptos en este capítulo que no serán totalmente explorados hasta los libros _YDKS_ siguientes de esta serie. Usted puede pensar en este capítulo como una visión general de los temas que serán cubiertos en detalle en los demás libros de esta serie.
 
-Introduciremos una serie de conceptos en este capítulo que no seran totalmente explorados hasta los libros siguientes de esta serie. Usted puede pensar este capitulo como una vision general de topicos que seran cubiertos en detalle mas adelante.
+Especialmente si usted es nuevo en JavaScript, usted debería pasar un buen tiempo revisando los conceptos y los ejemplos de código múltiples veces. Cualquier buena construcción es creada ladrillo por ladrillo, así que no espere entender todo inmediatamente con la primera lectura.
 
-We will introduce quite a few concepts in this chapter that will not be fully explored until subsequent *YDKJS* books. You can think of this chapter as an overview of the topics covered in detail throughout the rest of this series.
+Su viaje para aprender JavaScript profundamente comienza aquí.
 
-Especially if you're new to JavaScript, you should expect to spend quite a bit of time reviewing the concepts and code examples here multiple times. Any good foundation is laid brick by brick, so don't expect that you'll immediately understand it all the first pass through.
+**Nota:** Como dije en el Capítulo 1, usted debería definitivamente intentar todo este código por su cuenta mientras lee y avanza en este capítulo. Tenca presente que parte del código aquí asume capacidades introducidas en la nueva versión de JavaScript cuando se escribió este capítulo (referidos comúnmente como "ES6" para la 6ta edición de ECMAScript -- el nombre oficial de la especificación JS). Si usted usa un navegador más viejo, anterior a ES6, el código podría no funcionar. Debería usar una actualización reciente de un navegador moderno (como Chrome, Firefox, o IE).
 
-Your journey to deeply learn JavaScript starts here.
+## Valores y Tipos
 
-**Note:** As I said in Chapter 1, you should definitely try all this code yourself as you read and work through this chapter. Be aware that some of the code here assumes capabilities introduced in the newest version of JavaScript at the time of this writing (commonly referred to as "ES6" for the 6th edition of ECMAScript -- the official name of the JS specification). If you happen to be using an older, pre-ES6 browser, the code may not work. A recent update of a modern browser (like Chrome, Firefox, or IE) should be used.
-
-## Values & Types
-
-As we asserted in Chapter 1, JavaScript has typed values, not typed variables. The following built-in types are available:
+Como afirmamos en el Capítulo 1, JavaScript tiene valores tipados, no variables tipadas. Los siguientes tipos incorporados están disponibles:
 
 * `string`
 * `number`
 * `boolean`
-* `null` and `undefined`
+* `null` y `undefined`
 * `object`
-* `symbol` (new to ES6)
+* `symbol` (nuevo en ES6)
 
-JavaScript provides a `typeof` operator that can examine a value and tell you what type it is:
+JavaScript provee un operador `typeof` que puede examinar un valor y decirle de qué tipo es:
 
 ```js
 var a;
 typeof a;				// "undefined"
 
-a = "hello world";
+a = "hola mundo";
 typeof a;				// "string"
 
 a = 42;
@@ -42,7 +38,7 @@ a = true;
 typeof a;				// "boolean"
 
 a = null;
-typeof a;				// "object" -- weird, bug
+typeof a;				// "object" -- raro, un bug
 
 a = undefined;
 typeof a;				// "undefined"
@@ -51,74 +47,74 @@ a = { b: "c" };
 typeof a;				// "object"
 ```
 
-The return value from the `typeof` operator is always one of six (seven as of ES6! - the "symbol" type) string values. That is, `typeof "abc"` returns `"string"`, not `string`.
+El valor de retorno del operador `typeof` siempre será uno de los seis (¡siete desde ES6! - el tipo "symbol") valores en cadena. Esto es, `typeof "abc"` retorna `"string"`, no `string`.
 
-Notice how in this snippet the `a` variable holds every different type of value, and that despite appearances, `typeof a` is not asking for the "type of `a`", but rather for the "type of the value currently in `a`." Only values have types in JavaScript; variables are just simple containers for those values.
+Note como en este código la variable `a` guarda todos los diferentes tipos del valor, y que a pesar de las apariencias, `typeof a` no está pidiendo el "tipo de `a`", sino más bien por el "tipo del valor actualmente en `a`." Solo los valores tienen tipos en JavaScript; las variables son simples contenedores para esos valores.
 
-`typeof null` is an interesting case, because it errantly returns `"object"`, when you'd expect it to return `"null"`.
+`typeof null` es un caso interesante, porque retorna equívocamente `"object"`, cuando se esperaría que retorne `"null"`.
 
-**Warning:** This is a long-standing bug in JS, but one that is likely never going to be fixed. Too much code on the Web relies on the bug and thus fixing it would cause a lot more bugs!
+**Advertencia:** Esto es un bug antiguo en JS, pero es uno que probablemente nunca se arregle. Demasiado código en internet se basa en el bug y por lo tanto ¡arreglarlo causaría muchos mas errores!
 
-Also, note `a = undefined`. We're explicitly setting `a` to the `undefined` value, but that is behaviorally no different from a variable that has no value set yet, like with the `var a;` line at the top of the snippet. A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator.
+También note `a = undefined`. Le estamos estableciendo explícitamente a `a` el valor de `undefined`, pero eso no es comportalmente diferente de una variable que aun no tiene valor establecido, como con la línea `var a;` al principio del código. Una variable puede llegar a este valor "undefined" de varias formas diferentes, incluyendo funciones que no retornan valores y el uso del operador `void`.
 
-### Objects
+### Objetos
 
-The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type. This is perhaps one of the most useful value types in all of JavaScript.
+El tipo `object` se refiere a un valor compuesto en el cual se pueden establecer propiedades (llamadas posiciones) en la cual cada una guarda su propio valor de cualquier tipo. Este es tal vez uno de los tipos de valor más útiles en todo JavaScript.
 
 ```js
 var obj = {
-	a: "hello world",
+	a: "hola mundo",
 	b: 42,
 	c: true
 };
 
-obj.a;		// "hello world"
+obj.a;		// "hola mundo"
 obj.b;		// 42
 obj.c;		// true
 
-obj["a"];	// "hello world"
+obj["a"];	// "hola mundo"
 obj["b"];	// 42
 obj["c"];	// true
 ```
 
-It may be helpful to think of this `obj` value visually:
+Podría ser útil pensar en este valor `obj` visualmente:
 
 <img src="fig4.png">
 
-Properties can either be accessed with *dot notation* (i.e., `obj.a`) or *bracket notation* (i.e., `obj["a"]`). Dot notation is shorter and generally easier to read, and is thus preferred when possible.
+Las propiedades se pueden acceder con la _notación punto_ (ej. `obj.a`) o la _notación corchetes cuadrados_ (ej. `obj["a"]`). La notación punto es más corta y generalmente más fácil de leer, y por lo tanto es preferida cuando sea posible.
 
-Bracket notation is useful if you have a property name that has special characters in it, like `obj["hello world!"]` -- such properties are often referred to as *keys* when accessed via bracket notation. The `[ ]` notation requires either a variable (explained next) or a `string` *literal* (which needs to be wrapped in `" .. "` or `' .. '`).
+La notación corchetes cuadrados es útil si usted tiene un nombre de propiedad que tiene caracteres especiales, como `obj["hello world!"]` -- dichas propiedades son frecuentemente llamadas _llaves_ cuando se acceden con la notación de corchetes cuadrados. La notación `[ ]` requiere ya sea una variable (explicado a continuación) o un _literal_ `string` (el cual necesita ser envuelto en `" .. "` o `' .. '`).
 
-Of course, bracket notation is also useful if you want to access a property/key but the name is stored in another variable, such as:
+Por supuesto, la notación de corchetes cuadrados también es útil si usted quiere acceder a una propiedad/llave pero el nombre está guardado en otra variable, por ejemplo:
 
 ```js
 var obj = {
-	a: "hello world",
+	a: "hola mundo",
 	b: 42
 };
 
 var b = "a";
 
-obj[b];			// "hello world"
+obj[b];			// "hola mundo"
 obj["b"];		// 42
 ```
 
-**Note:** For more information on JavaScript `object`s, see the *this & Object Prototypes* title of this series, specifically Chapter 3.
+**Nota:** Para más información de los `object` de JavaScript , vea el título *Prototipos this y Object* de esta serie de libros, específicamente el Capítulo 3.
 
-There are a couple of other value types that you will commonly interact with in JavaScript programs: *array* and *function*. But rather than being proper built-in types, these should be thought of more like subtypes -- specialized versions of the `object` type.
+Hay otro par de tipos de valor con los que usted interactuará comunmente en programas de JavaScript: *array* y *function*. Pero en vez de ser tipos propios incorporados, estos deberían ser pensados más como subtipos -- versiones especializdas del tipo `object`.
 
 #### Arreglos
 
-Un arreglo es un `object` que almacena valores (De cualquier tipo) en propiedades/llaves nombradas, pero preferiblemente en posiciones indexadas numéricamente. Por ejemplo: 
+Un arreglo es un `object` que almacena valores (de cualquier tipo) en propiedades/llaves nombradas, pero preferiblemente en posiciones indexadas numéricamente. Por ejemplo: 
 
 ```js
 var arr = [
-	"hello world",
+	"hola mundo",
 	42,
 	true
 ];
 
-arr[0];			// "hello world"
+arr[0];			// "hola mundo"
 arr[1];			// 42
 arr[2];			// true
 arr.length;		// 3
@@ -132,9 +128,9 @@ Puede ser de ayuda pensar en `arr` visualmente:
 
 <img src="fig5.png">
 
-Dado que los arreglos son objetos especiales (como `typeof` implica), estos tienen también propiedades, incluyendo la actualización automática de la propiedad `length`.
+Dado que los arreglos son objetos especiales (como implica el `typeof`), estos también tienen propiedades, incluyendo la actualización automática de la propiedad `length`.
 
-Usted puede teóricamente usar un arreglo como un objeto normal con propiedades nombradas por usted, o usted podría usar un `object` y asignarle únicamente propiedades numéricas (`0`, `1`, etc.) de forma similar a un arreglo. De cualquier modo, esto puede ser considerado como un uso inapropiado de los tipos respectivos.
+Teóricamente usted puede usar un arreglo como un objeto normal con propiedades nombradas por usted, o podría usar un `object` y asignarle únicamente propiedades numéricas (`0`, `1`, etc.) de forma similar a un arreglo. De cualquier modo, esto puede ser considerado como un uso inapropiado de los tipos respectivos.
 
 El mejor enfoque y el más natural es usar arreglos para valores posicionados numéricamente y usar `object`s para propiedades con nombre.
 
