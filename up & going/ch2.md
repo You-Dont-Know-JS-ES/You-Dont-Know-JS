@@ -140,8 +140,7 @@ El mejor enfoque y el más natural es usar arreglos para valores posicionados nu
 
 #### Functions
 
-El otro subtipo de `object` que usted usará en sus programas javascript es una función:
-The other `object` subtype you'll use all over your JS programs is a function:
+El otro subtipo de `object` que usted usará en todos sus programas javascript es una función:
 
 ```js
 function foo() {
@@ -155,9 +154,9 @@ typeof foo();		// "number"
 typeof foo.bar;		// "string"
 ```
 
-Again, functions are a subtype of `objects` -- `typeof` returns `"function"`, which implies that a `function` is a main type -- and can thus have properties, but you typically will only use function object properties (like `foo.bar`) in limited cases.
+De nuevo, las funciones son un subtipo de `objects` -- `typeof` devuelve `"function"`, lo cual implica que una `function` es un tipo principal -- y, por lo tanto, puede tener propiedades, pero normalmente usted solo usará las propiedades del objeto función (como `foo.bar`) en casos limitados.
 
-**Note:** For more information on JS values and their types, see the first two chapters of the *Types & Grammar* title of this series.
+**Nota:** Para más información acerca de valores de javascript y sus tipos, consulte los dos primeros capítulos del título *Tipos & Gramática* de esta serie.
 
 ### Built-In Type Methods
 
