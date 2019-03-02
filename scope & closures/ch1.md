@@ -35,27 +35,17 @@ En un proceso de compilación tradicional, un trozo de código fuente, su progra
 
 El motor de JavaScript es mucho más complejo que *solo* estos tres pasos, al contrario de la mayoría de los compiladores de lenguajes. En cambio, entre el proceso de análisis sintáctico y generación del código hay ciertos pasos que se emplean para optimizar el rendimiento de la ejecución, incluyendo el colapsar los elementos redundantes, etc.
 
-((The JavaScript engine is vastly more complex than *just* those three steps, as are most other language compilers. For instance, in the process of parsing and code-generation, there are certainly steps to optimize the performance of the execution, including collapsing redundant elements, etc.))
-
-Entonces, estoy pintando solo los grandes rasgos aquí. Pero creo que usted verá pronto porque *estos* detalles que *cubrimos*, incluso en un alto nivel, son relevantes.
-
-((So, I'm painting only with broad strokes here. But I think you'll see shortly why *these* details we *do* cover, even at a high level, are relevant.))
+Entonces, aquí estoy pintando solo los grandes rasgos. Pero creo que usted verá pronto porque *estos* detalles que *cubrimos*, incluso en un alto nivel, son relevantes.
 
 Por un momento, los motores de JavaScript no cuentan con el lujo (como otros compiladores de lenguajes) de tener mucho tiempo para optimizar, porque la compilación de JavaScript no sucede en un paso de construcción, como en otros lenguajes.
 
-((For one thing, JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages.))
+Para JavaScript, la compilación ocurre, en muchos casos, pocos microsegundos(o menos!) antes de que el código se ejecute. Para asegurarse de un rendimiento más veloz, los motores de JS usan todo tipo de trucos (como JITs, con compilación perezosa e incluso recompilación en caliente, etc.) que están bastante fuera del "alcance" de nuestra discusión.
 
-En JavaScript la compilación ocurre, en muchos casos, pocos microsegundos(o menos!) antes de que el código se ejecute. Para asegurarse de un rendimiento más veloz, los motores de JS usan todo tipo de trucos (como JITs, con compilación perezosa e incluso recompilación en caliente, etc.) que están bastante fuera del "alcance" de nuestra discusión.
+Digamos, por el bien de la simplicidad, que cualquier trozo de JavaScript que es compilado (usualmente *justo* antes!) es ejecutado. Entonces, el compilador JS va a tomar el programa `var a = 2;` lo compila *primero*, y luego está preparado para ejecutarlo, usualmente justo al siguiente instante.
 
-((For JavaScript, the compilation that occurs happens, in many cases, mere microseconds (or less!) before the code is executed. To ensure the fastest performance, JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.) which are well beyond the "scope" of our discussion here.))
+## Entendiendo el Scope
 
-Digamos, por el bien de la simplicidad, que cualquier trozo de JavaScript que es compilado (usualmente *justo* antes!) es ejecutado. Entonces, el compilador JS va a tomar el programa `var a = 2;` lo compila *primero*, y luego está preparado para ejecutarlo, usualmente justo al instante.
-
-((Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually *right* before!) it's executed. So, the JS compiler will take the program `var a = 2;` and compile it *first*, and then be ready to execute it, usually right away.))
-
-## Understanding Scope
-
-The way we will approach learning about scope is to think of the process in terms of a conversation. But, *who* is having the conversation?
+La manera en la que abordaremos el aprendizaje sobre el *scope* será pensando sus procesos en términos de una conversación. Pero, ¿*Quién* está teniendo esta conversación?
 
 ### The Cast
 
