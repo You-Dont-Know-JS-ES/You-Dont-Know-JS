@@ -47,7 +47,7 @@ Digamos, por el bien de la simplicidad, que cualquier trozo de JavaScript que es
 
 La manera en la que abordaremos el aprendizaje sobre el *scope* será pensando sus procesos en términos de una conversación. Pero, ¿*Quién* está teniendo esta conversación?
 
-### The Cast
+### El elenco
 
 Let's meet the cast of characters that interact to process the program `var a = 2;`, so we understand their conversations that we'll listen in on shortly:
 
