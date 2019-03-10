@@ -155,6 +155,7 @@ De nuevo, las funciones son un subtipo de `objects` -- `typeof` devuelve `"funct
 **Nota:** Para más información acerca de valores de javascript y sus tipos, consulte los dos primeros capítulos del título *Tipos & Gramática* de esta serie.
 
 ### Built-In Type Methods
+### Métodos de tipo incorporado
 
 The built-in types and subtypes we've just discussed have behaviors exposed as properties and methods that are quite powerful and useful.
 
