@@ -134,7 +134,7 @@ Teóricamente usted puede usar un arreglo como un objeto normal con propiedades 
 
 El mejor enfoque y el más natural es usar arreglos para valores posicionados numéricamente y usar `object`s para propiedades con nombre.
 
-#### Functions
+#### Funciones
 
 El otro subtipo de `object` que usted usará en todos sus programas javascript es una función:
 
@@ -154,12 +154,11 @@ De nuevo, las funciones son un subtipo de `objects` -- `typeof` devuelve `"funct
 
 **Nota:** Para más información acerca de valores de javascript y sus tipos, consulte los dos primeros capítulos del título *Tipos & Gramática* de esta serie.
 
-### Built-In Type Methods
 ### Métodos de tipo incorporado
 
-The built-in types and subtypes we've just discussed have behaviors exposed as properties and methods that are quite powerful and useful.
+Los tipos y subtipos incorporados que acabamos de discutir tienen ciertos comportamientos expuestos como propiedades y métodos que son muy poderosos y útiles.
 
-For example:
+Por ejemplo:
 
 ```js
 var a = "hello world";
@@ -170,15 +169,15 @@ a.toUpperCase();		// "HELLO WORLD"
 b.toFixed(4);			// "3.1416"
 ```
 
-The "how" behind being able to call `a.toUpperCase()` is more complicated than just that method existing on the value.
+El "cómo" detrás de poder llamar a `a.toUpperCase()` es más complicado de lo que parece, ya que el método no simplemente existe en el valor.
 
-Briefly, there is a `String` (capital `S`) object wrapper form, typically called a "native," that pairs with the primitive `string` type; it's this object wrapper that defines the `toUpperCase()` method on its prototype.
+Brevemente, existe un objeto que hace las veces de envoltura de tipo `String` (`S` en mayúscula), llamado comúnmente como "nativo", que se empareja con el tipo primitivo `string`; es este objeto envoltura el que define el método `toUpperCase()` en su prototipo.
 
-When you use a primitive value like `"hello world"` as an `object` by referencing a property or method (e.g., `a.toUpperCase()` in the previous snippet), JS automatically "boxes" the value to its object wrapper counterpart (hidden under the covers).
+Cuando usted utiliza un valor primitivo (como `"hello world")` como un `objeto` que hace referencia a una propiedad o a un método (por ejemplo `a.toUpperCase()` en el fragmento anterior), Javascript automáticamente "empaqueta" dicho valor primitivo en su objeto envoltorio contraparte (escondido bajo las cubiertas).
 
-A `string` value can be wrapped by a `String` object, a `number` can be wrapped by a `Number` object, and a `boolean` can be wrapped by a `Boolean` object. For the most part, you don't need to worry about or directly use these object wrapper forms of the values -- prefer the primitive value forms in practically all cases and JavaScript will take care of the rest for you.
+Un valor `string` puede ser envuelto por un objeto `String`, un `number` puede ser envuelto por un objeto `Number` y un `boolean` puede ser envuelto por un objeto `Boolean`. La mayor parte del tiempo usted no necesitará preocuparse por estos objetos envoltura o no tendrá que usarlos directamente -- Prefiera los valores primitivos en prácticamente todos los casos y Javascript se encargará del resto por usted.
 
-**Note:** For more information on JS natives and "boxing," see Chapter 3 of the *Types & Grammar* title of this series. To better understand the prototype of an object, see Chapter 5 of the *this & Object Prototypes* title of this series.
+**Nota:** Para más información de tipos nativos de JavaScript y empaquetado, consulte el capítulo 3 del título *Tipos & Gramática* de esta serie. Para un mejor entendimiento del prototipo de un objeto, consulte el título *this & Prototipos de objetos* del capítulo 5 de esta serie.
 
 ### Comparing Values
 
