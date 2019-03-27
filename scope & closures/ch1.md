@@ -1,5 +1,5 @@
 # You Don't Know JS: Scope & Closures
-# Capítulo 1: ¿Qué es el Ámbito(Scope)?
+# Capítulo 1: ¿Qué es el Alcance?
 
 Uno de los paradigmas fundamentales de la mayoría de los lenguajes de programación es el de almacenar valores en variables para posteriormente recuperarlos o modificarlos. De hecho, la capacidad de almacenar y extraer estos valores de las variables es lo que da el *estado* del programa.
 
@@ -7,9 +7,9 @@ Sin dicha capacidad un programa aún podría realizar algunas tareas, pero el mi
 
 Sin embargo la inclusión de las variables en nuestro programa deriva en las siguientes preguntas interesantes, las cuales vamos a responder: ¿Dónde *viven* estas variables? Es decir, ¿Dónde están almacenadas? Y sobre todo, ¿Cómo nuestro programa las busca cuando las necesita?
 
-De estas preguntas se llega a la necesidad de tener un conjunto de reglas bien definido para almacenar las variables en algún lugar, y la forma de buscarlas en algún momento posterior. A este set de reglas lo llamaremos el *Ámbito(Scope)*.
+De estas preguntas se llega a la necesidad de tener un conjunto de reglas bien definido para almacenar las variables en algún lugar, y la forma de buscarlas en algún momento posterior. A este set de reglas las llamaremos el *Alcance*.
 
-Pero, ¿Dónde y cómo se establecen estas reglas del *Scope*?
+Pero, ¿Dónde y cómo se establecen estas reglas del *Alcance*?
 
 ## Teoría de Compiladores
 
@@ -43,27 +43,39 @@ Para JavaScript, la compilación ocurre, en muchos casos, pocos microsegundos(o 
 
 Digamos, por el bien de la simplicidad, que cualquier trozo de JavaScript que es compilado (usualmente *justo* antes!) es ejecutado. Entonces, el compilador JS va a tomar el programa `var a = 2;` lo compila *primero*, y luego está preparado para ejecutarlo, usualmente justo al siguiente instante.
 
-## Entendiendo el Scope
+## Entendiendo el Alcance
 
-La manera en la que abordaremos el aprendizaje sobre el *scope* será pensando sus procesos en términos de una conversación. Pero, ¿*Quién* está teniendo esta conversación?
+La manera en la que abordaremos el aprendizaje sobre el *alcance* será pensando sus procesos en términos de una conversación. Pero, ¿*Quién* está teniendo esta conversación?
 
 ### El elenco
 
-Let's meet the cast of characters that interact to process the program `var a = 2;`, so we understand their conversations that we'll listen in on shortly:
+Conozcamos al conjunto de personajes que interactúan para procesar el programa `var a = 2;`, así podemos entender sus conversaciones, las cuales escucharemos en un momento:
 
-1. *Engine*: responsible for start-to-finish compilation and execution of our JavaScript program.
+((Let's meet the cast of characters that interact to process the program `var a = 2;`, so we understand their conversations that we'll listen in on shortly:))
 
-2. *Compiler*: one of *Engine*'s friends; handles all the dirty work of parsing and code-generation (see previous section).
+1. *Motor*: Responable de la compilación de comienzo a final y la ejecución de nuestro programa en JavaScript.
+(*Engine*: responsible for start-to-finish compilation and execution of our JavaScript program.)
 
-3. *Scope*: another friend of *Engine*; collects and maintains a look-up list of all the declared identifiers (variables), and enforces a strict set of rules as to how these are accessible to currently executing code.
+2. *Compilador*: Uno de los amigos del *Motr*; Maneja todo el trabajo sucio del análisis sintáctico y generación de código (véase la sección anterior).
+(*Compiler*: one of *Engine*'s friends; handles all the dirty work of parsing and code-generation (see previous section).)
 
-For you to *fully understand* how JavaScript works, you need to begin to *think* like *Engine* (and friends) think, ask the questions they ask, and answer those questions the same.
+3. *Alcance*: Otro amigo del *Motor*; recolecta y mantiene una lista de búsqueda de todos los identificadores (variables) definidos, y aplica un set de reglas estricto de como se accede a estos por el código en ejecución.
 
-### Back & Forth
+(*Scope*: another friend of *Engine*; collects and maintains a look-up list of all the declared identifiers (variables), and enforces a strict set of rules as to how these are accessible to currently executing code.)
 
-When you see the program `var a = 2;`, you most likely think of that as one statement. But that's not how our new friend *Engine* sees it. In fact, *Engine* sees two distinct statements, one which *Compiler* will handle during compilation, and one which *Engine* will handle during execution.
+Para que usted *comprenda completamente* como funciona JavaScript, usted necesita empezar a pensar como el *Motor* (y compañía) piensa, preguntar las preguntas que hacen y responderlas de la misma manera. 
 
-So, let's break down how *Engine* and friends will approach the program `var a = 2;`.
+(For you to *fully understand* how JavaScript works, you need to begin to *think* like *Engine* (and friends) think, ask the questions they ask, and answer those questions the same.)
+
+### Ida Y Vuelo (Back & Forth)
+
+Cuando usted ve el programa `var a = 2;`, usted muy probablemente lo pensará como una sola instrucción. Sin embargo asi no es como nuestro nuevo amigo *Motor* lo ve. De hecho, *Motor* ve 2 instrucciones distintas, una de la cual *Compilador* se encargará en tiempo de compilación y otra que *Motor* va a manejar durante tiempo de ejecución.
+
+(When you see the program `var a = 2;`, you most likely think of that as one statement. But that's not how our new friend *Engine* sees it. In fact, *Engine* sees two distinct statements, one which *Compiler* will handle during compilation, and one which *Engine* will handle during execution.)
+
+Entonces, desconpongamos como *Motor* y compañía se aproximan al programa `var a = 2;`.
+
+(So, let's break down how *Engine* and friends will approach the program `var a = 2;`.)
 
 The first thing *Compiler* will do with this program is perform lexing to break it down into tokens, which it will then parse into a tree. But when *Compiler* gets to code-generation, it will treat this program somewhat differently than perhaps assumed.
 
