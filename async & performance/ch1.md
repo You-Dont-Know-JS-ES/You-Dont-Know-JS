@@ -1,22 +1,22 @@
 # You Don't Know JS: Async & Performance
 
-# Cápitulo 1: Asincronía: Ahora y Después
+# Capítulo 1: Asincronía: Ahora y Después
 
-One of the most important and yet often misunderstood parts of programming in a language like JavaScript is how to express and manipulate program behavior spread out over a period of time.
+Una de las partes más importantes y a menudo malinterpretada de la programación en lenguajes como JavaScript es cómo expresar y manipular el comportamiento del programa durante un período de tiempo.
 
-This is not just about what happens from the beginning of a `for` loop to the end of a `for` loop, which of course takes *some time* (microseconds to milliseconds) to complete. It's about what happens when part of your program runs *now*, and another part of your program runs *later* -- there's a gap between *now* and *later* where your program isn't actively executing.
+No se trata sólamente de lo que sucede desde el inicio de un ciclo `for` hasta su final, lo cual claramente toma *algún tiempo* (microsegundos a milisegundos) para llevarse a cabo. Se trata de lo que sucede cuando una parte de su programa se ejecuta *ahora*, y otra parte *después* -- Hay una brecha entre *ahora* y *después* donde su programa no se está ejecutando de manera activa.
 
-Practically all nontrivial programs ever written (especially in JS) have in some way or another had to manage this gap, whether that be in waiting for user input, requesting data from a database or file system, sending data across the network and waiting for a response, or performing a repeated task at a fixed interval of time (like animation). In all these various ways, your program has to manage state across the gap in time. As they famously say in London (of the chasm between the subway door and the platform): "mind the gap."
+Practicamente todos los programas no triviales que se han escrito (especialmente en Js) han tenido que, de una manera u otra, gestionar esta brecha, ya sea esperando entradas del usuario, solicitando información a una base de datos o a un sistema de archivos, enviando datos a través de una red y esperando por una respuesta, o realizando una tarea repetitiva en un intervalo fijo de tiempo (como en una animación). En todos esos casos, su programa tendrá que gestionar el estado durante la brecha oportunamente. Como se dice popularmente en Londrés (del abismo entre la puerta del metro y la plataforma): "cuidado con la brecha".
 
-In fact, the relationship between the *now* and *later* parts of your program is at the heart of asynchronous programming.
+De hecho, la relación entre las partes *ahora* y *después* de su programa está en el corazón de la programación asíncrona.
 
-Asynchronous programming has been around since the beginning of JS, for sure. But most JS developers have never really carefully considered exactly how and why it crops up in their programs, or explored various *other* ways to handle it. The *good enough* approach has always been the humble callback function. Many to this day will insist that callbacks are more than sufficient.
+La programación asíncrona ha existido desde los comienzos de Js, sin lugar a duda. Pero la mayoría de los desarrolladores Js nunca han considerado seriamente cómo y por qué ésta surge en sus programas, o no han explorado *otras* formas de gestionarla. La solución *suficientemente buena* siempre ha sido la humilde función de retorno de llamada (callback). Muchos, hasta el día de hoy, insistirán en que los callbacks son más que suficiente.
 
-But as JS continues to grow in both scope and complexity, to meet the ever-widening demands of a first-class programming language that runs in browsers and servers and every conceivable device in between, the pains by which we manage asynchrony are becoming increasingly crippling, and they cry out for approaches that are both more capable and more reason-able.
+Pero a medida que Js va creciendo tanto en alcance como en complejidad, satisfacer las demandas cada vez más grandes de un lenguaje de programación de primera clase que se ejecuta en navegadores y servidores y en cada dispositivo concebible en medio, los dolores por los cuales gestionamos la asincronía se vuelven cada vez más intensos, y claman por soluciones que sean más competentes y razonables.
 
-While this all may seem rather abstract right now, I assure you we'll tackle it more completely and concretely as we go on through this book. We'll explore a variety of emerging techniques for async JavaScript programming over the next several chapters.
+Si bien todo esto puede parecer muy abstracto en este momento, le aseguro que lo abordaremos de manera más completa y concreta a medida que avancemos en este libro. Exploraremos una variedad de técnicas emergentes para la programación asíncrona en Js en los siguientes capítulos.
 
-But before we can get there, we're going to have to understand much more deeply what asynchrony is and how it operates in JS.
+Pero antes de llegar allá, tenemos que entender mucho mejor qué es asincronía y cómo opera en Js.
 
 ## A Program in Chunks
 
