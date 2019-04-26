@@ -1,5 +1,6 @@
 # You Don't Know JS: Async & Performance
-# Chapter 1: Asynchrony: Now & Later
+
+# Cápitulo 1: Asincronía: Ahora y Después
 
 One of the most important and yet often misunderstood parts of programming in a language like JavaScript is how to express and manipulate program behavior spread out over a period of time.
 
