@@ -1,22 +1,21 @@
 # You Don't Know JS: Async & Performance
-
 # Capítulo 1: Asincronía: Ahora y Después
 
-Una de las partes más importantes y a menudo malinterpretada de la programación en lenguajes como JavaScript es cómo expresar y manipular el comportamiento del programa durante un período de tiempo.
+Una de las partes más importantes y a menudo malinterpretada de la programación en lenguajes como JS (JavaScript) es cómo expresar y manipular el comportamiento del programa durante un período de tiempo.
 
 No se trata sólamente de lo que sucede desde el inicio de un ciclo `for` hasta su final, lo cual claramente toma *algún tiempo* (microsegundos a milisegundos) para llevarse a cabo. Se trata de lo que sucede cuando una parte de su programa se ejecuta *ahora*, y otra parte *después* -- Hay una brecha entre *ahora* y *después* donde su programa no se está ejecutando de manera activa.
 
-Practicamente todos los programas no triviales que se han escrito (especialmente en Js) han tenido que, de una manera u otra, gestionar esta brecha, ya sea esperando entradas del usuario, solicitando información a una base de datos o a un sistema de archivos, enviando datos a través de una red y esperando por una respuesta, o realizando una tarea repetitiva en un intervalo fijo de tiempo (como en una animación). En todos esos casos, su programa tendrá que gestionar el estado durante la brecha oportunamente. Como se dice popularmente en Londrés (del abismo entre la puerta del metro y la plataforma): "cuidado con la brecha".
+Prácticamente todos los programas no triviales que se han escrito (especialmente en JS) han tenido que, de una manera u otra, gestionar esta brecha, ya sea esperando entradas del usuario, solicitando información a una base de datos o a un sistema de archivos, enviando datos a través de una red y esperando por una respuesta, o realizando una tarea repetitiva en un intervalo fijo de tiempo (como en una animación). En todos esos casos, su programa tendrá que gestionar el estado durante la brecha oportunamente. Como se dice popularmente en Londrés (del abismo entre la puerta del metro y la plataforma): "cuidado con la brecha".
 
 De hecho, la relación entre las partes *ahora* y *después* de su programa está en el corazón de la programación asíncrona.
 
-La programación asíncrona ha existido desde los comienzos de Js, sin lugar a duda. Pero la mayoría de los desarrolladores Js nunca han considerado seriamente cómo y por qué ésta surge en sus programas, o no han explorado *otras* formas de gestionarla. La solución *suficientemente buena* siempre ha sido la humilde función de retorno de llamada (callback). Muchos, hasta el día de hoy, insistirán en que los callbacks son más que suficiente.
+La programación asíncrona ha existido desde los comienzos de JS, sin lugar a duda. Pero la mayoría de los desarrolladores JS nunca han considerado seriamente cómo y por qué ésta surge en sus programas, o no han explorado *otras* formas de gestionarla. La solución *suficientemente buena* siempre ha sido la humilde función de retorno de llamada (callback). Muchos, hasta el día de hoy, insistirán en que los callbacks son más que suficiente.
 
-Pero a medida que Js va creciendo tanto en alcance como en complejidad, satisfacer las demandas cada vez más grandes de un lenguaje de programación de primera clase que se ejecuta en navegadores y servidores y en cada dispositivo concebible en medio, los dolores por los cuales gestionamos la asincronía se vuelven cada vez más intensos, y claman por soluciones que sean más competentes y razonables.
+Pero a medida que JS va creciendo tanto en alcance como en complejidad, satisfacer las demandas cada vez más grandes de un lenguaje de programación de primera clase que se ejecuta en navegadores y servidores y en cada dispositivo concebible en medio, los dolores por los cuales gestionamos la asincronía se vuelven cada vez más intensos, y claman por soluciones que sean más competentes y razonables.
 
-Si bien todo esto puede parecer muy abstracto en este momento, le aseguro que lo abordaremos de manera más completa y concreta a medida que avancemos en este libro. Exploraremos una variedad de técnicas emergentes para la programación asíncrona en Js en los siguientes capítulos.
+Si bien todo esto puede parecer muy abstracto en este momento, le aseguro que lo abordaremos de manera más completa y concreta a medida que avancemos en este libro. Exploraremos una variedad de técnicas emergentes para la programación asíncrona en JS en los siguientes capítulos.
 
-Pero antes de llegar allá, tenemos que entender mucho mejor qué es asincronía y cómo opera en Js.
+Pero antes de llegar allá, tenemos que entender mucho mejor qué es asincronía y cómo opera en JS.
 
 ## A Program in Chunks
 
