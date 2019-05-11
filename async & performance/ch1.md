@@ -17,112 +17,112 @@ While this all may seem rather abstract right now, I assure you we'll tackle it 
 
 But before we can get there, we're going to have to understand much more deeply what asynchrony is and how it operates in JS.
 
-## A Program in Chunks
+## Un Programa en Pedazos
 
-You may write your JS program in one *.js* file, but your program is almost certainly comprised of several chunks, only one of which is going to execute *now*, and the rest of which will execute *later*. The most common unit of *chunk* is the `function`.
+Usted podría escribir su programa JS en un solo archivo *.js*, pero casi siempre su programa está compuesto de varios pedazos, solo uno de los cuales se va a ejecutar *ahora*, y el resto se ejecutarán *después*. La unidad más común de un *pedazo* es el `function`.
 
-The problem most developers new to JS seem to have is that *later* doesn't happen strictly and immediately after *now*. In other words, tasks that cannot complete *now* are, by definition, going to complete asynchronously, and thus we will not have blocking behavior as you might intuitively expect or want.
+El problema que parecen tener la mayoría de los nuevos desarrolladores en JS es que *después* no sucede inmediatamente después del *ahora*. En otras palabras, las tareas que no pueden completarse *ahora* son, por definición, completadas asíncronamente, y por lo tanto no tendremos comportamiento de bloqueo como usted podría esperar o querer intuitivamente.
 
-Consider:
+Considere:
 
 ```js
-// ajax(..) is some arbitrary Ajax function given by a library
+// ajax(..) es una función Ajax arbitraria dada por una librería
 var data = ajax( "http://some.url.1" );
 
 console.log( data );
-// Oops! `data` generally won't have the Ajax results
+// Ups! generalmente `data` no tendrá los resultados del Ajax
 ```
 
-You're probably aware that standard Ajax requests don't complete synchronously, which means the `ajax(..)` function does not yet have any value to return back to be assigned to `data` variable. If `ajax(..)` *could* block until the response came back, then the `data = ..` assignment would work fine.
+Usted probablemente sabe que las peticiones estándar de Ajax no se completan síncronamente, lo que significa que la función `ajax(..)` aun no tiene ningún valor de retorno para ser asignado a la variable ´data´. Si `ajax(..)` *pudiera* bloquear hasta que la respuesta se retornara, entonces la asignación `data = ..` funcionaría bien.
 
-But that's not how we do Ajax. We make an asynchronous Ajax request *now*, and we won't get the results back until *later*.
+Pero así no es como hacemos Ajax. Hacemos una petición asíncrona Ajax *ahora*, y no tendremos los resultados de vuelta hasta *después*.
 
-The simplest (but definitely not only, or necessarily even best!) way of "waiting" from *now* until *later* is to use a function, commonly called a callback function:
+La forma más simple (pero definitivamente no la única, o ¡necesariamente la mejor!) de "esperar" desde *ahora* hasta *después* es usar una función, comúnmente llamada una función de llamada de retorno:
 
 ```js
-// ajax(..) is some arbitrary Ajax function given by a library
+// ajax(..) es una función Ajax arbitraria dada por una librería
 ajax( "http://some.url.1", function myCallbackFunction(data){
 
-	console.log( data ); // Yay, I gots me some `data`!
+	console.log( data ); // Genial, ¡tengo algo en `data`!
 
 } );
 ```
 
-**Warning:** You may have heard that it's possible to make synchronous Ajax requests. While that's technically true, you should never, ever do it, under any circumstances, because it locks the browser UI (buttons, menus, scrolling, etc.) and prevents any user interaction whatsoever. This is a terrible idea, and should always be avoided.
+**Precaución:** Usted puede haber escuchado que es posible hacer peticiones Ajax síncronas. Aunque eso es técnicamente cierto, usted nunca jamás debe hacerlo, bajo ninguna circunstancia, porque bloquea la interfaz de usuario del navegador (botones, menús, desplazamiento, etc.) y además previene cualquier interacción de usuario. Es una idea terrible, y siempre debería ser evitada.
 
-Before you protest in disagreement, no, your desire to avoid the mess of callbacks is *not* justification for blocking, synchronous Ajax.
+Antes de que proteste en desacuerdo, no, su deseo de evitar el desorden de llamadas de retorno *no* es justificación para usar Ajax síncrono de bloqueo.
 
-For example, consider this code:
+Por ejemplo, considere este código:
 
 ```js
-function now() {
+function ahora() {
 	return 21;
 }
 
-function later() {
-	answer = answer * 2;
-	console.log( "Meaning of life:", answer );
+function despues() {
+	respuesta = respuesta * 2;
+	console.log( "El significado de la vida:", respuesta );
 }
 
-var answer = now();
+var respuesta = ahora();
 
-setTimeout( later, 1000 ); // Meaning of life: 42
+setTimeout( despues, 1000 ); // El significado de la vida: 42
 ```
 
-There are two chunks to this program: the stuff that will run *now*, and the stuff that will run *later*. It should be fairly obvious what those two chunks are, but let's be super explicit:
+Hay dos pedazos de código en este programa: lo que correrá *ahora*, y lo que correrá *después*. Debería ser algo obvio cuáles son esos pedazos, pero seamos super explícitos: 
 
-Now:
+Ahora:
 ```js
-function now() {
+function ahora() {
 	return 21;
 }
 
-function later() { .. }
+function despues() { .. }
 
-var answer = now();
+var answer = ahora();
 
-setTimeout( later, 1000 );
+setTimeout( despues, 1000 );
 ```
 
-Later:
+Después:
 ```js
-answer = answer * 2;
-console.log( "Meaning of life:", answer );
+respuesta = respuesta * 2;
+console.log( "El significado de la vida:", respuesta );
 ```
 
-The *now* chunk runs right away, as soon as you execute your program. But `setTimeout(..)` also sets up an event (a timeout) to happen *later*, so the contents of the `later()` function will be executed at a later time (1,000 milliseconds from now).
+El pedazo *ahora* corre de inmediato, tan pronto como usted ejecute el programa. Pero `setTimeout(..)` también crea un evento (una espera) que sucede *después*, así que los contenidos de la función `despues()` se ejecutarán en otro momento (1000 milisegundos después).
 
-Any time you wrap a portion of code into a `function` and specify that it should be executed in response to some event (timer, mouse click, Ajax response, etc.), you are creating a *later* chunk of your code, and thus introducing asynchrony to your program.
+Todas las veces que usted envuelve una porción de código dentro de un `function` y especifica que debería ser ejecutado en respuesta a algún evento (temporizador, click de mouse, respuesta Ajax, etc.), usted está creando un pedazo de código para *después*, y por lo tanto introduce asincronía en su programa.
 
-### Async Console
+### Consola Asíncrona
 
-There is no specification or set of requirements around how the `console.*` methods work -- they are not officially part of JavaScript, but are instead added to JS by the *hosting environment* (see the *Types & Grammar* title of this book series).
+No hay especificación o conjunto de requerimientos alrededor de cómo funcionan los métodos de `console.*` -- no son parte de JavaScript oficialmente, en vez de esto son agregados a JS por el *ambiente de alojamiento* (vea el título *Tipos y Gramática* de esta serie de libros).
 
-So, different browsers and JS environments do as they please, which can sometimes lead to confusing behavior.
+Así que diferentes navegadores y ambientes de JS hacen como les parezca, lo que algunas veces lleva a un comportamiento confuso.
 
-In particular, there are some browsers and some conditions that `console.log(..)` does not actually immediately output what it's given. The main reason this may happen is because I/O is a very slow and blocking part of many programs (not just JS). So, it may perform better (from the page/UI perspective) for a browser to handle `console` I/O asynchronously in the background, without you perhaps even knowing that occurred.
+En particular, hay algunos navegadores y algunas condiciones en los que `console.log(..)` no imprime inmediatamente lo que le es dado. La razón principal de que esto podría pasar es porque la entrada/salida es una parte muy lenta y que bloquea en muchos programas (no solo en JS). Así que podría desempeñarse mejor (desde la perspectiva de página/interfaz de usuario) para un navegador que maneje `console` I/O asíncronamente en segundo plano, tal vez sin usted siquiera saber que esto ocurrió.
 
-A not terribly common, but possible, scenario where this could be *observable* (not from code itself but from the outside):
+Un escenario no muy común, pero posible, en el que esto podría ser *observable* (no desde el código en sí pero desde afuera):
 
 ```js
 var a = {
 	index: 1
 };
 
-// later
+// más tarde
 console.log( a ); // ??
 
-// even later
+// aun más tarde
 a.index++;
 ```
 
-We'd normally expect to see the `a` object be snapshotted at the exact moment of the `console.log(..)` statement, printing something like `{ index: 1 }`, such that in the next statement when `a.index++` happens, it's modifying something different than, or just strictly after, the output of `a`.
+Normalmente esperaríamos ver que el objeto `a` sea fotografiado en el momento exacto de la declaración `console.log(..)`, imprimiendo algo como `{ index: 1 }`, de forma que en la siguiente declaración cuando ocurre `a.index++`, se está modificando algo diferente que, o estrictamente después de, la salida de `a`.
 
-Most of the time, the preceding code will probably produce an object representation in your developer tools' console that's what you'd expect. But it's possible this same code could run in a situation where the browser felt it needed to defer the console I/O to the background, in which case it's *possible* that by the time the object is represented in the browser console, the `a.index++` has already happened, and it shows `{ index: 2 }`.
+La mayor parte del tiempo, el anterior código probablemente producirá una representación del objeto en la consola de su herramienta de desarrollo que es lo que usted esperaría. Pero es posible que este mismo código pueda correr en una situación en la que el navegador sienta que necesitaba diferir la entrada/salida de la consola a segundo plano, en cuyo caso es *posible* que para el momento en que el objeto es representado en la consola del navegador, el `a.index++` ya ha sucedido, y muestre `{ index: 2 }`.
 
-It's a moving target under what conditions exactly `console` I/O will be deferred, or even whether it will be observable. Just be aware of this possible asynchronicity in I/O in case you ever run into issues in debugging where objects have been modified *after* a `console.log(..)` statement and yet you see the unexpected modifications show up.
+Es un blanco en movimiento saber bajo qué condiciones exactamente la entrada/salida de la `console` será diferida, o incluso si esto será observable. Simplemente sepa de esta posible asincronía en la entrada/salida en caso de que alguna vez tenga problemas depurando cuando los objetos han sido modificados *después* de una declaración `console.log(..)` y aun así usted vea que se muestran las modificaciones inesperadas.
 
-**Note:** If you run into this rare scenario, the best option is to use breakpoints in your JS debugger instead of relying on `console` output. The next best option would be to force a "snapshot" of the object in question by serializing it to a `string`, like with `JSON.stringify(..)`.
+**Nota:** Si usted se encuentra este raro escenario, la mejor opción es usar puntos de interrupción en su depurador de JS en vez de depender de la salida de la `console`. La siguiente mejor opción sería forzar una "fotografía" del objeto en cuestión serializándolo en un `string`, como con `JSON.stringify(..)`.
 
 ## Event Loop
 
