@@ -124,62 +124,62 @@ It's a moving target under what conditions exactly `console` I/O will be deferre
 
 **Note:** If you run into this rare scenario, the best option is to use breakpoints in your JS debugger instead of relying on `console` output. The next best option would be to force a "snapshot" of the object in question by serializing it to a `string`, like with `JSON.stringify(..)`.
 
-## Event Loop
+## Ciclo de Eventos
 
-Let's make a (perhaps shocking) claim: despite clearly allowing asynchronous JS code (like the timeout we just looked at), up until recently (ES6), JavaScript itself has actually never had any direct notion of asynchrony built into it.
+Vamos a hacer una afirmación (tal vez aterradora): a pesar de permitir código JS asíncrono claramente (como el temporizador que acabamos de ver), hasta hace poco (ES6), en realidad JavaScript nunca había tenido ninguna noción directa de asincronía integrada en sí mismo.
 
-**What!?** That seems like a crazy claim, right? In fact, it's quite true. The JS engine itself has never done anything more than execute a single chunk of your program at any given moment, when asked to.
+**¿¡Qué!?** Eso parece una afirmación alocada, ¿verdad? De hecho, es bastante acertada. El motor de JS en sí nunca ha hecho nada a parte de ejecutar un solo pedazo de su programa en un momento dado, cuando se le pide.
 
-"Asked to." By whom? That's the important part!
+"Cuando se le pide." ¿Por quién? ¡Esa es la parte importante!
 
-The JS engine doesn't run in isolation. It runs inside a *hosting environment*, which is for most developers the typical web browser. Over the last several years (but by no means exclusively), JS has expanded beyond the browser into other environments, such as servers, via things like Node.js. In fact, JavaScript gets embedded into all kinds of devices these days, from robots to lightbulbs.
+El motor de JS no se ejecuta en aislamiento. Se ejecuta dentro del *ambiente de alojamiento*, el cual es para la mayoría de desarrolladores el navegador de internet. En los últimos años (pero no exclusivamente), JS se ha expandido más allá del navegador hacia otros ambientes, tales como servidores, por medio de cosas como Node.js. De hecho, hoy en día JavaScript se integra dentro de todo tipo de dispositivos, desde robots hasta bombillas.
 
-But the one common "thread" (that's a not-so-subtle asynchronous joke, for what it's worth) of all these environments is that they have a mechanism in them that handles executing multiple chunks of your program *over time*, at each moment invoking the JS engine, called the "event loop."
+Pero el "hilo" en común (para que conste, éste no es un chiste medio sutil sobre asincronía) de todos estos ambientes es que tienen un mecanismo en ellos que maneja la ejecución *en el tiempo* de múltiples pedazos de su programa, cada vez invocando el motor de JS, llamado el "ciclo de eventos."
 
-In other words, the JS engine has had no innate sense of *time*, but has instead been an on-demand execution environment for any arbitrary snippet of JS. It's the surrounding environment that has always *scheduled* "events" (JS code executions).
+En otras palabras, el motor de JS no ha tenido un sentido innato del *tiempo*, sino que ha sido un ambiente de ejecución por demanda para cualquier fragmento arbitrario de JS. Es el ambiente que lo rodea el que siempre ha *programado* "eventos" (ejecuciones de código JS). 
 
-So, for example, when your JS program makes an Ajax request to fetch some data from a server, you set up the "response" code in a function (commonly called a "callback"), and the JS engine tells the hosting environment, "Hey, I'm going to suspend execution for now, but whenever you finish with that network request, and you have some data, please *call* this function *back*."
+Así que, por ejemplo, cuando su programa JS hace peticiones Ajax para obtener algunos datos de un servidor, usted configura el código "respuesta" en una función (comúnmente denominada "llamada de retorno"), y el motor JS le dice al ambiente de alojamiento, "Oye, Voy a suspender la ejecución por ahora, pero cuando sea que termine con esa petición en la red, y tenga algunos datos, por favor *llame* esta función *de retorno*."
 
-The browser is then set up to listen for the response from the network, and when it has something to give you, it schedules the callback function to be executed by inserting it into the *event loop*.
+El navegador entonces se encuentra configurado para escuchar la respuesta de la red, y cuando tenga algo para darle, programa la función de llamada de retorno para que sea ejecutada, insertándola dentro del *ciclo de eventos*.
 
-So what is the *event loop*?
+Entonces ¿qué es el *ciclo de eventos*?
 
-Let's conceptualize it first through some fake-ish code:
+Vamos a conceptualizarlo primero con un poco de pseudo-código:
 
 ```js
-// `eventLoop` is an array that acts as a queue (first-in, first-out)
-var eventLoop = [ ];
-var event;
+// `cicloDeEventos` es un arreglo que actúa como una cola (primero que entra, primero que sale)
+var cicloDeEventos = [ ];
+var evento;
 
-// keep going "forever"
+// se ejecuta "para siempre"
 while (true) {
-	// perform a "tick"
-	if (eventLoop.length > 0) {
-		// get the next event in the queue
-		event = eventLoop.shift();
+	// hace una "marcación"
+	if (cicloDeEventos.length > 0) {
+		// obtiene el siguiente evento en cola
+		evento = cicloDeEventos.shift();
 
-		// now, execute the next event
+		// ahora, ejecute el siguiente evento
 		try {
-			event();
+			evento();
 		}
 		catch (err) {
-			reportError(err);
+			reporteError(err);
 		}
 	}
 }
 ```
 
-This is, of course, vastly simplified pseudocode to illustrate the concepts. But it should be enough to help get a better understanding.
+Esto es, por supuesto, pseudo-código vastamente simplificado para ilustrar los conceptos. Pero debería ser suficiente para ayudar a tener un mejor entendimiento.
 
-As you can see, there's a continuously running loop represented by the `while` loop, and each iteration of this loop is called a "tick." For each tick, if an event is waiting on the queue, it's taken off and executed. These events are your function callbacks.
+Como usted puede ver, se esta ejecutando continuamente un ciclo representado por el ciclo `while`, y cada iteración de este ciclo es llamado una "marcación." Por cada marcación, si un evento está esperando en la cola, se saca y se ejecuta. Estos eventos son sus funciones de llamada de retorno.
 
-It's important to note that `setTimeout(..)` doesn't put your callback on the event loop queue. What it does is set up a timer; when the timer expires, the environment places your callback into the event loop, such that some future tick will pick it up and execute it.
+Es importante notar que `setTimeout(..)` no pone su llamada de retorno en la cola del ciclo de eventos. Lo que hace es configurar un temporizador; cuando el temporizador expira, el ambiente ubica su llamada de retorno en el ciclo de eventos, tal que alguna marcación futura la tomará y la ejecutará.
 
-What if there are already 20 items in the event loop at that moment? Your callback waits. It gets in line behind the others -- there's not normally a path for preempting the queue and skipping ahead in line. This explains why `setTimeout(..)` timers may not fire with perfect temporal accuracy. You're guaranteed (roughly speaking) that your callback won't fire *before* the time interval you specify, but it can happen at or after that time, depending on the state of the event queue.
+¿Qué pasa si ya hay 20 ítems en el ciclo de eventos en ese momento? Su llamada de retorno espera. Se pone en línea detrás de las demás -- normalmente no hay forma de vaciar previamente la cola y saltarse la línea. Esto explica por qué los temporizadores del `setTimeout(..)` podrían no dispararse con una exactitud temporal perfecta. Usted tiene garantizado (más o menos) que su llamada de retorno no se disparará *antes* del intervalo de tiempo que usted especifica, pero puede pasar en o después de ese tiempo, dependiendo del estado de la cola de eventos.
 
-So, in other words, your program is generally broken up into lots of small chunks, which happen one after the other in the event loop queue. And technically, other events not related directly to your program can be interleaved within the queue as well.
+Entonces, en otras palabras, su programa está generalmente dividido en montones de pequeños pedazos, que ocurren uno tras otro en la cola del ciclo de eventos. Y técnicamente, otros eventos no relacionados directamente con su programa pueden ser intercalados dentro de la cola también.
 
-**Note:** We mentioned "up until recently" in relation to ES6 changing the nature of where the event loop queue is managed. It's mostly a formal technicality, but ES6 now specifies how the event loop works, which means technically it's within the purview of the JS engine, rather than just the *hosting environment*. One main reason for this change is the introduction of ES6 Promises, which we'll discuss in Chapter 3, because they require the ability to have direct, fine-grained control over scheduling operations on the event loop queue (see the discussion of `setTimeout(..0)` in the "Cooperation" section).
+**Nota:** Mencionamos "hasta hace poco" en relación con ES6 cambiando la naturaleza de donde la cola del ciclo de eventos es administrada. Es sobretodo un tecnicismo formal, pero ES6 ahora especifica cómo el ciclo de eventos trabaja, lo que significa que técnicamente está bajo la supervisión del motor de JS, y no solamente en el *ambiente de alojamiento*. Una razón principal para este cambio es la introducción de Promesas en ES6, las cuales discutiremos en el Capítulo 3, porque requieren la habilidad de tener control directo y granular sobre operaciones programadas en la cola del ciclo de eventos (vea la discusión de `setTimeout(..0)` en la sección de "Cooperación")
 
 ## Parallel Threading
 
