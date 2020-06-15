@@ -18,11 +18,11 @@ En otras palabras, si tanto el motor como el desarrolador tratan el valor `42` (
 
 De ninguna forma esto es una definición perfecta. Pero es suficientemente buena para esta discusión. Y es consistente con como JS se describe a sí mismo.
 
-# A Type By Any Other Name...
+# Un tipo con cualquier otro nombre...
 
-Beyond academic definition disagreements, why does it matter if JavaScript has _types_ or not?
+Más allá de los desacuerdos academicos al definir un tipo, ¿Por que es importante si JavaScript tiene _types_ o no?
 
-Having a proper understanding of each _type_ and its intrinsic behavior is absolutely essential to understanding how to properly and accurately convert values to different types (see Coercion, Chapter 4). Nearly every JS program ever written will need to handle value coercion in some shape or form, so it's important you do so responsibly and with confidence.
+Tener un entendimiento apropiado de cada tipo _type_ y su comportamiento es escencial para entender como convertir de manera precisa y apropiada valores de diferentes tipos (ver Coercion, Capitulo 4). Casi cualquier programa escrito en JS va a necesitar manejar la coercion del valor de alguna forma, por lo tanto es importante que lo hagas responsablemente y con confianza.
 
 If you have the `number` value `42`, but you want to treat it like a `string`, such as pulling out the `"2"` as a character in position `1`, you obviously must first convert (coerce) the value from `number` to `string`.
 
