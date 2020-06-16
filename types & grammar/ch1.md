@@ -22,17 +22,17 @@ De ninguna forma esto es una definición perfecta. Pero es suficientemente buena
 
 Más allá de los desacuerdos academicos al definir un tipo, ¿Por que es importante si JavaScript tiene _tipos_ o no?
 
-Tener un entendimiento apropiado de cada tipo _tipo_ y su comportamiento es escencial para entender como convertir de manera precisa y apropiada valores de diferentes tipos (ver Coercion, Capitulo 4). Casi cualquier programa escrito en JS va a necesitar manejar la coercion del valor de alguna forma, por lo tanto es importante que lo haga responsablemente y con confianza.
+Tener un entendimiento apropiado de cada tipo _tipo_ y su comportamiento es escencial para entender como convertir de manera precisa y apropiada valores de diferentes tipos (ver Coercion, Capitulo 4). Casi cualquier programa escrito en JS va a necesitar manejar la coerción del valor de alguna forma, por lo tanto es importante que lo haga responsablemente y con confianza.
 
-Si tiene un `number` con valor de `42`, pero quieres tratarlo como un `string`, somo al sacar el `"2"` como un caracter en la posicion `1`, obviamente primero debes convertir (coercionar) el valor de `number` a `string`.
+Si tiene un `number` con valor de `42`, pero quieres tratarlo como un `string`, como extraer el caracter 2 de la posición 1, obviamente primero debes convertir (coercionar) el valor de `number` a `string`.
 
 Eso parece bastante simple
 
-Pero hay muchas maneras diferentes en las que la coercions puede ocurrir. Algunas son explicitas, faciles de entender y predecibles pero si no es cuidadoso, la coercion puede ocurrir en maneras muy extrañas y sorprendentes
+Pero hay muchas maneras diferentes en las que la  coerción puede ocurrir. Algunas son explicitas, faciles de entender y predecibles pero si no es cuidadoso, la coerción puede ocurrir en maneras muy extrañas y sorprendentes
 
-Confundirse con la coercion es una de las mas produndas frustraciones de los desarrolladores JavaScript. A menudo ha sido criticada por ser tan peligrosa al grado de ser considerada un defecto en el diseño del lenguaje por el cual deberia ser rechazado y evitado
+Confundirse con la coerción es una de las mas produndas frustraciones de los desarrolladores JavaScript. A menudo ha sido criticada por ser tan peligrosa al grado de ser considerada un defecto en el diseño del lenguaje por el cual deberia ser rechazado y evitado
 
-Armados con un entendimiento completo de los Tipos en JavaScript, nuestro objetivo es demostrar por que la mala reputacion de la coercion is exagerada y algo inmerecida. Buscamos cambiar su perspectiva para que aprecie el poder y la usabilidad de la coercion pero primero debemos tener mayor conocimiento sobre valoes y tipos
+Armados con un entendimiento completo de los Tipos en JavaScript, nuestro objetivo es demostrar por que la mala reputacion de la coerción es exagerada y algo inmerecida. Buscamos cambiar su perspectiva para que aprecie el poder y la usabilidad de la coerción pero primero debemos tener mayor conocimiento sobre valoes y tipos
 
 ## Tipos de datos
 
@@ -63,14 +63,14 @@ typeof Symbol() === "symbol"; // true
 
 Estos seis tipos mostrados tienen valores del tipo correspondiente y devuelven un string con el del mismo nombre, `Symbol` es un nuevo tipo de dato añadido en ES6, y va a ser tratado en el capitulo 3.
 
-Como habra notado, exclui `null` del listado anterior. Es _especial_ -- especial en el sentido de que se comporta de manera defectuosa si se combina con el operador `typeof`:
+Como habra notado, excluí `null` del listado anterior. Es _especial_ -- especial en el sentido de que se comporta de manera defectuosa si se combina con el operador `typeof`:
 
 ```js
 typeof null === "object"; // true
 ```
 
 Hubiera sido bueno (y correcto) si retornara `"null"`
-pero este bug in JS ha persistido por decadas y muy probablemente jamas sera resuelto por que hay mucho contenido en la web que se apoya en este comportamiento defectuoso que al ser "resuelto" _crearia_ montones de "bugs" que romperian mucho softaware.
+pero este bug in JS ha persistido por decadas y muy probablemente jamas sera resuelto por que hay mucho contenido en la web que se apoya en este comportamiento defectuoso que al ser "resuelto" _crearía_ montones de "bugs" que romperian mucho softaware.
 
 Si necesita revisar si un valor es `null` usando su tipo necesita utilizar la siguiente condicion.
 
