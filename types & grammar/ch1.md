@@ -32,7 +32,7 @@ Pero hay muchas maneras diferentes en las que la  coerción puede ocurrir. Algun
 
 Confundirse con la coerción es una de las mas produndas frustraciones de los desarrolladores JavaScript. A menudo ha sido criticada por ser tan peligrosa al grado de ser considerada un defecto en el diseño del lenguaje por el cual deberia ser rechazado y evitado
 
-Armados con un entendimiento completo de los Tipos en JavaScript, nuestro objetivo es demostrar por que la mala reputacion de la coerción es exagerada y algo inmerecida. Buscamos cambiar su perspectiva para que aprecie el poder y la usabilidad de la coerción pero primero debemos tener mayor conocimiento sobre valoes y tipos
+Armados con un entendimiento completo de los Tipos en JavaScript, nuestro objetivo es demostrar por que la mala reputacion de la coerción es exagerada y algo inmerecida. Buscamos cambiar su perspectiva para que aprecie el poder y la usabilidad de la coerción pero primero debemos tener mayor conocimiento sobre valores y tipos
 
 ## Tipos de datos
 
@@ -286,7 +286,7 @@ function doSomethingCool() {
 
 Aquí, `FeatureXYZ` no es una variable global, pero todavía estamos usando la protección de seguridad de `typeof` para que sea seguro verificarlo. Y lo más importante, aquí  _no_ hay un objeto que podemos usar (como lo hicimos con las variables globales con `window .___`) para hacer la verificación, por lo que `typeof` es bastante útil.
 
-Otros desarrolladores preferirían un patrón de diseño llamado "inyección de dependencia", donde en lugar de que `doSomethingCool()` inspecione implícitamente que `FeatureXYZ` este definida a su alrededor, necesitaría que la dependencia se pasara explícitamente, como:
+Otros desarrolladores preferirían un patrón de diseño llamado "inyección de dependencia", donde en lugar de que `doSomethingCool()` inspeccione implícitamente que `FeatureXYZ` este definida a su alrededor, necesitaría que la dependencia se pasara explícitamente, como:
 
 ```js
 function doSomethingCool(FeatureXYZ) {
