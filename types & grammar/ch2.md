@@ -356,27 +356,27 @@ Por favor haga un favor a sus compañeros desarrolladores: nunca use la forma `0
 
 ### Valores decimales pequeños
 
-The most (in)famous side effect of using binary floating-point numbers (which, remember, is true of **all** languages that use IEEE 754 -- not *just* JavaScript as many assume/pretend) is:
+El efecto secundario más famoso o infame de usar números binarios de punto flotante (que, recuerde, es cierto para **todos** los idiomas que usan IEEE 754 - no *solo* JavaScript como muchos asumen o pretenden) es:
 
 ```js
 0.1 + 0.2 === 0.3; // false
 ```
 
-Mathematically, we know that statement should be `true`. Why is it `false`?
+Matematicamente, sabemos que la declaracion deberia de ser `true`. ¿Por que devuelve `false`?
 
-Simply put, the representations for `0.1` and `0.2` in binary floating-point are not exact, so when they are added, the result is not exactly `0.3`. It's **really** close: `0.30000000000000004`, but if your comparison fails, "close" is irrelevant.
+En pocas palabras, las representaciones para `0.1` y` 0.2` en punto flotante binario no son exactas, por lo que cuando se agregan, el resultado no es exactamente `0.3`. Está **realmente** cerca: `0.30000000000000004`, pero si su comparación falla, "cerca"es irrelevante.
 
-**Note:** Should JavaScript switch to a different `number` implementation that has exact representations for all values? Some think so. There have been many alternatives presented over the years. None of them have been accepted yet, and perhaps never will. As easy as it may seem to just wave a hand and say, "fix that bug already!", it's not nearly that easy. If it were, it most definitely would have been changed a long time ago.
+**Nota:** ¿Debería JavaScript cambiar a una implementación de `number` diferente que tenga representaciones exactas para todos los valores? Algunos piensan que sí. Se han presentado muchas alternativas a lo largo de los años. Ninguna de ellas ha sido aceptada todavía, y tal vez nunca lo serán. Por más fácil que parezca simplemente agitar una mano y decir: "¡corrija ese error ya!", No es tan fácil. Si lo fuera, definitivamente habría cambiado hace mucho tiempo.
 
-Now, the question is, if some `number`s can't be *trusted* to be exact, does that mean we can't use `number`s at all? **Of course not.**
+Ahora, la pregunta es, si algunos `números` no pueden ser *confiables* para ser exactos, ¿eso significa que no podemos usar `numbers` en absoluto? **Por supuesto no.**
 
-There are some applications where you need to be more careful, especially when dealing with fractional decimal values. There are also plenty of (maybe most?) applications that only deal with whole numbers ("integers"), and moreover, only deal with numbers in the millions or trillions at maximum. These applications have been, and always will be, **perfectly safe** to use numeric operations in JS.
+Hay alguna aplicaciones donde necesitas ser mas cuidadoso, especialmente cuando lidias con valores decimales. Tambien hay muchas (quiza la mayoria) aplicaciones que solo lidian con numeros enteros ("integers") y mas exactamente sono lidian con numeros hasta los millones o los trillones como maximo. Estas apliaciones seran **totoalmente seguras** para utilizar operaciones numericas en JS.
 
-What if we *did* need to compare two `number`s, like `0.1 + 0.2` to `0.3`, knowing that the simple equality test fails?
+Que sucede si *necesitamos* comparar dos `number`'s, como `0.1 + 0.2` igual a `0.3` sabiendo que una comparacion estandar va a fallar¡
 
-The most commonly accepted practice is to use a tiny "rounding error" value as the *tolerance* for comparison. This tiny value is often called "machine epsilon," which is commonly `2^-52` (`2.220446049250313e-16`) for the kind of `number`s in JavaScript.
+La practica mas aceptada es usar un pequeño valor de "margen de error" como la *toleracia* para la comparacion. Este pequeño valor es frecuentementemente llamado "machine epsilon", que es comunmente `2^-52` (`2.220446049250313e-16`) para el tipo `number` in JavaScript.
 
-As of ES6, `Number.EPSILON` is predefined with this tolerance value, so you'd want to use it, but you can safely polyfill the definition for pre-ES6:
+Como en ES6, `Number.EPSILON` esta predefinido con este valor de toleracia, asi le gustaria utilizarlo, sin embargo puede transformar de manera segura la definicion para que funcione en versiones previas a ES6.
 
 ```js
 if (!Number.EPSILON) {
@@ -384,7 +384,7 @@ if (!Number.EPSILON) {
 }
 ```
 
-We can use this `Number.EPSILON` to compare two `number`s for "equality" (within the rounding error tolerance):
+Podemos utilizar `Number.EPSILON` para comparar dos valoes (con un pequeño margen de tolerancia).
 
 ```js
 function numbersCloseEnoughToEqual(n1,n2) {
@@ -398,23 +398,23 @@ numbersCloseEnoughToEqual( a, b );					// true
 numbersCloseEnoughToEqual( 0.0000001, 0.0000002 );	// false
 ```
 
-The maximum floating-point value that can be represented is roughly `1.798e+308` (which is really, really, really huge!), predefined for you as `Number.MAX_VALUE`. On the small end, `Number.MIN_VALUE` is roughly `5e-324`, which isn't negative but is really close to zero!
+El maximo valor que puede ser representado es cercano a `1.798e+308` (que es realmente enorme!), predefinido para usted como `Number.MAX_VALUE`. En el extremo mas pequeño, `Number.MIN_VALUE` es cercano a `5e-324` que no es numero negativo pero es muy cercano a cero!
 
-### Safe Integer Ranges
+### Rangos enteros seguros
 
-Because of how `number`s are represented, there is a range of "safe" values for the whole `number` "integers", and it's significantly less than `Number.MAX_VALUE`.
+Por como los `number`s son representados, hay un rango de valores "seguros" para el grupo de los numeros enteros y es significantemente menor que `Number.MAX_VALUE`.
 
-The maximum integer that can "safely" be represented (that is, there's a guarantee that the requested value is actually representable unambiguously) is `2^53 - 1`, which is `9007199254740991`. If you insert your commas, you'll see that this is just over 9 quadrillion. So that's pretty darn big for `number`s to range up to.
+Hay un maximo entero que puede ser representado de manera "segura" (asi es, hay una garantia de que el valor sera represntado de manera exacta) el numero es `2^53 - 1`, que es `9007199254740991`, Si inserta las comas, vera que sorprendente esta sobre 9 quatrillones. Asi que es un gran numero para definir el rango maximo.
 
-This value is actually automatically predefined in ES6, as `Number.MAX_SAFE_INTEGER`. Unsurprisingly, there's a minimum value, `-9007199254740991`, and it's defined in ES6 as `Number.MIN_SAFE_INTEGER`.
+Este es un valor que esta predefinido en ES6, al que puedes acceder como `Number.MAX_SAFE_INTEGER`. Predeciblemente, existe un minimo numero seguro, `-9007199254740991`, que esta definido en ES6 como `Number.MIN_SAFE_INTEGER`.
 
-The main way that JS programs are confronted with dealing with such large numbers is when dealing with 64-bit IDs from databases, etc. 64-bit numbers cannot be represented accurately with the `number` type, so must be stored in (and transmitted to/from) JavaScript using `string` representation.
+La manera estandar en la que los programas de JS lidian con numeros tan grandes es como cunado lidian con 64-bit ID's de bases de datos, etc. Los numeros de 64-bit no pueden ser reprensentados de manera segura con el tipo `number`, asi que deben ser almacenados y transportados en Javascript representados como `strings`.
 
-Numeric operations on such large ID `number` values (besides comparison, which will be fine with `string`s) aren't all that common, thankfully. But if you *do* need to perform math on these very large values, for now you'll need to use a *big number* utility. Big numbers may get official support in a future version of JavaScript.
+Las operaciones numericas de semejantes valores de ID's numericas (mas alla de la comparacion, que sera precisa utiliando `strings`s) afortunadamente no son muy comunes. Pero si necesitas realizar operaciones matematicas en este tipo de grandes valores, por ahora vas a tener que utilizar alguna utilidad de *grandes numeros*. Los grandes numeros quiza tengan soporte oficial en alguna version futura de JavaScript
 
-### Testing for Integers
+### Evaluando enteros 
 
-To test if a value is an integer, you can use the ES6-specified `Number.isInteger(..)`:
+Para evaluar si un valor es un entero, puedes utilizar la herramienta de ES6 `Number.isInteger(..)`:
 
 ```js
 Number.isInteger( 42 );		// true
@@ -422,7 +422,7 @@ Number.isInteger( 42.000 );	// true
 Number.isInteger( 42.3 );	// false
 ```
 
-To polyfill `Number.isInteger(..)` for pre-ES6:
+Para transformar `Number.isInteger(..)` para versiones anteriores a ES6:
 
 ```js
 if (!Number.isInteger) {
@@ -432,7 +432,7 @@ if (!Number.isInteger) {
 }
 ```
 
-To test if a value is a *safe integer*, use the ES6-specified `Number.isSafeInteger(..)`:
+Para evaluar si un valor es un *entero seguro*, use la utilidad de ES6 `Number.isSafeInteger(..)`:
 
 ```js
 Number.isSafeInteger( Number.MAX_SAFE_INTEGER );	// true
@@ -440,7 +440,7 @@ Number.isSafeInteger( Math.pow( 2, 53 ) );			// false
 Number.isSafeInteger( Math.pow( 2, 53 ) - 1 );		// true
 ```
 
-To polyfill `Number.isSafeInteger(..)` in pre-ES6 browsers:
+Para transformar `Number.isSafeInteger(..)` para navegadores con versiones anteriores a ES6:
 
 ```js
 if (!Number.isSafeInteger) {
@@ -451,43 +451,43 @@ if (!Number.isSafeInteger) {
 }
 ```
 
-### 32-bit (Signed) Integers
+### Enteros de 32 bits (firmados)
 
-While integers can range up to roughly 9 quadrillion safely (53 bits), there are some numeric operations (like the bitwise operators) that are only defined for 32-bit `number`s, so the "safe range" for `number`s used in that way must be much smaller.
+Si bien los números enteros pueden alcanzar hasta aproximadamente 9 billones de manera segura (53 bits), hay algunas operaciones numéricas (como los operadores bit a bit) que solo se definen para los `numbers` de 32 bits, por lo que el "rango seguro" para los "números" usado de esa manera debe ser mucho más pequeño.
 
-The range then is `Math.pow(-2,31)` (`-2147483648`, about -2.1 billion) up to `Math.pow(2,31)-1` (`2147483647`, about +2.1 billion).
+El rango entonces es `Math.pow (-2,31)` (`-2147483648`, aproximadamente -2.1 billones) hasta` Math.pow (2,31) -1` (`2147483647`, aproximadamente +2.1 billones) .
 
-To force a `number` value in `a` to a 32-bit signed integer value, use `a | 0`. This works because the `|` bitwise operator only works for 32-bit integer values (meaning it can only pay attention to 32 bits and any other bits will be lost). Then, "or'ing" with zero is essentially a no-op bitwise speaking.
+Para forzar un valor de `number` en `a` a un valor entero con signo de 32 bits, use `a | 0`. Esto funciona porque el operador bit a bit `|` solo funciona para valores enteros de 32 bits (lo que significa que solo tomara a 32 bits y cualquier otro bit se perderá). Entonces, "o|cerca" de cero es esencialmente una operación bit a bit no operativa.
 
-**Note:** Certain special values (which we will cover in the next section) such as `NaN` and `Infinity` are not "32-bit safe," in that those values when passed to a bitwise operator will pass through the abstract operation `ToInt32` (see Chapter 4) and become simply the `+0` value for the purpose of that bitwise operation.
+**Nota:** Ciertos valores especiales (que cubriremos en la siguiente sección) como `NaN` e` Infinity` no son valores "seguros de 32 bits", ya que esos valores cuando se pasan a un operador bit a bit pasarán la operación abstracta `ToInt32` (ver Capítulo 4) y se convierte simplemente en el valor` + 0` para el propósito de esa operación bit a bit.
 
-## Special Values
+## Valores Especiales
 
-There are several special values spread across the various types that the *alert* JS developer needs to be aware of, and use properly.
+Hay muchos valores especiales a lo largo de los diferentes tipos de los que el *gran* desarrollador JS necesita estar al tanto y utizarlos apropiadamente.
 
-### The Non-value Values
+### Los valores Non-value (sin valor)
 
-For the `undefined` type, there is one and only one value: `undefined`. For the `null` type, there is one and only one value: `null`. So for both of them, the label is both its type and its value.
+Para el tipo `undefined` solamente hay un valor: `undefined`. Para el tipo `null` solamente hay un valor: `null` . Asi que para ambos su nombre essu tipo y su valor.
 
-Both `undefined` and `null` are often taken to be interchangeable as either "empty" values or "non" values. Other developers prefer to distinguish between them with nuance. For example:
+`undefined` y `null` son frecuentemente tomados como si fueran intercambiables ya sea como valores "vacios" o como valores "inexistentes". Otros desarrolladores prefieren disitnguirlos con pequeños matices. Por ejemplo:
 
-* `null` is an empty value
-* `undefined` is a missing value
+* `null` es un valor vacio
+* `undefined` es un valor inexistente
 
-Or:
+O:
 
-* `undefined` hasn't had a value yet
-* `null` had a value and doesn't anymore
+* `undefined` nunca ha tenido un valor
+* `null` tuvo un valor pero ya no esta ahi.
 
-Regardless of how you choose to "define" and use these two values, `null` is a special keyword, not an identifier, and thus you cannot treat it as a variable to assign to (why would you!?). However, `undefined` *is* (unfortunately) an identifier. Uh oh.
+Independientemente de cómo elija "definir" y utilizar estos dos valores, `null` es un "special keyword", no un identificador, por lo que no puede tratarla como una variable a la que asignar (¿por qué lo haría?). Sin embargo, `undefined` *es* (desafortunadamente) un identificador. Uh oh.
 
 ### Undefined
 
-In non-`strict` mode, it's actually possible (though incredibly ill-advised!) to assign a value to the globally provided `undefined` identifier:
+Fuera del modo estricto, en realidad es posible (sin embargo increiblemente tonto y no recomendado) asignar un valor de manera global al identificador `undefined`,
 
 ```js
 function foo() {
-	undefined = 2; // really bad idea!
+	undefined = 2; // Muy mala idea!
 }
 
 foo();
@@ -502,7 +502,7 @@ function foo() {
 foo();
 ```
 
-In both non-`strict` mode and `strict` mode, however, you can create a local variable of the name `undefined`. But again, this is a terrible idea!
+Tanto en el modo estricto como fuera de el, puede crear una variable local de nombre `undefined`. Pero le repito que esta es una terrible idea!
 
 ```js
 function foo() {
@@ -514,9 +514,9 @@ function foo() {
 foo();
 ```
 
-**Friends don't let friends override `undefined`.** Ever.
+**Los amigos no dejan que los amigos sobrescriban `undefined`.** ¡Jamas!.
 
-#### `void` Operator
+#### Operador `void`
 
 While `undefined` is a built-in identifier that holds (unless modified -- see above!) the built-in `undefined` value, another way to get this value is the `void` operator.
 
