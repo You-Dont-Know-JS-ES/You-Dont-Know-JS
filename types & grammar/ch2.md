@@ -518,9 +518,9 @@ foo();
 
 #### Operador `void`
 
-While `undefined` is a built-in identifier that holds (unless modified -- see above!) the built-in `undefined` value, another way to get this value is the `void` operator.
+Mientras que `undefined` es un identificador ya incorporado que contiene (a menos que se modifique, ¡vea más arriba!) El valor `undefined`, otra forma de obtener este valor es el operador `void`.
 
-The expression `void ___` "voids" out any value, so that the result of the expression is always the `undefined` value. It doesn't modify the existing value; it just ensures that no value comes back from the operator expression.
+La expresión `void ___` "anula" cualquier valor, de modo que el resultado de la expresión es siempre el valor `undefined`. No modifica el valor existente; solo asegura que no regrese ningún valor de la expresión del operador.
 
 ```js
 var a = 42;
@@ -528,57 +528,57 @@ var a = 42;
 console.log( void a, a ); // undefined 42
 ```
 
-By convention (mostly from C-language programming), to represent the `undefined` value stand-alone by using `void`, you'd use `void 0` (though clearly even `void true` or any other `void` expression does the same thing). There's no practical difference between `void 0`, `void 1`, and `undefined`.
+Por convención (principalmente de la programación en lenguaje C), para representar el valor `undefined` de forma independiente mediante el uso de `void`, usaría `void 0` (aunque claramente incluso `void true` o cualquier otra expresión` void` hace lo mismo) No hay diferencia práctica entre `void 0`, `void 1` y `undefined`.
 
-But the `void` operator can be useful in a few other circumstances, if you need to ensure that an expression has no result value (even if it has side effects).
+Pero el operador `void` puede ser útil en algunas otras circunstancias, si necesita asegurarse de que una expresión no tenga valor de resultado (incluso si tiene efectos secundarios).
 
-For example:
+Por ejemplo:
 
 ```js
 function doSomething() {
-	// note: `APP.ready` is provided by our application
+	// nota: `APP.ready` es mandada por nuestra aplicacion
 	if (!APP.ready) {
-		// try again later
+		// intentalo mas tarde
 		return void setTimeout( doSomething, 100 );
 	}
 
 	var result;
 
-	// do some other stuff
+	// realiza otra accion
 	return result;
 }
 
-// were we able to do it right away?
+// ¿pudimos hacerlo de inmediato?
 if (doSomething()) {
-	// handle next tasks right away
+	// maneja las siguientes tareas de inmediato
 }
 ```
 
-Here, the `setTimeout(..)` function returns a numeric value (the unique identifier of the timer interval, if you wanted to cancel it), but we want to `void` that out so that the return value of our function doesn't give a false-positive with the `if` statement.
+Aqui la funcion `setTimeout(..)` devuelve un valor numerico (el identificador único del intervalo del temporizador, si desea cancelarlo), pero queremos `anularlo` para que el valor de retorno de nuestra función no dé un falso positivo con el condicional` if`.
 
-Many devs prefer to just do these actions separately, which works the same but doesn't use the `void` operator:
+Muchos desarrolladores prefieren simplemente hacer estas acciones por separado, lo que funciona igual pero no usa el operador `void`:
 
 ```js
 if (!APP.ready) {
-	// try again later
+	// intentalo mas tarde
 	setTimeout( doSomething, 100 );
 	return;
 }
 ```
 
-In general, if there's ever a place where a value exists (from some expression) and you'd find it useful for the value to be `undefined` instead, use the `void` operator. That probably won't be terribly common in your programs, but in the rare cases you do need it, it can be quite helpful.
+En general, si alguna vez hay un lugar donde existe un valor (de alguna expresión) y le resulta útil que el valor sea `undefined`, use el operador` void`. Eso probablemente no será terriblemente común en sus programas, pero en los raros casos en que lo necesite, puede ser bastante útil.
 
-### Special Numbers
+### Números especiales
 
-The `number` type includes several special values. We'll take a look at each in detail.
+El tipo `número` incluye varios valores especiales. Echaremos un vistazo a cada uno en detalle.
 
-#### The Not Number, Number
+#### NaN, Not a Number o No numero
 
-Any mathematic operation you perform without both operands being `number`s (or values that can be interpreted as regular `number`s in base 10 or base 16) will result in the operation failing to produce a valid `number`, in which case you will get the `NaN` value.
+Cualquier operación matemática que realice sin que ambos operandos sean `number`s (o valores que pueden interpretarse como `number`s regulares en base 10 o base 16) dará como resultado que la operación no produzca un `number` válido, en cuyo caso obtendrá el valor `NaN`.
 
-`NaN` literally stands for "not a `number`", though this label/description is very poor and misleading, as we'll see shortly. It would be much more accurate to think of `NaN` as being "invalid number," "failed number," or even "bad number," than to think of it as "not a number."
+`NaN` literalmente significa `not a number`, aunque esta etiqueta / descripción es muy pobre y engañosa, como veremos en breve. Sería mucho más preciso pensar que `NaN` es un "número inválido", un "número fallido" o incluso un "número incorrecto" que pensar que no es un numero.
 
-For example:
+Por ejemplo:
 
 ```js
 var a = 2 / "foo";		// NaN
@@ -586,11 +586,11 @@ var a = 2 / "foo";		// NaN
 typeof a === "number";	// true
 ```
 
-In other words: "the type of not-a-number is 'number'!" Hooray for confusing names and semantics.
+En otras palabras: "el tipo de no-número es un `number`!" ¡Hurra por los nombres confusos y la semántica!
 
-`NaN` is a kind of "sentinel value" (an otherwise normal value that's assigned a special meaning) that represents a special kind of error condition within the `number` set. The error condition is, in essence: "I tried to perform a mathematic operation but failed, so here's the failed `number` result instead."
+`NaN` es un tipo de "valor centinela" (un valor normal que se le asigna un significado especial) que representa un tipo especial de condición de error dentro del conjunto `number`. La condición de error es, en esencia: "Traté de realizar una operación matemática pero fallé, así que aquí está el resultado fallido de `number`".
 
-So, if you have a value in some variable and want to test to see if it's this special failed-number `NaN`, you might think you could directly compare to `NaN` itself, as you can with any other value, like `null` or `undefined`. Nope.
+Por lo tanto, si tiene un valor en alguna variable y desea probar para ver si se trata de este número especial de error `NaN`, podría pensar que podría compararlo directamente con `NaN`, como puede hacerlo con cualquier otro valor, como `null` o `undenined`. Pero no
 
 ```js
 var a = 2 / "foo";
@@ -599,9 +599,9 @@ a == NaN;	// false
 a === NaN;	// false
 ```
 
-`NaN` is a very special value in that it's never equal to another `NaN` value (i.e., it's never equal to itself). It's the only value, in fact, that is not reflexive (without the Identity characteristic `x === x`). So, `NaN !== NaN`. A bit strange, huh?
+`NaN` es un valor muy especial porque nunca es igual a otro valor `NaN` (es decir, nunca es igual a sí mismo). Es el único valor, de hecho, que no es reflexivo (sin la característica de identidad `x === x`). Entonces, `NaN! == NaN`. Un poco extraño, ¿eh?
 
-So how *do* we test for it, if we can't compare to `NaN` (since that comparison would always fail)?
+Entonces, ¿cómo *lo* probamos si no podemos compararlo con 'NaN' (ya que esa comparación siempre fallará)?
 
 ```js
 var a = 2 / "foo";
@@ -609,11 +609,11 @@ var a = 2 / "foo";
 isNaN( a ); // true
 ```
 
-Easy enough, right? We use the built-in global utility called `isNaN(..)` and it tells us if the value is `NaN` or not. Problem solved!
+Bastante fácil, ¿verdad? Utilizamos la utilidad global incorporada llamada `isNaN (..)` y nos dice si el valor es `NaN` o no. ¡Problema resuelto!
 
-Not so fast.
+No tan rapido.
 
-The `isNaN(..)` utility has a fatal flaw. It appears it tried to take the meaning of `NaN` ("Not a Number") too literally -- that its job is basically: "test if the thing passed in is either not a `number` or is a `number`." But that's not quite accurate.
+La utilidad `isNaN (..)` tiene una falla fatal. Parece que trató de tomar el significado de `NaN` ("No es un número ") demasiado literalmente, que su trabajo es básicamente: "probar si lo que pasó no es un `number` o es un `number`" Pero eso no es del todo exacto.
 
 ```js
 var a = 2 / "foo";
@@ -621,14 +621,13 @@ var b = "foo";
 
 a; // NaN
 b; // "foo"
-
 window.isNaN( a ); // true
 window.isNaN( b ); // true -- ouch!
 ```
 
-Clearly, `"foo"` is literally *not a `number`*, but it's definitely not the `NaN` value either! This bug has been in JS since the very beginning (over 19 years of *ouch*).
+Claramente, `"foo"` es literalmente *not a `number`*, ¡pero definitivamente tampoco es el valor` NaN`! Este error ha estado en JS desde el principio (más de 19 años de *ouch*).
 
-As of ES6, finally a replacement utility has been provided: `Number.isNaN(..)`. A simple polyfill for it so that you can safely check `NaN` values *now* even in pre-ES6 browsers is:
+A partir de ES6, finalmente se ha proporcionado una utilidad de reemplazo: `Number.isNaN (..)`. Un simple polyfill para que pueda verificar de forma segura los valores `NaN` *ahora* incluso en navegadores anteriores a ES6 es:
 
 ```js
 if (!Number.isNaN) {
@@ -647,9 +646,9 @@ Number.isNaN( a ); // true
 Number.isNaN( b ); // false -- phew!
 ```
 
-Actually, we can implement a `Number.isNaN(..)` polyfill even easier, by taking advantage of that peculiar fact that `NaN` isn't equal to itself. `NaN` is the *only* value in the whole language where that's true; every other value is always **equal to itself**.
+De echo, podemos implementar un polyfill de `Number.isNaN(..)` mucho mas facilmente, tomando ventaja del peculiar detalle de que `NaN` no es igual a si mismo. `NaN` es el *unico* valor en el lenguaje donde esa afirmacion es verdadera, cualquier otro valor siempre es **igual a si mismo**
 
-So:
+Asi que:
 
 ```js
 if (!Number.isNaN) {
@@ -659,32 +658,32 @@ if (!Number.isNaN) {
 }
 ```
 
-Weird, huh? But it works!
+Raro, ¿verdad? Pero funciona!
 
-`NaN`s are probably a reality in a lot of real-world JS programs, either on purpose or by accident. It's a really good idea to use a reliable test, like `Number.isNaN(..)` as provided (or polyfilled), to recognize them properly.
+Los `NaN`s probablemente estan en muchos programas JS del mundo real, ya sea a propósito o por accidente. Es una muy buena idea usar una prueba confiable, como `Number.isNaN (..)` como se proporciona (o polirellenado), para reconocerlos correctamente.
 
-If you're currently using just `isNaN(..)` in a program, the sad reality is your program *has a bug*, even if you haven't been bitten by it yet!
+Si actualmente está usando solo `isNaN (...)` en un programa, la triste realidad es que su programa *tiene un error*, ¡incluso si aún no lo ha mordido!
 
-#### Infinities
+#### Infinitos
 
-Developers from traditional compiled languages like C are probably used to seeing either a compiler error or runtime exception, like "Divide by zero," for an operation like:
+Los desarrolladores de lenguajes compilados tradicionales como C probablemente estén acostumbrados a ver un error del compilador o una excepción de tiempo de ejecución, como "Divide by zero", para una operación como:
 
 ```js
 var a = 1 / 0;
 ```
 
-However, in JS, this operation is well-defined and results in the value `Infinity` (aka `Number.POSITIVE_INFINITY`). Unsurprisingly:
+Sin embargo, en JS, este operador esta bien definido y retorna el valor`Infinity` (alias `Number.POSITIVE_INFINITY`). Sorprendentemente:
 
 ```js
 var a = 1 / 0;	// Infinity
 var b = -1 / 0;	// -Infinity
 ```
 
-As you can see, `-Infinity` (aka `Number.NEGATIVE_INFINITY`) results from a divide-by-zero where either (but not both!) of the divide operands is negative.
+Como puedes ver, `-Infinity` (alias `Number.NEGATIVE_INFINITY`) es el resultado de dividir por cero donde cualquiera de los dos operandos (pero no ambos) de la division es negativo.
 
-JS uses finite numeric representations (IEEE 754 floating-point, which we covered earlier), so contrary to pure mathematics, it seems it *is* possible to overflow even with an operation like addition or subtraction, in which case you'd get `Infinity` or `-Infinity`.
+JS utiliza representaciones numéricas finitas (punto flotante en el estandar IEEE 754, que cubrimos anteriormente), por lo que al contrario de las matemáticas puras, parece que *es posible sobrepasar incluso con una operación como suma o resta, en cuyo caso obtendría `Infinity` o `-Infinity`.
 
-For example:
+Por ejemplo:
 
 ```js
 var a = Number.MAX_VALUE;	// 1.7976931348623157e+308
@@ -693,49 +692,49 @@ a + Math.pow( 2, 970 );		// Infinity
 a + Math.pow( 2, 969 );		// 1.7976931348623157e+308
 ```
 
-According to the specification, if an operation like addition results in a value that's too big to represent, the IEEE 754 "round-to-nearest" mode specifies what the result should be. So, in a crude sense, `Number.MAX_VALUE + Math.pow( 2, 969 )` is closer to `Number.MAX_VALUE` than to `Infinity`, so it "rounds down," whereas `Number.MAX_VALUE + Math.pow( 2, 970 )` is closer to `Infinity` so it "rounds up".
+De acuerdo a la especificacion, si una operacion como una suma devuelve un valor que es demasiado grande para ser representado, el modo del estandar IEEE 754 "redonder-al-mas-cercano" especifica cual debe ser el resultado. Entonces, en un sentido crudo, `Number.MAX_VALUE + Math.pow (2, 969)` está más cerca de `Number.MAX_VALUE` que de` Infinity`, por lo que "se redondea hacia abajo", mientras que `Number.MAX_VALUE + Math. pow (2, 970) `está más cerca de` Infinity` por lo que "se redondea hacia arriba".
 
-If you think too much about that, it's going to make your head hurt. So don't. Seriously, stop!
+Si piensas demasiado en eso, te va a doler la cabeza. Entonces no lo hagas. En serio, para!
 
-Once you overflow to either one of the *infinities*, however, there's no going back. In other words, in an almost poetic sense, you can go from finite to infinite but not from infinite back to finite.
+Una vez que sobrepasa a cualquiera de los *infinitos*, sin embargo, no hay vuelta atrás. En otras palabras, en un sentido casi poético, puedes pasar de finito a infinito pero no de infinito a finito.
 
-It's almost philosophical to ask: "What is infinity divided by infinity". Our naive brains would likely say "1" or maybe "infinity." Turns out neither is true. Both mathematically and in JavaScript, `Infinity / Infinity` is not a defined operation. In JS, this results in `NaN`.
+Es casi filosófico preguntar: "¿Qué es el infinito dividido por el infinito". Nuestros cerebros ingenuos probablemente dirían "1" o tal vez "infinito". Resulta que ninguno es cierto. Tanto matemáticamente como en JavaScript, `Infinity / Infinity` no es una operación definida. En JS, esto da como resultado `NaN`.
 
-But what about any positive finite `number` divided by `Infinity`? That's easy! `0`. And what about a negative finite `number` divided by `Infinity`? Keep reading!
+Pero, ¿qué pasa con cualquier `number` finito positivo dividido por `Infinity`? ¡Eso es fácil! `0`. ¿Y qué hay de un `number` finito negativo dividido por` Infinito`? ¡Sigue leyendo!
 
-#### Zeros
+#### Ceros
 
-While it may confuse the mathematics-minded reader, JavaScript has both a normal zero `0` (otherwise known as a positive zero `+0`) *and* a negative zero `-0`. Before we explain why the `-0` exists, we should examine how JS handles it, because it can be quite confusing.
+Si bien puede confundir al lector con mentalidad matemática, JavaScript tiene un cero normal `0` (también conocido como cero positivo `+ 0`) *y* un cero negativo `-0`. Antes de explicar por qué existe el `-0`, deberíamos examinar cómo lo maneja JS, porque puede ser bastante confuso.
 
-Besides being specified literally as `-0`, negative zero also results from certain mathematic operations. For example:
+Además de especificarse literalmente como `-0`, el cero negativo también resulta de ciertas operaciones matemáticas. Por ejemplo:
 
 ```js
 var a = 0 / -3; // -0
 var b = 0 * -3; // -0
 ```
 
-Addition and subtraction cannot result in a negative zero.
+De la suma y la restra no puede resultar un cero negativo.
 
-A negative zero when examined in the developer console will usually reveal `-0`, though that was not the common case until fairly recently, so some older browsers you encounter may still report it as `0`.
+Un cero negativo cuando se examina en la consola del desarrollador generalmente revelará `-0`, aunque ese no era el caso común hasta hace relativamente poco tiempo, por lo que algunos navegadores más antiguos que encuentres aún pueden mostrarlo como` 0`.
 
-However, if you try to stringify a negative zero value, it will always be reported as `"0"`, according to the spec.
+Sin embargo, si intenta convertir en `string` un valor cero negativo, siempre se informará como "0", según la especificación.
 
 ```js
 var a = 0 / -3;
 
-// (some browser) consoles at least get it right
+// (en algunos navegadores) las consolas al menos lo hacen bien
 a;							// -0
 
-// but the spec insists on lying to you!
+// ¡pero la especificación insiste en mentirte!
 a.toString();				// "0"
 a + "";						// "0"
 String( a );				// "0"
 
-// strangely, even JSON gets in on the deception
+// extrañamente, incluso JSON entra en el engaño
 JSON.stringify( a );		// "0"
 ```
 
-Interestingly, the reverse operations (going from `string` to `number`) don't lie:
+Curiosamente, las operaciones inversas (pasar de `string` a` number`) no mienten:
 
 ```js
 +"-0";				// -0
@@ -743,9 +742,9 @@ Number( "-0" );		// -0
 JSON.parse( "-0" );	// -0
 ```
 
-**Warning:** The `JSON.stringify( -0 )` behavior of `"0"` is particularly strange when you observe that it's inconsistent with the reverse: `JSON.parse( "-0" )` reports `-0` as you'd correctly expect.
+**Advertencia:** El comportamiento `JSON.stringify (-0)` de `"0"` es particularmente extraño cuando observa que es inconsistente con la operacion contraria: `JSON.parse ("-0 ")` informa `- 0` como cabría esperar correctamente.
 
-In addition to stringification of negative zero being deceptive to hide its true value, the comparison operators are also (intentionally) configured to *lie*.
+Además de que la conversion a `string` del cero negativo es engañosa para ocultar su verdadero valor, los operadores de comparación también están configurados (intencionalmente) para *mentir*.
 
 ```js
 var a = 0;
@@ -761,7 +760,7 @@ a === b;	// true
 a > b;		// false
 ```
 
-Clearly, if you want to distinguish a `-0` from a `0` in your code, you can't just rely on what the developer console outputs, so you're going to have to be a bit more clever:
+Claramente, si desea distinguir un `-0` de un` 0` en su código, no puede simplemente confiar en lo que genera la consola del desarrollador, por lo que tendrá que ser un poco más inteligente:
 
 ```js
 function isNegZero(n) {
@@ -774,17 +773,17 @@ isNegZero( 0 / -3 );	// true
 isNegZero( 0 );			// false
 ```
 
-Now, why do we need a negative zero, besides academic trivia?
+Ahora, ¿por qué necesitamos un cero negativo, además de para curiosidades académicas?
 
-There are certain applications where developers use the magnitude of a value to represent one piece of information (like speed of movement per animation frame) and the sign of that `number` to represent another piece of information (like the direction of that movement).
+Hay ciertas aplicaciones en las que los desarrolladores usan la magnitud de un valor para representar una pieza de información (como la velocidad de movimiento por cuadro de animación) y el signo de ese `number` para representar otra pieza de información (como la dirección de ese movimiento).
 
-In those applications, as one example, if a variable arrives at zero and it loses its sign, then you would lose the information of what direction it was moving in before it arrived at zero. Preserving the sign of the zero prevents potentially unwanted information loss.
+En esas aplicaciones, como un ejemplo, si una variable llega a cero y pierde su signo, entonces perdería la información de en qué dirección se movía antes de llegar a cero. Preservar el signo del cero evita la pérdida de información potencialmente no deseada.
 
-### Special Equality
+### Igualdad especial
 
-As we saw above, the `NaN` value and the `-0` value have special behavior when it comes to equality comparison. `NaN` is never equal to itself, so you have to use ES6's `Number.isNaN(..)` (or a polyfill). Similarly, `-0` lies and pretends that it's equal (even `===` strict equal -- see Chapter 4) to regular positive `0`, so you have to use the somewhat hackish `isNegZero(..)` utility we suggested above.
+Como vimos anteriormente, el valor `NaN` y el valor` -0` tienen un comportamiento especial cuando se trata de la comparación de igualdad. `NaN` nunca es igual a sí mismo, por lo que debe usar `Number.isNaN(..)`(o un polyfill) de ES6. Del mismo modo, `-0` miente y finge que es igual (incluso con `===` | igual estricto - vea el Capítulo 4) al positivo regular `0`, por lo que debe usar la utilidad algo extraña `isNegZero (..)` que sugerimos arriba.
 
-As of ES6, there's a new utility that can be used to test two values for absolute equality, without any of these exceptions. It's called `Object.is(..)`:
+A partir de ES6, hay una nueva utilidad que se puede utilizar para probar dos valores de igualdad absoluta, sin ninguna de estas excepciones. Se llama `Object.is (..)`:
 
 ```js
 var a = 2 / "foo";
@@ -796,7 +795,7 @@ Object.is( b, -0 );		// true
 Object.is( b, 0 );		// false
 ```
 
-There's a pretty simple polyfill for `Object.is(..)` for pre-ES6 environments:
+Hay un polyfill bastante simple para `Object.is (..)` para entornos anteriores a ES6:
 
 ```js
 if (!Object.is) {
@@ -815,45 +814,45 @@ if (!Object.is) {
 }
 ```
 
-`Object.is(..)` probably shouldn't be used in cases where `==` or `===` are known to be *safe* (see Chapter 4 "Coercion"), as the operators are likely much more efficient and certainly are more idiomatic/common. `Object.is(..)` is mostly for these special cases of equality.
+`Object.is (..)` probablemente no debería usarse en los casos en que se sabe que `==` o `===` son *seguros* (mira el capitulo 4 "Coercion"), ya que es probable que estos operadores sean mucho más eficientes y ciertamente son más idiomáticos/comunes. `Object.is (..)` es principalmente para estos casos especiales de igualdad.
 
-## Value vs. Reference
+## Valor vs. Referencia
 
-In many other languages, values can either be assigned/passed by value-copy or by reference-copy depending on the syntax you use.
+En muchos otros lenguajes, los valores pueden asignarse/pasarse mediante una copia de valor o una copia de referencia, según la sintaxis que utilice.
 
-For example, in C++ if you want to pass a `number` variable into a function and have that variable's value updated, you can declare the function parameter like `int& myNum`, and when you pass in a variable like `x`, `myNum` will be a **reference to `x`**; references are like a special form of pointers, where you obtain a pointer to another variable (like an *alias*). If you don't declare a reference parameter, the value passed in will *always* be copied, even if it's a complex object.
+Por ejemplo, en C++ si desea pasar una variable `number` a una función y actualizar el valor de esa variable, puede declarar el parámetro de la función como `int & myNum`, y cuando pasa una variable como `x`, `myNum` será una **referencia a `x`**; Las referencias son como una forma especial de punteros, donde se obtiene un puntero a otra variable (como un *alias*). Si no declara un parámetro de referencia, el valor pasado *siempre* se copiará, incluso si se trata de un objeto complejo.
 
-In JavaScript, there are no pointers, and references work a bit differently. You cannot have a reference from one JS variable to another variable. That's just not possible.
+En JavaScript, no hay punteros, y las referencias funcionan de manera un poco diferente. No puede tener una referencia de una variable JS a otra variable. Eso simplemente no es posible.
 
-A reference in JS points at a (shared) **value**, so if you have 10 different references, they are all always distinct references to a single shared value; **none of them are references/pointers to each other.**
+Una referencia en JS apunta a un valor **(compartido)**, por lo que si tiene 10 referencias diferentes, todas son referencias distintas a un único valor compartido; **ninguno de ellos son referencias/punteros entre sí**
 
-Moreover, in JavaScript, there are no syntactic hints that control value vs. reference assignment/passing. Instead, the *type* of the value *solely* controls whether that value will be assigned by value-copy or by reference-copy.
+Además, en JavaScript, no hay sugerencias sintácticas que controlen el valor frente a la asignación/paso de referencia. En cambio, el *tipo* del valor *únicamente* controla si ese valor se asignará por copia de valor o por copia de referencia.
 
-Let's illustrate:
+Vamos a ilustrar esto:
 
 ```js
 var a = 2;
-var b = a; // `b` is always a copy of the value in `a`
+var b = a; // `b` es siempre una copia del valor de `a`
 b++;
 a; // 2
 b; // 3
 
 var c = [1,2,3];
-var d = c; // `d` is a reference to the shared `[1,2,3]` value
+var d = c; // `d` es una refercia a ser compartida con el valor `[1,2,3]`
 d.push( 4 );
 c; // [1,2,3,4]
 d; // [1,2,3,4]
 ```
 
-Simple values (aka scalar primitives) are *always* assigned/passed by value-copy: `null`, `undefined`, `string`, `number`, `boolean`, and ES6's `symbol`.
+Loos avalores sencillos (alias primitivos escalares) son *siempre* asignados o pasados by copia-valor: `null`, `undefined`, `string`, `number`, `boolean`, y el añadido en ES6 `symbol`.
 
-Compound values -- `object`s (including `array`s, and all boxed object wrappers -- see Chapter 3) and `function`s -- *always* create a copy of the reference on assignment or passing.
+Los Valores compuestos: `object`s (incluidos` array`s y todos los contenedores de objetos en caja - consulte el Capítulo 3) y `function`s - *simepre* crean una copia de la referencia al asignarla o pasarla.
 
-In the above snippet, because `2` is a scalar primitive, `a` holds one initial copy of that value, and `b` is assigned another *copy* of the value. When changing `b`, you are in no way changing the value in `a`.
+En el fragmento anterior, debido a que `2` es una primitiva escalar, `a` contiene una copia inicial de ese valor, y a `b` se le asigna otra *copia* del valor. Al cambiar `b`, no está cambiando el valor en` a`.
 
-But **both `c` and `d`** are separate references to the same shared value `[1,2,3]`, which is a compound value. It's important to note that neither `c` nor `d` more "owns" the `[1,2,3]` value -- both are just equal peer references to the value. So, when using either reference to modify (`.push(4)`) the actual shared `array` value itself, it's affecting just the one shared value, and both references will reference the newly modified value `[1,2,3,4]`.
+Pero **tanto `c` como `d`** son referencias separadas al mismo valor compartido `[1,2,3]`, que es un valor compuesto. Es importante tener en cuenta que ni `c` ni` d` más "poseen" el valor `[1,2,3]`; ambos son referencias iguales iguales al valor. Por lo tanto, cuando se usa cualquiera de las referencias para modificar (`.push(4)`) el valor real del `array` compartido en sí, solo afecta al valor compartido, y ambas referencias harán referencia al valor recién modificado` [1,2,3 , 4] `.
 
-Since references point to the values themselves and not to the variables, you cannot use one reference to change where another reference is pointed:
+Como las referencias apuntan a los valores en sí mismos y no a las variables, no puede usar una referencia para cambiar el lugar donde apunta otra referencia.
 
 ```js
 var a = [1,2,3];
@@ -861,22 +860,22 @@ var b = a;
 a; // [1,2,3]
 b; // [1,2,3]
 
-// later
+// posteriormente
 b = [4,5,6];
 a; // [1,2,3]
 b; // [4,5,6]
 ```
 
-When we make the assignment `b = [4,5,6]`, we are doing absolutely nothing to affect *where* `a` is still referencing (`[1,2,3]`). To do that, `b` would have to be a pointer to `a` rather than a reference to the `array` -- but no such capability exists in JS!
+Cuando hacemos la asignación `b = [4,5,6]`, no estamos haciendo absolutamente nada para afectar *donde* `a` todavía hace referencia (` [1,2,3] `). Para hacer eso, `b` tendría que ser un puntero a` a` en lugar de una referencia al `array`, ¡pero tal capacidad no existe en JS!
 
-The most common way such confusion happens is with function parameters:
+La forma más común de tal confusión ocurre con los parámetros de la función:
 
 ```js
 function foo(x) {
 	x.push( 4 );
 	x; // [1,2,3,4]
 
-	// later
+	// posteriormente
 	x = [4,5,6];
 	x.push( 7 );
 	x; // [4,5,6,7]
@@ -886,14 +885,15 @@ var a = [1,2,3];
 
 foo( a );
 
-a; // [1,2,3,4]  not  [4,5,6,7]
+a; // [1,2,3,4]  no  [4,5,6,7]
 ```
 
-When we pass in the argument `a`, it assigns a copy of the `a` reference to `x`. `x` and `a` are separate references pointing at the same `[1,2,3]` value. Now, inside the function, we can use that reference to mutate the value itself (`push(4)`). But when we make the assignment `x = [4,5,6]`, this is in no way affecting where the initial reference `a` is pointing -- still points at the (now modified) `[1,2,3,4]` value.
+Cuando pasamos el argumento `a`, asigna una copia de la referencia` a` a `x`. `x` y` a` son referencias separadas que apuntan al mismo valor `[1,2,3]`. Ahora, dentro de la función, podemos usar esa referencia para mutar el valor en sí (`push (4)`). Pero cuando hacemos la asignación `x = [4,5,6]`, esto no afecta de ninguna manera a dónde apunta la referencia inicial `a` - todavía apunta al (ahora modificado)` [1,2,3,4] `valor.
 
-There is no way to use the `x` reference to change where `a` is pointing. We could only modify the contents of the shared value that both `a` and `x` are pointing to.
+No hay forma de usar la referencia `x` para cambiar donde apunta` a`. Solo pudimos modificar el contenido del valor compartido al que apuntan `a` y` x`.
 
-To accomplish changing `a` to have the `[4,5,6,7]` value contents, you can't create a new `array` and assign -- you must modify the existing `array` value:
+Para lograr cambiar `a` para tener el contenido del valor` [4,5,6,7] `, no puede crear un nuevo `array` y asignarla; debe modificar el valor existente del `array`:
+
 
 ```js
 function foo(x) {
@@ -913,19 +913,19 @@ foo( a );
 a; // [4,5,6,7]  not  [1,2,3,4]
 ```
 
-As you can see, `x.length = 0` and `x.push(4,5,6,7)` were not creating a new `array`, but modifying the existing shared `array`. So of course, `a` references the new `[4,5,6,7]` contents.
+Como puede ver, `x.length = 0` y` x.push (4,5,6,7) `no estaban creando un nuevo `array`, sino que modificaban el `array` compartido existente. Por supuesto, `a` hace referencia a los nuevos contenidos` [4,5,6,7] `.
 
-Remember: you cannot directly control/override value-copy vs. reference -- those semantics are controlled entirely by the type of the underlying value.
+Recuerde: no puede controlar / anular directamente la copia de valor frente a la referencia: esa semántica está controlada completamente por el tipo del valor subyacente.
 
-To effectively pass a compound value (like an `array`) by value-copy, you need to manually make a copy of it, so that the reference passed doesn't still point to the original. For example:
+Para pasar efectivamente un valor compuesto (como un `array`) por copia-valor, debe hacer una copia manualmente de él, de modo que la referencia pasada no apunte al original. Por ejemplo:
 
 ```js
 foo( a.slice() );
 ```
 
-`slice(..)` with no parameters by default makes an entirely new (shallow) copy of the `array`. So, we pass in a reference only to the copied `array`, and thus `foo(..)` cannot affect the contents of `a`.
+`slice()..)` sin parámetros por defecto hace una copia completamente nueva (superficial) del `array`. Entonces, pasamos una referencia solo al `array` copiado, y por lo tanto `foo(..)`no puede afectar el contenido de `a`.
 
-To do the reverse -- pass a scalar primitive value in a way where its value updates can be seen, kinda like a reference -- you have to wrap the value in another compound value (`object`, `array`, etc) that *can* be passed by reference-copy:
+Para hacer lo contrario, pasar un valor primitivo escalar de manera que se puedan ver sus actualizaciones de valor, como una referencia, debe envolver el valor en otro valor compuesto (`object`,` array`, etc.) que *se puede* pasar por copia de referencia:
 
 ```js
 function foo(wrapper) {
@@ -941,11 +941,11 @@ foo( obj );
 obj.a; // 42
 ```
 
-Here, `obj` acts as a wrapper for the scalar primitive property `a`. When passed to `foo(..)`, a copy of the `obj` reference is passed in and set to the `wrapper` parameter. We now can use the `wrapper` reference to access the shared object, and update its property. After the function finishes, `obj.a` will see the updated value `42`.
+Aquí, `obj` actúa como un contenedor para la propiedad primitiva escalar `a`. Cuando se pasa a `foo(..)`, se pasa una copia de la referencia `obj` y se establece en el parámetro `wrapper`. Ahora podemos usar la referencia `wrapper` para acceder al objeto compartido y actualizar su propiedad. Una vez que finaliza la función, `obj.a` verá el valor actualizado` 42`.
 
-It may occur to you that if you wanted to pass in a reference to a scalar primitive value like `2`, you could just box the value in its `Number` object wrapper (see Chapter 3).
+Se le puede ocurrir que si quisiera pasar una referencia a un valor primitivo escalar como `2`, podría simplemente colocar el valor en su envoltorio de objeto `Number` (consulte el Capítulo 3).
 
-It *is* true a copy of the reference to this `Number` object *will* be passed to the function, but unfortunately, having a reference to the shared object is not going to give you the ability to modify the shared primitive value, like you may expect:
+Es *verdadero* una copia de la referencia a este objeto `Number` *se* pasará a la función, pero desafortunadamente, tener una referencia al objeto compartido no le dará la capacidad de modificar el valor primitivo compartido, como puede esperar:
 
 ```js
 function foo(x) {
@@ -954,32 +954,32 @@ function foo(x) {
 }
 
 var a = 2;
-var b = new Number( a ); // or equivalently `Object(a)`
+var b = new Number( a ); // o el `Object(a)` equivalente
 
 foo( b );
-console.log( b ); // 2, not 3
+console.log( b ); // 2, no 3
 ```
 
-The problem is that the underlying scalar primitive value is *not mutable* (same goes for `String` and `Boolean`). If a `Number` object holds the scalar primitive value `2`, that exact `Number` object can never be changed to hold another value; you can only create a whole new `Number` object with a different value.
+El problema es que el valor primitivo escalar subyacente es *no mutable  (lo mismo ocurre con `String` y `Boolean`). Si un objeto `Number` contiene el valor primitivo escalar `2`, ese objeto exacto `Number` nunca puede cambiarse para contener otro valor; solo puede crear un nuevo objeto `Number` con un valor diferente.
 
-When `x` is used in the expression `x + 1`, the underlying scalar primitive value `2` is unboxed (extracted) from the `Number` object automatically, so the line `x = x + 1` very subtly changes `x` from being a shared reference to the `Number` object, to just holding the scalar primitive value `3` as a result of the addition operation `2 + 1`. Therefore, `b` on the outside still references the original unmodified/immutable `Number` object holding the value `2`.
+Cuando se usa `x` en la expresión `x + 1`, el valor primitivo escalar subyacente `2` se desempaqueta (extrae) del objeto` Number` automáticamente, por lo que la línea `x = x + 1` cambia muy sutilmente `x` de ser una referencia compartida al objeto `Number`, simplemente mantener el valor primitivo escalar` 3` como resultado de la operación de suma `2 + 1`. Por lo tanto, `b` en el exterior todavía hace referencia al objeto `Number` original no modificado/inmutable que contiene el valor `2`.
 
-You *can* add properties on top of the `Number` object (just not change its inner primitive value), so you could exchange information indirectly via those additional properties.
+Usted *puede* agregar propiedades sobre el objeto `Number` (simplemente no cambia su valo primitivo interno), por lo que puede intercambiar información indirectamente a través de esas propiedades adicionales.
 
-This is not all that common, however; it probably would not be considered a good practice by most developers.
+Sin embargo, esto no es tan común; probablemente la mayoría de los desarrolladores no lo considerarían una buena práctica.
 
-Instead of using the wrapper object `Number` in this way, it's probably much better to use the manual object wrapper (`obj`) approach in the earlier snippet. That's not to say that there's no clever uses for the boxed object wrappers like `Number` -- just that you should probably prefer the scalar primitive value form in most cases.
+En lugar de usar el objeto contenedor `Number` de esta manera, probablemente sea mucho mejor usar el enfoque manual del contenedor de objetos (`obj`) como en el fragmento anterior. Eso no quiere decir que no haya usos inteligentes para los contenedores de objetos en caja como `Number`, solo que probablemente debería preferir la forma de valor primitivo escalar en la mayoría de los casos.
 
-References are quite powerful, but sometimes they get in your way, and sometimes you need them where they don't exist. The only control you have over reference vs. value-copy behavior is the type of the value itself, so you must indirectly influence the assignment/passing behavior by which value types you choose to use.
+Las referencias son muy poderosas pero a veces pueden interponerse en su cmaino, y a veces las va a necesitar donde no existen. El unico control que usted tiene sobre las referencias vs el comportamiento de copia-valor es el tipo del valor por si mismo, asi que usted debe influenciar directamente el comportamiento de asignacion/pase definiendo los tipode de valores que usted desea utilizar.
 
-## Review
+## Revisión
 
-In JavaScript, `array`s are simply numerically indexed collections of any value-type. `string`s are somewhat "`array`-like", but they have distinct behaviors and care must be taken if you want to treat them as `array`s. Numbers in JavaScript include both "integers" and floating-point values.
+En JavaScript, los `array`s son simplemente colecciones indexadas numéricamente de cualquier tipo de valor. Los `string`s son algo así como un "array", pero tienen comportamientos distintos y se debe tener cuidado si desea tratarlos como `array`s. Los números en JavaScript incluyen tanto "enteros" como los valores de punto flotante.
 
-Several special values are defined within the primitive types.
+Se definen varios valores especiales dentro de los tipos primitivos.
 
-The `null` type has just one value: `null`, and likewise the `undefined` type has just the `undefined` value. `undefined` is basically the default value in any variable or property if no other value is present. The `void` operator lets you create the `undefined` value from any other value.
+El tipo `null` tiene solo un valor: `null`, y del mismo modo el tipo `undefined` tiene solo el valor `undefined`. `undefined` es básicamente el valor predeterminado en cualquier variable o propiedad si no hay otro valor presente. El operador `void` le permite crear el valor `undefined` a partir de cualquier otro valor.
 
-`number`s include several special values, like `NaN` (supposedly "Not a Number", but really more appropriately "invalid number"); `+Infinity` and `-Infinity`; and `-0`.
+`number`s incluye varios valores especiales, como` NaN` (supuestamente "Not a Number", pero realmente más apropiadamente "número inválido"); `+ nfinity` e` -Infinity`; y `-0`.
 
-Simple scalar primitives (`string`s, `number`s, etc.) are assigned/passed by value-copy, but compound values (`object`s, etc.) are assigned/passed by reference-copy. References are not like references/pointers in other languages -- they're never pointed at other variables/references, only at the underlying values.
+Las primitivas escalares simples (`string`s,` number`s, etc.) se asignan/pasan por copia de lvalor, pero los valores compuestos (`object`s, etc.) se asignan/pasan por copia de referencia. Las referencias no son como referencias/punteros en otros idiomas: nunca apuntan a otras variables/referencias, solo a los valores subyacentes.
