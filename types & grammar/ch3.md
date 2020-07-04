@@ -18,7 +18,7 @@ Aquí esta una lista de los nativos mas comúnmente utilizados:
 
 Como puedes ver, esos nativos son realmente funciones incorporadas.
 
-Si usted viene a JS desde un lenguaje como Java, los `String()` de Javascript se verán como el constructor `String(..)` al que estas acostumbrado para crear valores de string. Así que, rápidamente observaras que puedes hacer cosas como:
+Si usted viene a JS desde un lenguaje como Java, los `String()` de Javascript se verán como el constructor `String(..)` al que estas acostumbrado para crear valores de string. Así que, rápidamente observaras que puedes hacer cosas como: 
 
 
 ```js
