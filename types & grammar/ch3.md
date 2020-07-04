@@ -1,9 +1,9 @@
-# You Don't Know JS: Types & Grammar
-# Chapter 3: Natives
+# You Don't Know JS: Tipos & Gramática
+# Capitulo 3: Nativos
 
-Several times in Chapters 1 and 2, we alluded to various built-ins, usually called "natives," like `String` and `Number`. Let's examine those in detail now.
+Varias veces en los capítulos 1 y 2, mencionamos a varios tipos incorporados, normalmente llamados 'nativos', como `String` y `Number`. Vamos a verlos en detalle ahora.
 
-Here's a list of the most commonly used natives:
+Aquí esta una lista de los nativos mas comúnmente utilizados:
 
 * `String()`
 * `Number()`
@@ -14,11 +14,12 @@ Here's a list of the most commonly used natives:
 * `RegExp()`
 * `Date()`
 * `Error()`
-* `Symbol()` -- added in ES6!
+* `Symbol()` -- agregado en ES6!
 
-As you can see, these natives are actually built-in functions.
+Como puedes ver, esos nativos son realmente funciones incorporadas.
 
-If you're coming to JS from a language like Java, JavaScript's `String()` will look like the `String(..)` constructor you're used to for creating string values. So, you'll quickly observe that you can do things like:
+Si usted viene a JS desde un lenguaje como Java, los `String()` de Javascript se verán como el constructor `String(..)` al que estas acostumbrado para crear valores de string. Así que, rápidamente observaras que puedes hacer cosas como: 
+
 
 ```js
 var s = new String( "Hello World!" );
@@ -26,12 +27,12 @@ var s = new String( "Hello World!" );
 console.log( s.toString() ); // "Hello World!"
 ```
 
-It *is* true that each of these natives can be used as a native constructor. But what's being constructed may be different than you think.
+*Es* cierto que cada uno de esos nativos puede ser usado como un constructor nativo. Pero lo que se esta construyendo puede ser diferente de lo que usted cree.
 
 ```js
 var a = new String( "abc" );
 
-typeof a; // "object" ... not "String"
+typeof a; // "object" ... no "String"
 
 a instanceof String; // true
 
