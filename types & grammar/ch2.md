@@ -1,7 +1,7 @@
 # You Don't Know JS: Types & Grammar
 # Chapter 2: Valores
 
-`array`s, `string`s, y `number`s son los bloques mas básicos de cualquier programa, pero JavaScript tiene algunas caracteristicas únicas por las que estos tipos de valores pueden deleitarlo o confundirlo.
+`array`s, `string`s, y `number`s son los bloques mas básicos de cualquier programa, pero JavaScript tiene algunas características únicas por las que estos tipos de valores pueden deleitarlo o confundirlo.
 
 Echemos un vistazo a varios de los tipos de valores incorporados en JS, y exploremos cómo podemos comprender mejor y aprovechar mejor sus comportamientos.
 
@@ -47,7 +47,7 @@ a[1];		// undefined
 a.length;	// 3
 ```
 
-Si bien eso funciona, puede conducir a un comportamiento confuso con los "espacios vacíos" que dejas en el medio. Si bien el espacio parece tener el valor `undefined`, no se comportará de la misma manera que si la posición se definiera explícitamente (` a [1] = undefined`). Consulte "Arrays" en el Capítulo 3 para 
+Si bien eso funciona, puede conducir a un comportamiento confuso con los "espacios vacíos" que dejas en el medio. Si bien el espacio parece tener el valor `undefined`, no se comportará de la misma manera que si la posición se definiera explícitamente (` a [1] = undefined`). Consulte "Arrays" en el Capítulo 3 para
 más información.
 
 Los `array`s están indexados numéricamente (como es de esperarse), pero lo complicado es que también son objetos que pueden tener claves/valor con `string`s agregadas (pero que no cuentan para la `longitud` de la `matriz`):
@@ -77,7 +77,7 @@ En general, no es una buena idea agregar claves/propiedades con `string`s a los 
 
 ### Lo bueno de los Arrays
 
-Habrá ocasiones en las que necesite convertir un valor similar a un `array` (una colección de valores indexados numéricamente) en un verdadero `array`, generalmente para que pueda llamar a las utilidades del array como (como `indexOf (..)`, `concat (..)`,`forEach (..)`, etc.) y utlizarlas en su coleccion de valores.
+Habrá ocasiones en las que necesite convertir un valor similar a un `array` (una colección de valores indexados numéricamente) en un verdadero `array`, generalmente para que pueda llamar a las utilidades del array como (como `indexOf (..)`, `concat (..)`,`forEach (..)`, etc.) y utilizarlas en su colección de valores.
 
 Por ejemplo, varias operaciones de consulta DOM devuelven listas de elementos DOM que no son verdaderos `array`s pero que son lo suficientemente similares a los `array`s para nuestros propósitos de conversión. Otro ejemplo común es cuando las funciones utilizan el objeto `arguments` (similar a un `array`) (a partir de ES6, en desuso) para acceder a los argumentos en forma de una lista.
 
@@ -93,9 +93,9 @@ function foo() {
 foo( "bar", "baz" ); // ["bar","baz","bam"]
 ```
 
-Si el metodo `slice()` es llamado sin ningun parametros, como fue realizado en la parte de arriba, la operacion default tiene el efecto de duplicar el `àrray` o en este caso el objeto similar a un array.
+Si el método `slice()` es llamado sin ningún parámetro, como fue realizado en la parte de arriba, la operación default tiene el efecto de duplicar el `àrray` o en este caso el objeto similar a un array.
 
-A paertir de ES6, hay tambien una utilidad integrada llamada `Array.from(..)` que puede realizar la misma tarea.
+A partir de ES6, hay también una utilidad integrada llamada `Array.from(..)` que puede realizar la misma tarea.
 
 ```js
 ...
@@ -145,7 +145,7 @@ a; // "foo"
 b; // ["f","O","o"]
 ```
 
-Loss `string`s de JavaScript son inmutables, mientras que los `array`s son mutables. Además, la forma de acceso a la posición de carácter `a[1]` no siempre ha sido JavaScript válido. Las versiones anteriores de IE no permitían esa sintaxis (pero ahora sí). En cambio, el enfoque *correcto* ha sido `a.charAt (1)`.
+Los `string`s de JavaScript son inmutables, mientras que los `array`s son mutables. Además, la forma de acceso a la posición de carácter `a[1]` no siempre ha sido JavaScript válido. Las versiones anteriores de IE no permitían esa sintaxis (pero ahora sí). En cambio, el enfoque *correcto* ha sido `a.charAt (1)`.
 
 Una consecuencia adicional de los `string`s inmutables es que ninguno de los métodos` string` que alteran su contenido pueden modificarlos "in situ", sino que debe crear y devolver nuevos `string`s. Por el contrario, muchos de los métodos que cambian el contenido de `array` en realidad *hacen* modificaciones "in situ".
 
@@ -164,6 +164,9 @@ Además, muchos de los métodos de los `array`s que podrían ser útiles cuando 
 ```js
 a.join;			// undefined
 a.map;			// undefined
+
+const a = 'foo'
+const c = Array.prototype.map.call(a, letter => letter.toUpperCase() + '.').join('')
 
 var c = Array.prototype.join.call( a, "-" );
 var d = Array.prototype.map.call( a, function(v){
@@ -191,7 +194,7 @@ Array.prototype.reverse.call( a );
 // for "foo" :(
 ```
 
-Otra solución (o hack) es convertir el `string` a un `array`, realizar la operacion deseada y luego convertirlo de nuevo a un `string`.
+Otra solución (o hack) es convertir el `string` a un `array`, realizar la operación deseada y luego convertirlo de nuevo a un `string`.
 
 ```js
 var c = a
@@ -221,9 +224,9 @@ Como la mayoría de los lenguajes modernos, que incluyen prácticamente todos lo
 
 Hay muchos comentarios excelentes en la Web sobre los detalles esenciales de cómo se almacenan los números binarios de punto flotante en la memoria, y las implicaciones de esa elección. Debido a que no es estrictamente necesario comprender los patrones de bits en la memoria para comprender cómo usar correctamente los `number`s en JS, lo dejaremos como un ejercicio para el lector interesado si desea profundizar en los detalles de IEEE 754.
 
-### Sintaxis Numerica
+### Sintaxis Numérica
 
-Los numeros son expresados generalmente en JavaScript como decimales de base diez.
+Los números son expresados generalmente en JavaScript como decimales de base diez.
 
 ```js
 var a = 42;
@@ -256,7 +259,7 @@ a; // 42.3
 b; // 42
 ```
 
-Los `number`s muy grandes o muy pequeños seran mostrados en forma exponencial por defecto, el mismo resultado que el metodo `toExponential()` devuelve.
+Los `number`s muy grandes o muy pequeños serán mostrados en forma exponencial por defecto, el mismo resultado que el método `toExponential()` devuelve.
 
 ```js
 var a = 5E10;
@@ -309,7 +312,7 @@ No tiene que usar una variable que contenga el valor para acceder a estos métod
 42..toFixed( 3 );	// "42.000"
 ```
 
-`42.toFixed(3)` es un error de sintaxis por que el `.`  es interpretado como parte del literal `42.` (lo que es valido), por lo que no hay un `.` que sirva como operador de propiedad para accede a la funcion `.toFixed()`.
+`42.toFixed(3)` es un error de sintaxis por que el `.`  es interpretado como parte del literal `42.` (lo que es valido), por lo que no hay un `.` que sirva como operador de propiedad para accede a la función `.toFixed()`.
 
 `42..toFixed(3)` funciona porque el primer `.` es parte del `number` y el segundo `.` es el operador para acceder la propiedad. Pero probablemente se vea extraño, y de hecho es muy raro ver algo así en el código JavaScript real. De hecho, es bastante raro acceder a métodos directamente en cualquiera de los valores primitivos. Poco común no significa *malo* o *incorrecto*.
 
@@ -326,11 +329,11 @@ Sin embargo, con el literal `number`, funciona, **este es un estilo de codificac
 Los `number`s también se pueden especificar en forma de exponente, lo cual es común cuando se representan `number`s mayores, como:
 
 ```js
-var onethousand = 1E3;						// Sifgnifica 1 * 10^3
-var onemilliononehundredthousand = 1.1E6;	// Sifgnifica 1.1 * 10^6
+var onethousand = 1E3;						// Significa 1 * 10^3
+var onemilliononehundredthousand = 1.1E6;	// Significa 1.1 * 10^6
 ```
 
-Los `number`s literales tambien puede ser expresados en otras bases, como binaria, octal o decimal.
+Los `number`s literales también puede ser expresados en otras bases, como binaria, octal o decimal.
 
 Estos formatos funcionan en las versiones actuales de JavaScript:
 
@@ -353,7 +356,7 @@ A partir de ES6, los siguientes nuevos formularios también son válidos:
 0B11110011; // ditto
 ```
 
-Haga un favor a sus compañeros desarrolladores: nunca use la forma `0O363`, un `0` al lado de una `O` mayuscula es muy confuso. Siempre use minúsculas `0x`, `0b`, y `0o`.
+Haga un favor a sus compañeros desarrolladores: nunca use la forma `0O363`, un `0` al lado de una `O` mayúscula es muy confuso. Siempre use minúsculas `0x`, `0b`, y `0o`.
 
 ### Valores decimales pequeños
 
@@ -363,7 +366,7 @@ El efecto secundario más famoso (o infame) de usar números binarios de punto f
 0.1 + 0.2 === 0.3; // false
 ```
 
-Matemáticamente, sabemos que la declaracion deberia de ser `true`. ¿Porqué devuelve `false`?
+Matemáticamente, sabemos que la declaración debería de ser `true`. ¿Porqué devuelve `false`?
 
 En pocas palabras, las representaciones para `0.1` y` 0.2` en punto flotante binario no son exactas, por lo que cuando se agregan, el resultado no es exactamente `0.3`. Está **realmente** cerca: `0.30000000000000004`, pero si su comparación falla, "cerca"es irrelevante.
 
@@ -371,11 +374,11 @@ En pocas palabras, las representaciones para `0.1` y` 0.2` en punto flotante bin
 
 Ahora, la pregunta es, si algunos `números` no pueden ser *confiables* para ser exactos, ¿eso significa que no podemos usar `numbers` en absoluto? **Por supuesto no.**
 
-Hay algunas aplicaciones donde necesitas ser mas cuidadoso, especialmente cuando lidias con valores decimales. Tambien hay muchas (¿Quiza la mayoría?) aplicaciones que solo lidian con numeros enteros ("integers") y mas exactamente solo lidian con numeros hasta los millones o los trillones como maximo. Estas apliaciones seran **perfectamente seguras** para utilizar operaciones numericas en JS.
+Hay algunas aplicaciones donde necesitas ser mas cuidadoso, especialmente cuando lidias con valores decimales. También hay muchas (¿Quizá la mayoría?) aplicaciones que solo lidian con números enteros ("integers") y mas exactamente solo lidian con números hasta los millones o los trillones como máximo. Estas aplicaciones serán **perfectamente seguras** para utilizar operaciones numéricas en JS.
 
 ¿Qué sucede si *necesitamos* comparar dos `number`'s, como `0.1 + 0.2` y `0.3` sabiendo que una comparación de igualdad fallaría?
 
-La practica mas aceptada es usar un pequeño valor de "margen de error" como la *tolerancia* para la comparacion. Este pequeño valor es frecuentementemente llamado "machine epsilon", que es comunmente `2^-52` (`2.220446049250313e-16`) para el tipo `number` in JavaScript.
+La practica mas aceptada es usar un pequeño valor de "margen de error" como la *tolerancia* para la comparación. Este pequeño valor es frecuentemente llamado "machine epsilon", que es comúnmente `2^-52` (`2.220446049250313e-16`) para el tipo `number` in JavaScript.
 
 Como en ES6, `Number.EPSILON` esta predefinido con este valor de tolerancia, así podría querer usarlo, sin embargo puede agregar de manera segura la definición para que funcione en versiones previas a ES6.
 
@@ -385,7 +388,7 @@ if (!Number.EPSILON) {
 }
 ```
 
-Podemos utilizar `Number.EPSILON` para comparar dos valoes (con un pequeño margen de tolerancia).
+Podemos utilizar `Number.EPSILON` para comparar dos valores (con un pequeño margen de tolerancia).
 
 ```js
 function numbersCloseEnoughToEqual(n1,n2) {
@@ -399,21 +402,21 @@ numbersCloseEnoughToEqual( a, b );					// true
 numbersCloseEnoughToEqual( 0.0000001, 0.0000002 );	// false
 ```
 
-El maximo valor que puede ser representado es cercano a `1.798e+308` (que es realmente, realmente enorme!), predefinido para usted como `Number.MAX_VALUE`. En el extremo mas pequeño, `Number.MIN_VALUE` es cercano a `5e-324` que no es numero negativo pero es muy cercano a cero!
+El máximo valor que puede ser representado es cercano a `1.798e+308` (que es realmente, realmente enorme!), predefinido para usted como `Number.MAX_VALUE`. En el extremo mas pequeño, `Number.MIN_VALUE` es cercano a `5e-324` que no es numero negativo pero es muy cercano a cero!
 
 ### Rangos enteros seguros
 
-Dada la forma de representar `number`s, hay un rango de valores "seguros" para el grupo de los numeros enteros y es significantemente menor que `Number.MAX_VALUE`.
+Dada la forma de representar `number`s, hay un rango de valores "seguros" para el grupo de los números enteros y es significativamente menor que `Number.MAX_VALUE`.
 
-Hay un máximo entero que puede ser representado de manera "segura" (Esto es, hay garantía de que el valor será representado de manera exacta) el numero es `2^53 - 1`, que es `9007199254740991`, Si inserta las comas, vera que sorprendente esta sobre 9 cuatrillones. Asi que es un gran numero para definir el rango maximo.
+Hay un máximo entero que puede ser representado de manera "segura" (Esto es, hay garantía de que el valor será representado de manera exacta) el numero es `2^53 - 1`, que es `9007199254740991`, Si inserta las comas, vera que sorprendente esta sobre 9 cuatrillones. Asi que es un gran numero para definir el rango máximo.
 
 Este es un valor que esta predefinido en ES6, al que puedes acceder como `Number.MAX_SAFE_INTEGER`. Predeciblemente, existe un mínimo numero seguro, `-9007199254740991`, que esta definido en ES6 como `Number.MIN_SAFE_INTEGER`.
 
-La manera estandar en la que los programas de JS lidian con números tan grandes es cuándo lidian con ID's de bases de datos de 64-bit, etc. Los numeros de 64-bit no pueden ser reprensentados de manera segura con el tipo `number`, asi que deben ser almacenados y transportados en Javascript representados como `strings`.
+La manera estándar en la que los programas de JS lidian con números tan grandes es cuándo lidian con ID's de bases de datos de 64-bit, etc. Los números de 64-bit no pueden ser representados de manera segura con el tipo `number`, asi que deben ser almacenados y transportados en Javascript representados como `strings`.
 
-Las operaciones numéricas de semejantes valores de ID's numericas (Más allá de la comparación, que será precisa utiliando `strings`s) afortunadamente no son muy comunes. Pero si necesitas realizar operaciones matematicas en este tipo de grandes valores, por ahora vas a tener que utilizar alguna utilidad de *grandes numeros*. Los grandes numeros quiza tengan soporte oficial en alguna version futura de JavaScript.
+Las operaciones numéricas de semejantes valores de ID's numéricas (Más allá de la comparación, que será precisa utilizando `strings`s) afortunadamente no son muy comunes. Pero si necesitas realizar operaciones matemáticas en este tipo de grandes valores, por ahora vas a tener que utilizar alguna utilidad de *grandes números*. Los grandes números quizá tengan soporte oficial en alguna version futura de JavaScript.
 
-### Evaluando enteros 
+### Evaluando enteros
 
 Para evaluar si un valor es un entero, puedes utilizar la herramienta de ES6 `Number.isInteger(..)`:
 
@@ -464,15 +467,15 @@ Para forzar un valor de `number` en `a` a un valor entero con signo de 32 bits, 
 
 ## Valores Especiales
 
-Hay muchos valores especiales a lo largo de los diferentes tipos de los que el *gran* desarrollador JS necesita estar al tanto y utizarlos apropiadamente.
+Hay muchos valores especiales a lo largo de los diferentes tipos de los que el *gran* desarrollador JS necesita estar al tanto y utilizarlos apropiadamente.
 
 ### Los valores Non-value (sin valor)
 
-Para el tipo `undefined` solamente hay un valor: `undefined`. Para el tipo `null` solamente hay un valor: `null` . Asi que para ambos su nombre essu tipo y su valor.
+Para el tipo `undefined` solamente hay un valor: `undefined`. Para el tipo `null` solamente hay un valor: `null` . Asi que para ambos su nombre es su tipo y su valor.
 
-`undefined` y `null` son frecuentemente tomados como si fueran intercambiables ya sea como valores "vacios" o como valores "inexistentes". Otros desarrolladores prefieren disitnguirlos con pequeños matices. Por ejemplo:
+`undefined` y `null` son frecuentemente tomados como si fueran intercambiables ya sea como valores "vacíos" o como valores "inexistentes". Otros desarrolladores prefieren distinguirlos con pequeños matices. Por ejemplo:
 
-* `null` es un valor vacio
+* `null` es un valor vació
 * `undefined` es un valor inexistente
 
 O:
@@ -484,7 +487,7 @@ Independientemente de cómo elija "definir" y utilizar estos dos valores, `null`
 
 ### Undefined
 
-Fuera del modo estricto, en realidad es posible (sin embargo increiblemente tonto y no recomendado) asignar un valor de manera global al identificador `undefined`,
+Fuera del modo estricto, en realidad es posible (sin embargo increíblemente tonto y no recomendado) asignar un valor de manera global al identificador `undefined`,
 
 ```js
 function foo() {
@@ -555,7 +558,7 @@ if (doSomething()) {
 }
 ```
 
-Aqui la funcion `setTimeout(..)` devuelve un valor numerico (el identificador único del intervalo del temporizador, si desea cancelarlo), pero queremos `anularlo` para que el valor de retorno de nuestra función no dé un falso positivo con el condicional` if`.
+Aqui la función `setTimeout(..)` devuelve un valor numerico (el identificador único del intervalo del temporizador, si desea cancelarlo), pero queremos `anularlo` para que el valor de retorno de nuestra función no dé un falso positivo con el condicional` if`.
 
 Muchos desarrolladores prefieren simplemente hacer estas acciones por separado, lo que funciona igual pero no usa el operador `void`:
 
@@ -602,7 +605,7 @@ a === NaN;	// false
 
 `NaN` es un valor muy especial porque nunca es igual a otro valor `NaN` (es decir, nunca es igual a sí mismo). Es el único valor, de hecho, que no es reflexivo (sin la característica de identidad `x === x`). Entonces, `NaN! == NaN`. Un poco extraño, ¿eh?
 
-Entonces, ¿cómo *lo* probamos si no podemos compararlo con 'NaN' (ya que esa comparación siempre fallará)?
+Entonces, ¿cómo *lo* probamos si no podemos compararlo con `NaN` (ya que esa comparación siempre fallará)?
 
 ```js
 var a = 2 / "foo";
@@ -673,7 +676,7 @@ Los desarrolladores de lenguajes compilados tradicionales como C probablemente e
 var a = 1 / 0;
 ```
 
-Sin embargo, en JS, este operador esta bien definido y retorna el valor`Infinity` (alias `Number.POSITIVE_INFINITY`). Sorprendentemente:
+Sin embargo, en JS, este operador esta bien definido y retorna el valor `Infinity` (alias `Number.POSITIVE_INFINITY`). Sorprendentemente:
 
 ```js
 var a = 1 / 0;	// Infinity
@@ -961,7 +964,7 @@ foo( b );
 console.log( b ); // 2, no 3
 ```
 
-El problema es que el valor primitivo escalar subyacente es *no mutable  (lo mismo ocurre con `String` y `Boolean`). Si un objeto `Number` contiene el valor primitivo escalar `2`, ese objeto exacto `Number` nunca puede cambiarse para contener otro valor; solo puede crear un nuevo objeto `Number` con un valor diferente.
+El problema es que el valor primitivo escalar subyacente es *no mutable*  (lo mismo ocurre con `String` y `Boolean`). Si un objeto `Number` contiene el valor primitivo escalar `2`, ese objeto exacto `Number` nunca puede cambiarse para contener otro valor; solo puede crear un nuevo objeto `Number` con un valor diferente.
 
 Cuando se usa `x` en la expresión `x + 1`, el valor primitivo escalar subyacente `2` se desempaqueta (extrae) del objeto` Number` automáticamente, por lo que la línea `x = x + 1` cambia muy sutilmente `x` de ser una referencia compartida al objeto `Number`, simplemente mantener el valor primitivo escalar` 3` como resultado de la operación de suma `2 + 1`. Por lo tanto, `b` en el exterior todavía hace referencia al objeto `Number` original no modificado/inmutable que contiene el valor `2`.
 
@@ -983,4 +986,4 @@ El tipo `null` tiene solo un valor: `null`, y del mismo modo el tipo `undefined`
 
 `number`s incluye varios valores especiales, como` NaN` (supuestamente "Not a Number", pero realmente más apropiadamente "número inválido"); `+ nfinity` e` -Infinity`; y `-0`.
 
-Las primitivas escalares simples (`string`s,` number`s, etc.) se asignan/pasan por copia de lvalor, pero los valores compuestos (`object`s, etc.) se asignan/pasan por copia de referencia. Las referencias no son como referencias/punteros en otros idiomas: nunca apuntan a otras variables/referencias, solo a los valores subyacentes.
+Las primitivas escalares simples (`string`s,` number`s, etc.) se asignan/pasan por copia del valor, pero los valores compuestos (`object`s, etc.) se asignan/pasan por copia de referencia. Las referencias no son como referencias/punteros en otros idiomas: nunca apuntan a otras variables/referencias, solo a los valores subyacentes.
