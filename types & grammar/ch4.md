@@ -1,13 +1,13 @@
 # You Don't Know JS: Types & Grammar
 # Chapter 4: Coercion
 
-Now that we much more fully understand JavaScript's types and values, we turn our attention to a very controversial topic: coercion.
+Ahora que tenemos un entendimiento completo acerca de los tipos y valores en JavaScript, vamos a darle nuestra atención a un tema muy controversial: la coerción.
 
-As we mentioned in Chapter 1, the debates over whether coercion is a useful feature or a flaw in the design of the language (or somewhere in between!) have raged since day one. If you've read other popular books on JS, you know that the overwhelmingly prevalent *message* out there is that coercion is magical, evil, confusing, and just downright a bad idea.
+Como mencionamos en el Capitulo 1, el debate sobre si la coerción es una característica útil o una falla en el diseño del lenguaje (o algo en el medio!) se ha sostenido desde el dia uno. Si alguna vez usted ha leído otros libros populares sobre Js, ha de conocer el arrollador y extendido _mensaje_ la coerción es mágica, malvada, confusa y claramente una mala idea.
 
-In the same overall spirit of this book series, rather than running away from coercion because everyone else does, or because you get bitten by some quirk, I think you should run toward that which you don't understand and seek to *get it* more fully.
+Manteniendo el espíritu general de esta serie de libros, en lugar de huir de la coerción porque todo el mundo lo hace, o porque ha sido mordido por alguna de sus peculiaridades, pienso que se debería correr hacia eso que se desconoce para buscar _comprenderlo_ completamente.
 
-Our goal is to fully explore the pros and cons (yes, there *are* pros!) of coercion, so that you can make an informed decision on its appropriateness in your program.
+Nuestro objetivo es explorar de lleno los pros y contras (sí, _tiene_ pros) de la coerción, entonces podrá hacer una decision informada sobre lo que es conveniente en su programa.
 
 ## Converting Values
 
