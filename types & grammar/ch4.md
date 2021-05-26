@@ -1,5 +1,5 @@
 # You Don't Know JS: Types & Grammar
-# Chapter 4: Coercion
+# Capitulo 4: Coerción
 
 Ahora que tenemos un entendimiento completo acerca de los tipos y valores en JavaScript, vamos a darle nuestra atención a un tema muy controversial: la coerción.
 
@@ -9,19 +9,25 @@ Manteniendo el espíritu general de esta serie de libros, en lugar de huir de la
 
 Nuestro objetivo es explorar de lleno los pros y contras (sí, _tiene_ pros) de la coerción, entonces podrá hacer una decision informada sobre lo que es conveniente en su programa.
 
-## Converting Values
+## Convirtiendo Valores
 
-Converting a value from one type to another is often called "type casting," when done explicitly, and "coercion" when done implicitly (forced by the rules of how a value is used).
+Convertir el valor de un tipo a otro es usualmente llamado "type casting," cuando se hace de forma explícita, y "coercion" cuando es implícita (siguiendo las reglas de como un valor es usado).
+<!-- Converting a value from one type to another is often called "type casting," when done explicitly, and "coercion" when done implicitly (forced by the rules of how a value is used). -->
 
-**Note:** It may not be obvious, but JavaScript coercions always result in one of the scalar primitive (see Chapter 2) values, like `string`, `number`, or `boolean`. There is no coercion that results in a complex value like `object` or `function`. Chapter 3 covers "boxing," which wraps scalar primitive values in their `object` counterparts, but this is not really coercion in an accurate sense.
+**Nota:** Puede no ser obvio, pero la coerción de JavaScript siempre es producto de uno de los valores primitivos (mirar él Capitulo 2), como `string`, `number`, o `boolean`. No existe coerción como consecuencia de valores complejos como `object` o `function`. El Capitulo 3 cubre el "boxing," que envuelve los valores primitivos en sus contrapartes `object`, pero en realidad no es coerción en el sentido estricto de la palabra.
+<!-- **Note:** It may not be obvious, but JavaScript coercions always result in one of the scalar primitive (see Chapter 2) values, like `string`, `number`, or `boolean`. There is no coercion that results in a complex value like `object` or `function`. Chapter 3 covers "boxing," which wraps scalar primitive values in their `object` counterparts, but this is not really coercion in an accurate sense. -->
 
-Another way these terms are often distinguished is as follows: "type casting" (or "type conversion") occur in statically typed languages at compile time, while "type coercion" is a runtime conversion for dynamically typed languages.
+Otra forma para distinguir estos términos es el siguiente: "type casting" (o "type conversion") ocurre de forma estática en lenguajes tipados durante el tiempo de compilación, mientras "type coercion" es una conversión en tiempo de ejecución para lenguajes de tipado dinámico.
+<!-- Another way these terms are often distinguished is as follows: "type casting" (or "type conversion") occur in statically typed languages at compile time, while "type coercion" is a runtime conversion for dynamically typed languages. -->
 
-However, in JavaScript, most people refer to all these types of conversions as *coercion*, so the way I prefer to distinguish is to say "implicit coercion" vs. "explicit coercion."
+Sin embargo, en JavaScript, muchas personas se refieren a todo estos tipos de conversiones como *coerción*, asi que la manera que prefiero para distinguirlos es decir "implicit coercion" vs. "explicit coercion."
+<!-- However, in JavaScript, most people refer to all these types of conversions as *coercion*, so the way I prefer to distinguish is to say "implicit coercion" vs. "explicit coercion." -->
 
-The difference should be obvious: "explicit coercion" is when it is obvious from looking at the code that a type conversion is intentionally occurring, whereas "implicit coercion" is when the type conversion will occur as a less obvious side effect of some other intentional operation.
+La diferencia debería ser obvia: "explicit coercion" cuando es obvio con una mirada al código que una conversion de tipos esta sucediendo intencionalmente, mientras que "implicit coercion" es cuando la conversion de tipos ocurre como un efecto secundario no muy obvio de alguna operación intencional.
+<!-- The difference should be obvious: "explicit coercion" is when it is obvious from looking at the code that a type conversion is intentionally occurring, whereas "implicit coercion" is when the type conversion will occur as a less obvious side effect of some other intentional operation. -->
 
-For example, consider these two approaches to coercion:
+Por ejemplo, tomando estos dos acercamientos a la coerción:
+<!-- For example, consider these two approaches to coercion: -->
 
 ```js
 var a = 42;
@@ -31,9 +37,13 @@ var b = a + "";			// implicit coercion
 var c = String( a );	// explicit coercion
 ```
 
-For `b`, the coercion that occurs happens implicitly, because the `+` operator combined with one of the operands being a `string` value (`""`) will insist on the operation being a `string` concatenation (adding two strings together), which *as a (hidden) side effect* will force the `42` value in `a` to be coerced to its `string` equivalent: `"42"`.
+Para `b`, la coerción ocurre de manera implícita, porque el operador `+` combinado con que uno de sus operandos sea un `string` el valor (`""`) hace que la operación sea una concatenación de `string` (poner dos strings juntos), la cual *como un (oculto) efecto secundario* que forzará al valor `42` en `a` a ser coercionado hacia su `string` equivalente: `"42"`.
 
-By contrast, the `String(..)` function makes it pretty obvious that it's explicitly taking the value in `a` and coercing it to a `string` representation.
+<!-- For `b`, the coercion that occurs happens implicitly, because the `+` operator combined with one of the operands being a `string` value (`""`) will insist on the operation being a `string` concatenation (adding two strings together), which *as a (hidden) side effect* will force the `42` value in `a` to be coerced to its `string` equivalent: `"42"`. -->
+
+En cambio, la función `String(..)` hace bastante obvio que implícitamente se esta tomado el valor en `a` y se coerciona hacia su representación como `string`.
+
+<!-- By contrast, the `String(..)` function makes it pretty obvious that it's explicitly taking the value in `a` and coercing it to a `string` representation. -->
 
 Both approaches accomplish the same effect: `"42"` comes from `42`. But it's the *how* that is at the heart of the heated debates over JavaScript coercion.
 
